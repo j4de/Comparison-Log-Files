@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.textBoxFilePath = new System.Windows.Forms.TextBox();
             this.processButton = new System.Windows.Forms.Button();
@@ -155,7 +155,6 @@
             this.textBoxFilePath.Name = "textBoxFilePath";
             this.textBoxFilePath.Size = new System.Drawing.Size(514, 20);
             this.textBoxFilePath.TabIndex = 2;
-
             // 
             // processButton
             // 
@@ -167,7 +166,6 @@
             this.processButton.TabIndex = 3;
             this.processButton.Text = "Display Results";
             this.processButton.UseVisualStyleBackColor = true;
-            //this.processButton.Click += new System.EventHandler(this.parseFilesButton_Click);
             // 
             // browseButton
             // 
@@ -179,7 +177,6 @@
             this.browseButton.TabIndex = 1;
             this.browseButton.Text = "Browse Files";
             this.browseButton.UseVisualStyleBackColor = true;
-            //this.browseButton.Click += new System.EventHandler(this.BrowseFiles);
             // 
             // dataGridViewFiles
             // 
@@ -200,7 +197,6 @@
             this.Notepad.TabIndex = 4;
             this.Notepad.Text = "Notepad";
             this.Notepad.UseVisualStyleBackColor = true;
-            //this.Notepad.Click += new System.EventHandler(this.Notepad_Click);
             // 
             // linesNumericUpDown
             // 
@@ -260,7 +256,6 @@
             this.viewResultsButton.TabIndex = 9;
             this.viewResultsButton.Text = "View Results";
             this.viewResultsButton.UseVisualStyleBackColor = true;
-            //this.viewResultsButton.Click += new System.EventHandler(this.viewResultsButton_Click);
             // 
             // exitButton
             // 
@@ -271,7 +266,7 @@
             this.exitButton.TabIndex = 8;
             this.exitButton.Text = "Exit";
             this.exitButton.UseVisualStyleBackColor = true;
-            //this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
             // label1
             // 
@@ -320,24 +315,22 @@
             // 
             // chart1
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
             this.tableLayoutPanel1.SetColumnSpan(this.chart1, 14);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(43, 366);
             this.chart1.Name = "chart1";
             this.tableLayoutPanel1.SetRowSpan(this.chart1, 8);
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart1.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(554, 258);
             this.chart1.TabIndex = 15;
             this.chart1.Text = "chart1";
-            //this.chart1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseClick);
-            //this.chart1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseMove);
             // 
             // listBoxDetails
             // 
@@ -366,7 +359,6 @@
             this.btnDetails.TabIndex = 18;
             this.btnDetails.Text = "Cluster Details";
             this.btnDetails.UseVisualStyleBackColor = true;
-           // this.btnDetails.Click += new System.EventHandler(this.btnDetails_Click);
             // 
             // openFileDialog1
             // 
