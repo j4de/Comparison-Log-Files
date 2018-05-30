@@ -17,10 +17,11 @@ namespace Comparison_Log_Files
 {
     public partial class Form1 : Form
     {
-
+        List<LogFile> LogList = new List<LogFile>();
         public Form1()
         {
             InitializeComponent();
+            CenterToScreen();
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -38,14 +39,10 @@ namespace Comparison_Log_Files
 
         private void processButton_Click(object sender, EventArgs e)
         {
-            long stringSize;
-            long progress = 0;
             string filePath = textBoxFilePath.Text;
-            int SD = 0;
-            string columnNames = "";
-            int message = 1;
+            string columnName = "";
+            int message = 0;
             DataTable logFileDataTable = new DataTable();
-            logFileDataTable.Columns.Add("SD");
             logFileDataTable.Columns.Add("Message");
 
             if (File.Exists(filePath))
@@ -54,15 +51,15 @@ namespace Comparison_Log_Files
                 string[] logFileData = new string[File.ReadAllLines(filePath).Length];
 
                 string probId = "";
-                int columnCount = 2;
+                int columnCount = 1;
                 bool endOfLog = false;
                 string[] filteredLogfile = new string[2];
                 string line = streamReader.ReadLine();
                 logFileData = line.Split('\n');
                 int lineCounter = 0;
                 bool ObtainingFound = false;
-                stringSize = line.Length + 2;
-                progress += stringSize;
+                //stringSize = line.Length + 2;
+                //progress += stringSize;
                 while (!streamReader.EndOfStream)
                 {
                     line = streamReader.ReadLine();
@@ -98,8 +95,6 @@ namespace Comparison_Log_Files
                             {
                                 continue;
                             }
-
-                            filteredLogfile[SD] = logFileData[0].Substring(36, 2);
                             filteredLogfile[message] = logFileData[0].Substring(logFileData[0].LastIndexOf('|') + 1);
                         }
 
@@ -116,10 +111,10 @@ namespace Comparison_Log_Files
                     }//end foreach loop
 
                     //If it hasn't reached the end of a log file
-                    AddDataToTable(SD, message, logFileDataTable, endOfLog, filteredLogfile);
+                    AddDataToTable( message, logFileDataTable, endOfLog, filteredLogfile);
 
                     //If it has reached the end of a log file
-                    MoveDataToFileAndList(SD, ref columnNames, message, logFileDataTable, probId, columnCount, ref endOfLog, filteredLogfile);
+                    PutDataToFileAndList( ref columnName, message, logFileDataTable, probId, columnCount, ref endOfLog, filteredLogfile);
                     lineCounter++;
                 }//end while loop   
                 MessageBox.Show("Your files have been parsed and saved");
@@ -128,7 +123,7 @@ namespace Comparison_Log_Files
                 MessageBox.Show("Are you sure the file exists??");
         }
 
-        private void MoveDataToFileAndList(int SD, ref string columnNames, int message, DataTable logFileDataTable, string probId, int columnCount, ref bool endOfLog, string[] filteredLogfile)
+        private void PutDataToFileAndList( ref string columnName, int message, DataTable logFileDataTable, string probId, int columnCount, ref bool endOfLog, string[] filteredLogfile)
         {
             if (endOfLog)
             {
@@ -137,12 +132,10 @@ namespace Comparison_Log_Files
                     dataGridViewFiles.DataSource = logFileDataTable;
                     if (logFileDataTable.Rows.Count != 0)
                     {
-                        columnNames = SaveToTextFile(columnNames, probId, columnCount);
+                        columnName = SaveToTextFile(columnName, probId, columnCount);
                         AddDataToLogList(logFileDataTable, probId);
                         dataGridViewFiles.DataSource = null;
-
                         logFileDataTable.Rows.Clear();
-                        filteredLogfile[SD] = null;
                         filteredLogfile[message] = null;
                     }
                 }
@@ -150,78 +143,85 @@ namespace Comparison_Log_Files
             }
         }
 
-        private string SaveToTextFile(string columnNames, string probId, int columnCount)
+        
+    
+
+        private string SaveToTextFile(string columnName, string probId, int columnCount)
         {
             using (StreamWriter sw = new StreamWriter("p" + probId + ".txt"))
             {
-
-                for (int i = 0; i < columnCount; i++)
-                {
-                    columnNames += dataGridViewFiles.Columns[i].Name.ToString() + ",";
-                }
-                //A quick hack to stop the column names from being added each time a new log file is created
-                if (columnNames.Length > 7)
-                {
-                    columnNames = columnNames.Substring(2, 7);
-                }
-                sw.WriteLine(columnNames);
+                columnName = dataGridViewFiles.Columns[0].Name.ToString();
+                sw.WriteLine(columnName);
                 for (int i = 0; i < dataGridViewFiles.RowCount; i++)
                 {
                     string rowdata = "";
-                    for (int j = 0; j < columnCount; j++)
+                   if (dataGridViewFiles.Rows[i].Cells[0].Value != null)
                     {
-
-                        if (dataGridViewFiles.Rows[i].Cells[j].Value != null)
+                        if (dataGridViewFiles.Rows[i].Cells[0].Value.ToString() != "")
                         {
-                            rowdata += dataGridViewFiles.Rows[i].Cells[j].Value.ToString()+",";
+                            rowdata += dataGridViewFiles.Rows[i].Cells[0].Value.ToString() + ",";
                         }
                         else
                         {
                             continue;
                         }
-
                     }
-                    sw.WriteLine(rowdata);
-                    //break out of loop to avoid null object reference
-                    if (i == dataGridViewFiles.RowCount)
-                        break;
+                    else
+                    {
+                        continue;
+                    }              
+                sw.WriteLine(rowdata);
+                if (i == dataGridViewFiles.RowCount)
+                    break;
                 }
             }
-
-            return columnNames;
+            return columnName;
         }
 
-        private static void AddDataToTable(int SD, int message, DataTable logFileDataTable, bool endOfLog, string[] filteredLogfile)
+        private static void AddDataToTable( int message, DataTable logFileDataTable, bool endOfLog, string[] filteredLogfile)
         {
             if (!endOfLog)
             {
                 if (filteredLogfile != null)
                 {
-                    if (filteredLogfile[SD] != "   ")
+
+                    if (filteredLogfile[message] != "Versions")
                     {
-                        if (filteredLogfile[SD] != null)
-                        {
-                            if (filteredLogfile[message] != "Versions")
-                            {
-                                logFileDataTable.Rows.Add(
-                                   filteredLogfile[SD],
-                                   filteredLogfile[message]
-                                   );
-                            }
-                        }
-
-
-                    }
+                        logFileDataTable.Rows.Add(
+                           filteredLogfile[message]
+                           );
+                    }            
                 }
 
             }
         }
 
-       
-
         private void AddDataToLogList(DataTable logFileDataTable, string probId)
         {
+            int minLines = Convert.ToInt32(linesNumericUpDown.Value);
+            string rowSignature = "";
+
+            var results = from myRow in logFileDataTable.AsEnumerable()
+                          select myRow[0];
+            var topRows = results.Reverse().Take(minLines);
+
+            foreach (var item in topRows)
+            {
+                rowSignature += item.ToString();
+            }
+            if (rowSignature != "")
+            {
+                LogList.Add(new LogFile
+                {
+                    name = probId,
+                    Signature = rowSignature,
+                    LDvalue = 100
+
+                });
+            }
+           
             
         }
+
     }
 }
