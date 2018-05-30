@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.textBoxFilePath = new System.Windows.Forms.TextBox();
             this.processButton = new System.Windows.Forms.Button();
@@ -49,6 +49,7 @@
             this.labelPieChart = new System.Windows.Forms.Label();
             this.btnDetails = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.Notepad = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.linesNumericUpDown)).BeginInit();
@@ -83,6 +84,7 @@
             this.tableLayoutPanel1.Controls.Add(this.textBoxFilePath, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.browseButton, 16, 1);
             this.tableLayoutPanel1.Controls.Add(this.dataGridViewFiles, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.Notepad, 16, 14);
             this.tableLayoutPanel1.Controls.Add(this.exitButton, 16, 18);
             this.tableLayoutPanel1.Controls.Add(this.label1, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.chart1, 1, 11);
@@ -292,19 +294,19 @@
             // 
             // chart1
             // 
-            chartArea6.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea6);
+            chartArea7.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea7);
             this.tableLayoutPanel1.SetColumnSpan(this.chart1, 14);
-            legend6.Name = "Legend1";
-            this.chart1.Legends.Add(legend6);
+            legend7.Name = "Legend1";
+            this.chart1.Legends.Add(legend7);
             this.chart1.Location = new System.Drawing.Point(43, 366);
             this.chart1.Name = "chart1";
             this.tableLayoutPanel1.SetRowSpan(this.chart1, 8);
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series6.Legend = "Legend1";
-            series6.Name = "Series1";
-            this.chart1.Series.Add(series6);
+            series7.ChartArea = "ChartArea1";
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series7.Legend = "Legend1";
+            series7.Name = "Series1";
+            this.chart1.Series.Add(series7);
             this.chart1.Size = new System.Drawing.Size(554, 258);
             this.chart1.TabIndex = 15;
             this.chart1.Text = "chart1";
@@ -341,6 +343,18 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // Notepad
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.Notepad, 3);
+            this.Notepad.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Notepad.Location = new System.Drawing.Point(649, 465);
+            this.Notepad.Name = "Notepad";
+            this.Notepad.Size = new System.Drawing.Size(108, 27);
+            this.Notepad.TabIndex = 4;
+            this.Notepad.Text = "Notepad";
+            this.Notepad.UseVisualStyleBackColor = true;
+            this.Notepad.Click += new System.EventHandler(this.Notepad_Click);
             // 
             // Form1
             // 
@@ -381,6 +395,7 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         public System.Windows.Forms.Label labelPieChart;
         private System.Windows.Forms.Button btnDetails;
+        private System.Windows.Forms.Button Notepad;
     }
 }
 
