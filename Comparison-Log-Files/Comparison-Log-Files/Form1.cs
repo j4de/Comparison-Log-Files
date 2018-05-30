@@ -26,5 +26,13 @@ namespace Comparison_Log_Files
         {
             this.Close();
         }
+
+        private void browseButton_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                textBoxFilePath.Text = (openFileDialog1.FileName);
+            }
+        }
     }
 }
