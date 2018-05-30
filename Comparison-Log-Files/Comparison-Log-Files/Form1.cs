@@ -324,6 +324,16 @@ namespace Comparison_Log_Files
 
         private void btnDetails_Click(object sender, EventArgs e)
         {
+            ClusterDetailsForm frm2 = new ClusterDetailsForm
+            {
+                Owner = this
+            };
+            //frm2.LogName(cluster);
+            frm2.ShowDialog();
+        }
+
+        private void Notepad_Click(object sender, EventArgs e)
+        {
 
         }
     }
