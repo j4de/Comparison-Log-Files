@@ -18,6 +18,7 @@ namespace Comparison_Log_Files
     public partial class Form1 : Form
     {
         List<LogFile> LogList = new List<LogFile>();
+        List<Cluster> clusterList = new List<Cluster>();
         public Form1()
         {
             InitializeComponent();
@@ -118,6 +119,7 @@ namespace Comparison_Log_Files
                     lineCounter++;
                 }//end while loop   
                 MessageBox.Show("Your files have been parsed and saved");
+                CompareLogs();
             }
             else
                 MessageBox.Show("Are you sure the file exists??");
@@ -143,8 +145,105 @@ namespace Comparison_Log_Files
             }
         }
 
-        
-    
+        private void CompareLogs()
+        {
+            //Three lists
+            //One:    Log file
+            //Two:    Clusters
+            //Three:  Logs similar to main cluster log     
+            int index = 0;
+
+            string source, target;
+            double result = 0;
+            int minCluster = Convert.ToInt32(clusterNumericUpDown.Value);
+            double minTolerance = Convert.ToDouble(toleranceNumericUpDown.Value);
+            foreach (LogFile log in LogList)
+            {
+                Cluster cluster = new Cluster();
+
+                if (!LogIsInClusterList(clusterList, log))
+                {
+
+                    cluster.MainLog.name = log.name;
+                    cluster.MainLog.Signature = log.Signature;
+
+                    for (int nextindex = index + 1; nextindex < LogList.Count(); nextindex++)
+                    {
+                        if (!LogIsInClusterList(clusterList, LogList[nextindex]))
+                        {
+
+
+                            if (LogList[nextindex].Signature == log.Signature)
+                            {
+                                cluster.MatchedLogs.Add(LogList[nextindex]);
+
+                            }
+                            else
+                            {
+                                source = log.Signature;
+                                target = LogList[nextindex].Signature;
+                                result = (source.ToLower().CalculateSimilarity(target.ToLower()) * 100);
+                                if (result >= minTolerance)
+                                {
+                                    LogList[nextindex].LDvalue = Convert.ToInt32(result);
+                                    cluster.MatchedLogs.Add(LogList[nextindex]);
+                                }
+                            }
+                        }
+
+                    }
+                }
+
+                if (cluster.MatchedLogs.Count() + 1 >= minCluster)
+                {
+                    clusterList.Add(cluster);
+                }
+                index++;
+                
+            }
+            listBoxDetails.Items.Clear();
+            if (clusterList.Count <= 0)
+            {
+                listBoxDetails.Items.Add("No Clusters Found!");
+            }
+            else
+            {
+                foreach (var item in clusterList)
+                {
+                    listBoxDetails.Items.Add("Cluster Name " + item.MainLog.name.ToString());
+                }
+            }
+            
+        }
+        private static bool LogIsInClusterList(List<Cluster> clusterList, LogFile log)
+        {
+            bool logInList = false;
+            foreach (var cluster in clusterList)
+            {
+                if (log.name.Equals(cluster.MainLog.name))
+                {
+                    logInList = true;
+                    break;
+                }
+                else
+                {
+                    foreach (LogFile ml in cluster.MatchedLogs)
+                    {
+                        if (ml.name.Equals(log.name))
+                        {
+                            logInList = true;
+                            break;
+                        }
+                    }
+                    if (logInList)
+                    {
+                        break;
+                    }
+                }
+            }
+            return logInList;
+        }
+
 
         private string SaveToTextFile(string columnName, string probId, int columnCount)
         {
@@ -223,5 +322,9 @@ namespace Comparison_Log_Files
             
         }
 
+        private void btnDetails_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
