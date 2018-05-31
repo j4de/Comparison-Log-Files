@@ -266,7 +266,12 @@ namespace Comparison_Log_Files
             chart1.ChartAreas[0].Area3DStyle.Enable3D = true;
             chart1.Focus();
         }
-
+        private void chart1_MouseMove(object sender, MouseEventArgs e)
+        {
+            HitTestResult hit = chart1.HitTest(e.X, e.Y);
+            var dp = hit.Object as DataPoint;
+            Cursor = (dp is null) ? Cursors.Default : Cursors.Hand;
+        }
         private static bool LogIsInClusterList(List<Cluster> clusterList, LogFile log)
         {
             bool logInList = false;
