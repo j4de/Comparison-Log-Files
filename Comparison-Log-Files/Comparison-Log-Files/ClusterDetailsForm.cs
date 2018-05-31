@@ -18,6 +18,9 @@ namespace Comparison_Log_Files
         public ClusterDetailsForm()
         {
             InitializeComponent();
+            //Set default
+            txtBoxApplication.Text = "Winmerge";
+            CenterToScreen();
         }
 
         private void backToMainButton_Click(object sender, EventArgs e)
@@ -28,16 +31,17 @@ namespace Comparison_Log_Files
         //to open external app
         [DllImport("user32.dll")]
         static extern IntPtr SetParent(IntPtr hwc, IntPtr hwp);
-        private void runComparisonButton_Click(object sender, EventArgs e)
+        private void RunComparisonBtn(object sender, EventArgs e)
         {
+            
             string app = "";
-            if (txtBoxApplication != null)
+            if (txtBoxApplication.Text != "")
             {
                 app = txtBoxApplication.Text;
                 Process p = Process.Start(app + ".exe");
                 Thread.Sleep(500);
                 p.WaitForInputIdle();
-                SetParent(p.MainWindowHandle, this.Handle);
+                //SetParent(p.MainWindowHandle, this.Handle);
             }
             
         }

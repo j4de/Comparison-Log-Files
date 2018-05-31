@@ -181,7 +181,7 @@
             this.runComparisonButton.TabIndex = 8;
             this.runComparisonButton.Text = "Run Comparison";
             this.runComparisonButton.UseVisualStyleBackColor = true;
-            this.runComparisonButton.Click += new System.EventHandler(this.runComparisonButton_Click);
+            this.runComparisonButton.Click += new System.EventHandler(this.RunComparisonBtn);
             // 
             // backToMainButton
             // 

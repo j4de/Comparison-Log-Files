@@ -8,7 +8,7 @@ namespace Comparison_Log_Files
 {
     public class LogFile
     {
-        public string name { get; set; }
+        public string Name { get; set; }
         public string Signature { get; set; }
         public int LDvalue { get; set; }
         public LogFile()

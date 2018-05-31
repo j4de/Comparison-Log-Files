@@ -19,6 +19,8 @@ namespace Comparison_Log_Files
     {
         List<LogFile> LogList = new List<LogFile>();
         List<Cluster> clusterList = new List<Cluster>();
+        List<string> clusterNames = new List<string>();
+        List<int> clusterLogsCount = new List<int>();
         public Form1()
         {
             InitializeComponent();
@@ -40,9 +42,14 @@ namespace Comparison_Log_Files
 
         private void processButton_Click(object sender, EventArgs e)
         {
+            LogList.Clear();
+            clusterList.Clear();
+            clusterNames.Clear();
+            clusterLogsCount.Clear();
             string filePath = textBoxFilePath.Text;
             string columnName = "";
             int message = 0;
+            bool saveToText = false;
             DataTable logFileDataTable = new DataTable();
             logFileDataTable.Columns.Add("Message");
 
@@ -59,8 +66,9 @@ namespace Comparison_Log_Files
                 logFileData = line.Split('\n');
                 int lineCounter = 0;
                 bool ObtainingFound = false;
-                //stringSize = line.Length + 2;
-                //progress += stringSize;
+
+                saveToText = AreTheLogsToBeSaved(saveToText);
+
                 while (!streamReader.EndOfStream)
                 {
                     line = streamReader.ReadLine();
@@ -112,20 +120,21 @@ namespace Comparison_Log_Files
                     }//end foreach loop
 
                     //If it hasn't reached the end of a log file
-                    AddDataToTable( message, logFileDataTable, endOfLog, filteredLogfile);
+                    AddDataToTable(message, logFileDataTable, endOfLog, filteredLogfile);
 
-                    //If it has reached the end of a log file
-                    PutDataToFileAndList( ref columnName, message, logFileDataTable, probId, columnCount, ref endOfLog, filteredLogfile);
+                    //If the end of a log file is reached
+                    AddToLogListAndSave(ref columnName, message, saveToText, logFileDataTable, probId, columnCount, ref endOfLog, filteredLogfile);
                     lineCounter++;
-                }//end while loop   
-                MessageBox.Show("Your files have been parsed and saved");
+                }//end while loop 
+                
+                MessageBox.Show("The log file has been processed");
                 CompareLogs();
             }
             else
                 MessageBox.Show("Are you sure the file exists??");
         }
 
-        private void PutDataToFileAndList( ref string columnName, int message, DataTable logFileDataTable, string probId, int columnCount, ref bool endOfLog, string[] filteredLogfile)
+        private void AddToLogListAndSave(ref string columnName, int message, bool saveToText, DataTable logFileDataTable, string probId, int columnCount, ref bool endOfLog, string[] filteredLogfile)
         {
             if (endOfLog)
             {
@@ -134,7 +143,12 @@ namespace Comparison_Log_Files
                     dataGridViewFiles.DataSource = logFileDataTable;
                     if (logFileDataTable.Rows.Count != 0)
                     {
-                        columnName = SaveToTextFile(columnName, probId, columnCount);
+
+                        if (saveToText)
+                        {
+                            columnName = SaveToTextFile(columnName, probId, columnCount);
+                        }
+
                         AddDataToLogList(logFileDataTable, probId);
                         dataGridViewFiles.DataSource = null;
                         logFileDataTable.Rows.Clear();
@@ -145,6 +159,17 @@ namespace Comparison_Log_Files
             }
         }
 
+        private static bool AreTheLogsToBeSaved(bool saveToText)
+        {
+            DialogResult dialogResult = MessageBox.Show("Do you wish to save the filtered logs as texts files? ", "Save Filtered Logs", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                saveToText = true;
+            }
+
+            return saveToText;
+        }
+
         private void CompareLogs()
         {
             //Three lists
@@ -152,7 +177,6 @@ namespace Comparison_Log_Files
             //Two:    Clusters
             //Three:  Logs similar to main cluster log     
             int index = 0;
-
             string source, target;
             double result = 0;
             int minCluster = Convert.ToInt32(clusterNumericUpDown.Value);
@@ -164,7 +188,7 @@ namespace Comparison_Log_Files
                 if (!LogIsInClusterList(clusterList, log))
                 {
 
-                    cluster.MainLog.name = log.name;
+                    cluster.MainLog.Name = log.Name;
                     cluster.MainLog.Signature = log.Signature;
 
                     for (int nextindex = index + 1; nextindex < LogList.Count(); nextindex++)
@@ -182,7 +206,7 @@ namespace Comparison_Log_Files
                             {
                                 source = log.Signature;
                                 target = LogList[nextindex].Signature;
-                                result = (source.ToLower().CalculateSimilarity(target.ToLower()) * 100);
+                                result = (source.CalculateSimilarity(target) * 100);
                                 if (result >= minTolerance)
                                 {
                                     LogList[nextindex].LDvalue = Convert.ToInt32(result);
@@ -199,37 +223,65 @@ namespace Comparison_Log_Files
                     clusterList.Add(cluster);
                 }
                 index++;
-                
+
             }
-            listBoxDetails.Items.Clear();
-            if (clusterList.Count <= 0)
+            //public void PieChart()
+            //{
+
+            //    
+            //}
+            foreach (var item in clusterList)
             {
-                listBoxDetails.Items.Add("No Clusters Found!");
+                clusterNames.Add(item.MainLog.Name.ToString());
+                clusterLogsCount.Add(item.MatchedLogs.Count + 1);
+            }
+            ClusterPieChart();
+
+            ///THIS IS FOR TESTING ONLY
+            listBoxDetails.Items.Clear();
+            if (clusterList.Count > 0)
+            {
+                listBoxDetails.Items.Add("Total clusters found: " + clusterList.Count.ToString());
+                listBoxDetails.Items.Add("Total files clustered: " + (clusterList.Count * minCluster).ToString());
+                foreach (var item in clusterList)
+                {
+                    listBoxDetails.Items.Add("Cluster Name " + item.MainLog.Name.ToString());
+                }
+
+
             }
             else
             {
-                foreach (var item in clusterList)
-                {
-                    listBoxDetails.Items.Add("Cluster Name " + item.MainLog.name.ToString());
-                }
+                listBoxDetails.Items.Add("No Clusters Found!");
             }
-            
+
         }
+
+        private void ClusterPieChart()
+        {
+            //3D Pie chart
+            chart1.Series[0].ChartType = SeriesChartType.Pie;
+            chart1.Series[0].Points.DataBindXY(clusterNames, clusterLogsCount);
+            chart1.Legends[0].Enabled = true;
+            chart1.ChartAreas[0].Area3DStyle.Enable3D = true;
+            chart1.Focus();
+        }
+
         private static bool LogIsInClusterList(List<Cluster> clusterList, LogFile log)
         {
             bool logInList = false;
             foreach (var cluster in clusterList)
             {
-                if (log.name.Equals(cluster.MainLog.name))
+                if (log.Name.Equals(cluster.MainLog.Name))
                 {
                     logInList = true;
                     break;
                 }
                 else
                 {
-                    foreach (LogFile ml in cluster.MatchedLogs)
+                    foreach (LogFile mainLog in cluster.MatchedLogs)
                     {
-                        if (ml.name.Equals(log.name))
+                        if (mainLog.Name.Equals(log.Name))
                         {
                             logInList = true;
                             break;
@@ -312,7 +364,7 @@ namespace Comparison_Log_Files
             {
                 LogList.Add(new LogFile
                 {
-                    name = probId,
+                    Name = probId,
                     Signature = rowSignature,
                     LDvalue = 100
 
@@ -332,9 +384,13 @@ namespace Comparison_Log_Files
             frm2.ShowDialog();
         }
 
-        private void Notepad_Click(object sender, EventArgs e)
-        {
 
+        //to open notepad
+        [DllImport("user32.dll")]
+        static extern IntPtr SetParent(IntPtr hwc, IntPtr hwp);
+        private void btnSaveListBoxDetails(object sender, EventArgs e)
+        {
+            Process p = Process.Start("notepad.exe");
         }
     }
 }

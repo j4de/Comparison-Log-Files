@@ -28,34 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.textBoxFilePath = new System.Windows.Forms.TextBox();
-            this.processButton = new System.Windows.Forms.Button();
             this.browseButton = new System.Windows.Forms.Button();
             this.dataGridViewFiles = new System.Windows.Forms.DataGridView();
-            this.linesNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.clusterNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.toleranceNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.exitButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.linesLabel = new System.Windows.Forms.Label();
-            this.clusterLabel = new System.Windows.Forms.Label();
-            this.toleranceLabel = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.listBoxDetails = new System.Windows.Forms.ListBox();
-            this.labelPieChart = new System.Windows.Forms.Label();
             this.btnDetails = new System.Windows.Forms.Button();
+            this.labelPieChart = new System.Windows.Forms.Label();
+            this.linesLabel = new System.Windows.Forms.Label();
+            this.linesNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.clusterLabel = new System.Windows.Forms.Label();
+            this.clusterNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.toleranceLabel = new System.Windows.Forms.Label();
+            this.toleranceNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.processButton = new System.Windows.Forms.Button();
+            this.btnSaveProcessed = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.Notepad = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFiles)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.linesNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clusterNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toleranceNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -84,20 +84,20 @@
             this.tableLayoutPanel1.Controls.Add(this.textBoxFilePath, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.browseButton, 16, 1);
             this.tableLayoutPanel1.Controls.Add(this.dataGridViewFiles, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.Notepad, 16, 14);
             this.tableLayoutPanel1.Controls.Add(this.exitButton, 16, 18);
             this.tableLayoutPanel1.Controls.Add(this.label1, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.chart1, 1, 11);
+            this.tableLayoutPanel1.Controls.Add(this.chart1, 1, 9);
             this.tableLayoutPanel1.Controls.Add(this.listBoxDetails, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.labelPieChart, 2, 10);
             this.tableLayoutPanel1.Controls.Add(this.btnDetails, 16, 16);
-            this.tableLayoutPanel1.Controls.Add(this.clusterNumericUpDown, 16, 6);
-            this.tableLayoutPanel1.Controls.Add(this.clusterLabel, 16, 5);
-            this.tableLayoutPanel1.Controls.Add(this.linesNumericUpDown, 16, 4);
-            this.tableLayoutPanel1.Controls.Add(this.linesLabel, 16, 3);
-            this.tableLayoutPanel1.Controls.Add(this.toleranceLabel, 16, 7);
-            this.tableLayoutPanel1.Controls.Add(this.toleranceNumericUpDown, 16, 8);
-            this.tableLayoutPanel1.Controls.Add(this.processButton, 16, 10);
+            this.tableLayoutPanel1.Controls.Add(this.labelPieChart, 16, 12);
+            this.tableLayoutPanel1.Controls.Add(this.linesLabel, 16, 2);
+            this.tableLayoutPanel1.Controls.Add(this.linesNumericUpDown, 16, 3);
+            this.tableLayoutPanel1.Controls.Add(this.clusterLabel, 16, 4);
+            this.tableLayoutPanel1.Controls.Add(this.clusterNumericUpDown, 16, 5);
+            this.tableLayoutPanel1.Controls.Add(this.toleranceLabel, 16, 6);
+            this.tableLayoutPanel1.Controls.Add(this.toleranceNumericUpDown, 16, 7);
+            this.tableLayoutPanel1.Controls.Add(this.processButton, 16, 9);
+            this.tableLayoutPanel1.Controls.Add(this.btnSaveProcessed, 1, 8);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -154,18 +154,6 @@
             this.textBoxFilePath.Size = new System.Drawing.Size(514, 20);
             this.textBoxFilePath.TabIndex = 2;
             // 
-            // processButton
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.processButton, 3);
-            this.processButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.processButton.Location = new System.Drawing.Point(649, 333);
-            this.processButton.Name = "processButton";
-            this.processButton.Size = new System.Drawing.Size(108, 27);
-            this.processButton.TabIndex = 3;
-            this.processButton.Text = "Save And Display";
-            this.processButton.UseVisualStyleBackColor = true;
-            this.processButton.Click += new System.EventHandler(this.processButton_Click);
-            // 
             // browseButton
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.browseButton, 3);
@@ -186,55 +174,6 @@
             this.dataGridViewFiles.Size = new System.Drawing.Size(34, 26);
             this.dataGridViewFiles.TabIndex = 0;
             this.dataGridViewFiles.Visible = false;
-            // 
-            // linesNumericUpDown
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.linesNumericUpDown, 3);
-            this.linesNumericUpDown.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.linesNumericUpDown.Location = new System.Drawing.Point(649, 135);
-            this.linesNumericUpDown.Name = "linesNumericUpDown";
-            this.linesNumericUpDown.Size = new System.Drawing.Size(108, 20);
-            this.linesNumericUpDown.TabIndex = 5;
-            this.linesNumericUpDown.Value = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            // 
-            // clusterNumericUpDown
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.clusterNumericUpDown, 3);
-            this.clusterNumericUpDown.Location = new System.Drawing.Point(649, 201);
-            this.clusterNumericUpDown.Name = "clusterNumericUpDown";
-            this.clusterNumericUpDown.Size = new System.Drawing.Size(108, 20);
-            this.clusterNumericUpDown.TabIndex = 6;
-            this.clusterNumericUpDown.Value = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-            // 
-            // toleranceNumericUpDown
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.toleranceNumericUpDown, 3);
-            this.toleranceNumericUpDown.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.toleranceNumericUpDown.Location = new System.Drawing.Point(649, 267);
-            this.toleranceNumericUpDown.Name = "toleranceNumericUpDown";
-            this.toleranceNumericUpDown.Size = new System.Drawing.Size(108, 20);
-            this.toleranceNumericUpDown.TabIndex = 7;
-            this.toleranceNumericUpDown.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
             // 
             // exitButton
             // 
@@ -259,55 +198,22 @@
             this.label1.TabIndex = 10;
             this.label1.Text = "Log:";
             // 
-            // linesLabel
-            // 
-            this.linesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.linesLabel.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.linesLabel, 3);
-            this.linesLabel.Location = new System.Drawing.Point(649, 119);
-            this.linesLabel.Name = "linesLabel";
-            this.linesLabel.Size = new System.Drawing.Size(88, 13);
-            this.linesLabel.TabIndex = 11;
-            this.linesLabel.Text = "Min Lines Length";
-            // 
-            // clusterLabel
-            // 
-            this.clusterLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.clusterLabel.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.clusterLabel, 3);
-            this.clusterLabel.Location = new System.Drawing.Point(649, 185);
-            this.clusterLabel.Name = "clusterLabel";
-            this.clusterLabel.Size = new System.Drawing.Size(59, 13);
-            this.clusterLabel.TabIndex = 13;
-            this.clusterLabel.Text = "Min Cluster";
-            // 
-            // toleranceLabel
-            // 
-            this.toleranceLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.toleranceLabel.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.toleranceLabel, 3);
-            this.toleranceLabel.Location = new System.Drawing.Point(649, 251);
-            this.toleranceLabel.Name = "toleranceLabel";
-            this.toleranceLabel.Size = new System.Drawing.Size(92, 13);
-            this.toleranceLabel.TabIndex = 12;
-            this.toleranceLabel.Text = "Min Tolerance LD";
-            // 
             // chart1
             // 
-            chartArea7.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea7);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
             this.tableLayoutPanel1.SetColumnSpan(this.chart1, 14);
-            legend7.Name = "Legend1";
-            this.chart1.Legends.Add(legend7);
-            this.chart1.Location = new System.Drawing.Point(43, 366);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(43, 300);
             this.chart1.Name = "chart1";
-            this.tableLayoutPanel1.SetRowSpan(this.chart1, 8);
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series7.Legend = "Legend1";
-            series7.Name = "Series1";
-            this.chart1.Series.Add(series7);
-            this.chart1.Size = new System.Drawing.Size(554, 258);
+            this.tableLayoutPanel1.SetRowSpan(this.chart1, 10);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(554, 324);
             this.chart1.TabIndex = 15;
             this.chart1.Text = "chart1";
             // 
@@ -317,17 +223,9 @@
             this.listBoxDetails.FormattingEnabled = true;
             this.listBoxDetails.Location = new System.Drawing.Point(43, 102);
             this.listBoxDetails.Name = "listBoxDetails";
-            this.tableLayoutPanel1.SetRowSpan(this.listBoxDetails, 7);
-            this.listBoxDetails.Size = new System.Drawing.Size(554, 225);
+            this.tableLayoutPanel1.SetRowSpan(this.listBoxDetails, 5);
+            this.listBoxDetails.Size = new System.Drawing.Size(554, 147);
             this.listBoxDetails.TabIndex = 16;
-            // 
-            // labelPieChart
-            // 
-            this.labelPieChart.AutoSize = true;
-            this.labelPieChart.Location = new System.Drawing.Point(83, 330);
-            this.labelPieChart.Name = "labelPieChart";
-            this.labelPieChart.Size = new System.Drawing.Size(0, 13);
-            this.labelPieChart.TabIndex = 17;
             // 
             // btnDetails
             // 
@@ -340,21 +238,123 @@
             this.btnDetails.UseVisualStyleBackColor = true;
             this.btnDetails.Click += new System.EventHandler(this.btnDetails_Click);
             // 
+            // labelPieChart
+            // 
+            this.labelPieChart.AutoSize = true;
+            this.labelPieChart.Location = new System.Drawing.Point(649, 396);
+            this.labelPieChart.Name = "labelPieChart";
+            this.labelPieChart.Size = new System.Drawing.Size(0, 13);
+            this.labelPieChart.TabIndex = 17;
+            // 
+            // linesLabel
+            // 
+            this.linesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.linesLabel.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.linesLabel, 3);
+            this.linesLabel.Location = new System.Drawing.Point(649, 86);
+            this.linesLabel.Name = "linesLabel";
+            this.linesLabel.Size = new System.Drawing.Size(88, 13);
+            this.linesLabel.TabIndex = 11;
+            this.linesLabel.Text = "Min Lines Length";
+            // 
+            // linesNumericUpDown
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.linesNumericUpDown, 3);
+            this.linesNumericUpDown.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.linesNumericUpDown.Location = new System.Drawing.Point(649, 102);
+            this.linesNumericUpDown.Name = "linesNumericUpDown";
+            this.linesNumericUpDown.Size = new System.Drawing.Size(108, 20);
+            this.linesNumericUpDown.TabIndex = 5;
+            this.linesNumericUpDown.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            // 
+            // clusterLabel
+            // 
+            this.clusterLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.clusterLabel.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.clusterLabel, 3);
+            this.clusterLabel.Location = new System.Drawing.Point(649, 152);
+            this.clusterLabel.Name = "clusterLabel";
+            this.clusterLabel.Size = new System.Drawing.Size(59, 13);
+            this.clusterLabel.TabIndex = 13;
+            this.clusterLabel.Text = "Min Cluster";
+            // 
+            // clusterNumericUpDown
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.clusterNumericUpDown, 3);
+            this.clusterNumericUpDown.Location = new System.Drawing.Point(649, 168);
+            this.clusterNumericUpDown.Name = "clusterNumericUpDown";
+            this.clusterNumericUpDown.Size = new System.Drawing.Size(108, 20);
+            this.clusterNumericUpDown.TabIndex = 6;
+            this.clusterNumericUpDown.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            // 
+            // toleranceLabel
+            // 
+            this.toleranceLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.toleranceLabel.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.toleranceLabel, 3);
+            this.toleranceLabel.Location = new System.Drawing.Point(649, 218);
+            this.toleranceLabel.Name = "toleranceLabel";
+            this.toleranceLabel.Size = new System.Drawing.Size(92, 13);
+            this.toleranceLabel.TabIndex = 12;
+            this.toleranceLabel.Text = "Min Tolerance LD";
+            // 
+            // toleranceNumericUpDown
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.toleranceNumericUpDown, 3);
+            this.toleranceNumericUpDown.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.toleranceNumericUpDown.Location = new System.Drawing.Point(649, 234);
+            this.toleranceNumericUpDown.Name = "toleranceNumericUpDown";
+            this.toleranceNumericUpDown.Size = new System.Drawing.Size(108, 20);
+            this.toleranceNumericUpDown.TabIndex = 7;
+            this.toleranceNumericUpDown.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // processButton
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.processButton, 3);
+            this.processButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.processButton.Location = new System.Drawing.Point(649, 300);
+            this.processButton.Name = "processButton";
+            this.processButton.Size = new System.Drawing.Size(108, 27);
+            this.processButton.TabIndex = 3;
+            this.processButton.Text = "Process And Display";
+            this.processButton.UseVisualStyleBackColor = true;
+            this.processButton.Click += new System.EventHandler(this.processButton_Click);
+            // 
+            // btnSaveProcessed
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.btnSaveProcessed, 3);
+            this.btnSaveProcessed.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveProcessed.Location = new System.Drawing.Point(43, 267);
+            this.btnSaveProcessed.Name = "btnSaveProcessed";
+            this.btnSaveProcessed.Size = new System.Drawing.Size(114, 27);
+            this.btnSaveProcessed.TabIndex = 19;
+            this.btnSaveProcessed.Text = "Save List Box Details";
+            this.btnSaveProcessed.UseVisualStyleBackColor = true;
+            this.btnSaveProcessed.Click += new System.EventHandler(this.btnSaveListBoxDetails);
+            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // Notepad
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.Notepad, 3);
-            this.Notepad.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Notepad.Location = new System.Drawing.Point(649, 465);
-            this.Notepad.Name = "Notepad";
-            this.Notepad.Size = new System.Drawing.Size(108, 27);
-            this.Notepad.TabIndex = 4;
-            this.Notepad.Text = "Notepad";
-            this.Notepad.UseVisualStyleBackColor = true;
-            this.Notepad.Click += new System.EventHandler(this.Notepad_Click);
             // 
             // Form1
             // 
@@ -367,10 +367,10 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFiles)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.linesNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clusterNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toleranceNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -395,7 +395,7 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         public System.Windows.Forms.Label labelPieChart;
         private System.Windows.Forms.Button btnDetails;
-        private System.Windows.Forms.Button Notepad;
+        private System.Windows.Forms.Button btnSaveProcessed;
     }
 }
 
