@@ -15,9 +15,14 @@ namespace Comparison_Log_Files
 {
     public partial class ClusterDetailsForm : Form
     {
+        List<Cluster> clustListForm2;
+        List<LogFile> logListForm2; 
+        string clusterName = "";
         public ClusterDetailsForm()
         {
+            
             InitializeComponent();
+
             //Set default
             txtBoxApplication.Text = "Winmerge";
             CenterToScreen();
@@ -26,6 +31,39 @@ namespace Comparison_Log_Files
         private void backToMainButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        public void ClusterSelected(string cName, List<Cluster> clusterList, List<LogFile> logList)
+        {
+ 
+            clusterName = cName;
+            clustListForm2 = clusterList;
+            logListForm2 = logList;
+            DataTable tblClusterDetails = new DataTable();
+            tblClusterDetails.Columns.Add("Log File");
+            tblClusterDetails.Columns.Add("Lines");
+            tblClusterDetails.Columns.Add("LD");
+
+            foreach (Cluster item in clustListForm2)
+            {
+                if (item.MainLog.Name.Equals(clusterName))
+                {
+                    mainLogNameLabel.Text = clusterName;
+                    numberOfLinesLabel.Text = (item.MainLog.NumOfLines - 1).ToString();
+                    
+                    foreach (LogFile log in item.MatchedLogs)
+                    {
+                        numberOfLinesLabel.Text = (log.NumOfLines - 1).ToString();
+                        
+                            tblClusterDetails.Rows.Add(
+                                log.Name,
+                                log.NumOfLines -1,
+                                log.LDvalue
+                                );                     
+                    }
+                    dvgClusterDetails.DataSource = tblClusterDetails;
+                }
+            }
+
         }
 
         //to open external app
@@ -45,5 +83,7 @@ namespace Comparison_Log_Files
             }
             
         }
+
+        
     }
 }

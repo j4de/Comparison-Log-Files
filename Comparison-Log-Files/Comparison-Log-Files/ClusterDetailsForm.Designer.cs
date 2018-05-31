@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.mainLogLabel = new System.Windows.Forms.Label();
             this.mainLogNameLabel = new System.Windows.Forms.Label();
             this.txtBoxApplication = new System.Windows.Forms.TextBox();
@@ -39,7 +39,9 @@
             this.linesLabel = new System.Windows.Forms.Label();
             this.runComparisonButton = new System.Windows.Forms.Button();
             this.backToMainButton = new System.Windows.Forms.Button();
+            this.dvgClusterDetails = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dvgClusterDetails)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -56,7 +58,6 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.listBox1, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.mainLogLabel, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.mainLogNameLabel, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.txtBoxApplication, 1, 8);
@@ -65,6 +66,7 @@
             this.tableLayoutPanel1.Controls.Add(this.linesLabel, 6, 1);
             this.tableLayoutPanel1.Controls.Add(this.runComparisonButton, 7, 8);
             this.tableLayoutPanel1.Controls.Add(this.backToMainButton, 7, 9);
+            this.tableLayoutPanel1.Controls.Add(this.dvgClusterDetails, 1, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -95,16 +97,6 @@
             this.label1.Text = "Cluster Details";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // listBox1
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.listBox1, 8);
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(83, 103);
-            this.listBox1.Name = "listBox1";
-            this.tableLayoutPanel1.SetRowSpan(this.listBox1, 5);
-            this.listBox1.Size = new System.Drawing.Size(634, 225);
-            this.listBox1.TabIndex = 1;
-            // 
             // mainLogLabel
             // 
             this.mainLogLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -125,9 +117,8 @@
             this.mainLogNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mainLogNameLabel.Location = new System.Drawing.Point(243, 75);
             this.mainLogNameLabel.Name = "mainLogNameLabel";
-            this.mainLogNameLabel.Size = new System.Drawing.Size(99, 25);
+            this.mainLogNameLabel.Size = new System.Drawing.Size(0, 25);
             this.mainLogNameLabel.TabIndex = 3;
-            this.mainLogNameLabel.Text = "Log name";
             // 
             // txtBoxApplication
             // 
@@ -157,9 +148,8 @@
             this.numberOfLinesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numberOfLinesLabel.Location = new System.Drawing.Point(563, 75);
             this.numberOfLinesLabel.Name = "numberOfLinesLabel";
-            this.numberOfLinesLabel.Size = new System.Drawing.Size(116, 25);
+            this.numberOfLinesLabel.Size = new System.Drawing.Size(0, 25);
             this.numberOfLinesLabel.TabIndex = 5;
-            this.numberOfLinesLabel.Text = "num of lines";
             // 
             // linesLabel
             // 
@@ -194,6 +184,22 @@
             this.backToMainButton.UseVisualStyleBackColor = true;
             this.backToMainButton.Click += new System.EventHandler(this.backToMainButton_Click);
             // 
+            // dvgClusterDetails
+            // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dvgClusterDetails.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dvgClusterDetails.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+            this.dvgClusterDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tableLayoutPanel1.SetColumnSpan(this.dvgClusterDetails, 8);
+            this.dvgClusterDetails.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dvgClusterDetails.Location = new System.Drawing.Point(83, 103);
+            this.dvgClusterDetails.MultiSelect = false;
+            this.dvgClusterDetails.Name = "dvgClusterDetails";
+            this.tableLayoutPanel1.SetRowSpan(this.dvgClusterDetails, 5);
+            this.dvgClusterDetails.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dvgClusterDetails.Size = new System.Drawing.Size(634, 244);
+            this.dvgClusterDetails.TabIndex = 10;
+            // 
             // ClusterDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -204,6 +210,7 @@
             this.Text = "ClusterDetailsForm";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dvgClusterDetails)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -212,7 +219,6 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label mainLogLabel;
         private System.Windows.Forms.Label mainLogNameLabel;
         private System.Windows.Forms.TextBox txtBoxApplication;
@@ -221,6 +227,6 @@
         private System.Windows.Forms.Label linesLabel;
         private System.Windows.Forms.Button runComparisonButton;
         private System.Windows.Forms.Button backToMainButton;
-
+        private System.Windows.Forms.DataGridView dvgClusterDetails;
     }
 }

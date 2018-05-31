@@ -50,6 +50,7 @@
             this.processButton = new System.Windows.Forms.Button();
             this.btnSaveProcessed = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.pieChartInfoLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -97,7 +98,8 @@
             this.tableLayoutPanel1.Controls.Add(this.toleranceLabel, 16, 6);
             this.tableLayoutPanel1.Controls.Add(this.toleranceNumericUpDown, 16, 7);
             this.tableLayoutPanel1.Controls.Add(this.processButton, 16, 9);
-            this.tableLayoutPanel1.Controls.Add(this.btnSaveProcessed, 1, 8);
+            this.tableLayoutPanel1.Controls.Add(this.btnSaveProcessed, 16, 14);
+            this.tableLayoutPanel1.Controls.Add(this.pieChartInfoLabel, 3, 8);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -210,12 +212,14 @@
             this.tableLayoutPanel1.SetRowSpan(this.chart1, 10);
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.IsValueShownAsLabel = true;
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(554, 324);
             this.chart1.TabIndex = 15;
             this.chart1.Text = "chart1";
+            this.chart1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseClick);
             this.chart1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseMove);
             // 
             // listBoxDetails
@@ -271,7 +275,7 @@
             this.linesNumericUpDown.Size = new System.Drawing.Size(108, 20);
             this.linesNumericUpDown.TabIndex = 5;
             this.linesNumericUpDown.Value = new decimal(new int[] {
-            5,
+            10,
             0,
             0,
             0});
@@ -345,9 +349,9 @@
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.btnSaveProcessed, 3);
             this.btnSaveProcessed.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveProcessed.Location = new System.Drawing.Point(43, 267);
+            this.btnSaveProcessed.Location = new System.Drawing.Point(649, 465);
             this.btnSaveProcessed.Name = "btnSaveProcessed";
-            this.btnSaveProcessed.Size = new System.Drawing.Size(114, 27);
+            this.btnSaveProcessed.Size = new System.Drawing.Size(108, 27);
             this.btnSaveProcessed.TabIndex = 19;
             this.btnSaveProcessed.Text = "Save List Box Details";
             this.btnSaveProcessed.UseVisualStyleBackColor = true;
@@ -356,6 +360,17 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // pieChartInfoLabel
+            // 
+            this.pieChartInfoLabel.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.pieChartInfoLabel, 12);
+            this.pieChartInfoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pieChartInfoLabel.Location = new System.Drawing.Point(123, 264);
+            this.pieChartInfoLabel.Name = "pieChartInfoLabel";
+            this.pieChartInfoLabel.Size = new System.Drawing.Size(0, 24);
+            this.pieChartInfoLabel.TabIndex = 20;
+            this.pieChartInfoLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
@@ -397,6 +412,7 @@
         public System.Windows.Forms.Label labelPieChart;
         private System.Windows.Forms.Button btnDetails;
         private System.Windows.Forms.Button btnSaveProcessed;
+        private System.Windows.Forms.Label pieChartInfoLabel;
     }
 }
 

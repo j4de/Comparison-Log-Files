@@ -18,7 +18,7 @@ namespace Comparison_Log_Files
     public partial class Form1 : Form
     {
         List<LogFile> LogList = new List<LogFile>();
-        List<Cluster> clusterList = new List<Cluster>();
+        public List<Cluster> clusterList = new List<Cluster>();
         List<string> clusterNames = new List<string>();
         List<int> clusterLogsCount = new List<int>();
         public Form1()
@@ -67,7 +67,7 @@ namespace Comparison_Log_Files
                 int lineCounter = 0;
                 bool ObtainingFound = false;
 
-                saveToText = AreTheLogsToBeSaved(saveToText);
+                saveToText = SaveParsedLogs(saveToText);
 
                 while (!streamReader.EndOfStream)
                 {
@@ -159,7 +159,7 @@ namespace Comparison_Log_Files
             }
         }
 
-        private static bool AreTheLogsToBeSaved(bool saveToText)
+        private static bool SaveParsedLogs(bool saveToText)
         {
             DialogResult dialogResult = MessageBox.Show("Do you wish to save the filtered logs as texts files? ", "Save Filtered Logs", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
@@ -225,11 +225,7 @@ namespace Comparison_Log_Files
                 index++;
 
             }
-            //public void PieChart()
-            //{
-
-            //    
-            //}
+            
             foreach (var item in clusterList)
             {
                 clusterNames.Add(item.MainLog.Name.ToString());
@@ -259,11 +255,12 @@ namespace Comparison_Log_Files
 
         private void ClusterPieChart()
         {
+            pieChartInfoLabel.Text = "Select the item in the pie chart to view its details";
             //3D Pie chart
             chart1.Series[0].ChartType = SeriesChartType.Pie;
             chart1.Series[0].Points.DataBindXY(clusterNames, clusterLogsCount);
             chart1.Legends[0].Enabled = true;
-            chart1.ChartAreas[0].Area3DStyle.Enable3D = true;
+            //chart1.ChartAreas[0].Area3DStyle.Enable3D = true;
             chart1.Focus();
         }
         private void chart1_MouseMove(object sender, MouseEventArgs e)
@@ -272,6 +269,30 @@ namespace Comparison_Log_Files
             var dp = hit.Object as DataPoint;
             Cursor = (dp is null) ? Cursors.Default : Cursors.Hand;
         }
+        public void chart1_MouseClick(object sender, MouseEventArgs e)
+        {
+            GoToDetails(e);
+
+        }
+
+        public void GoToDetails(MouseEventArgs e)
+        {
+            string clusterName = "";
+            HitTestResult hit = chart1.HitTest(e.X, e.Y, ChartElementType.DataPoint);
+            if (hit.PointIndex >= 0 && hit.Series != null)
+            {
+                DataPoint dp = chart1.Series[0].Points[hit.PointIndex];
+                clusterName = dp.AxisLabel;
+
+            }
+            ClusterDetailsForm frm2 = new ClusterDetailsForm
+            {
+                Owner = this
+            };
+            frm2.ClusterSelected(clusterName, clusterList, LogList);
+            frm2.ShowDialog();
+        }
+
         private static bool LogIsInClusterList(List<Cluster> clusterList, LogFile log)
         {
             bool logInList = false;
@@ -360,7 +381,7 @@ namespace Comparison_Log_Files
             var results = from myRow in logFileDataTable.AsEnumerable()
                           select myRow[0];
             var topRows = results.Reverse().Take(minLines);
-
+            int count = results.Count();
             foreach (var item in topRows)
             {
                 rowSignature += item.ToString();
@@ -371,7 +392,8 @@ namespace Comparison_Log_Files
                 {
                     Name = probId,
                     Signature = rowSignature,
-                    LDvalue = 100
+                    LDvalue = 100,
+                    NumOfLines = count
 
                 });
             }
@@ -381,12 +403,12 @@ namespace Comparison_Log_Files
 
         private void btnDetails_Click(object sender, EventArgs e)
         {
-            ClusterDetailsForm frm2 = new ClusterDetailsForm
-            {
-                Owner = this
-            };
-            //frm2.LogName(cluster);
-            frm2.ShowDialog();
+            //ClusterDetailsForm frm2 = new ClusterDetailsForm
+            //{
+            //    Owner = this
+            //};
+            ////frm2.LogName(cluster);
+            //frm2.ShowDialog();
         }
 
 
