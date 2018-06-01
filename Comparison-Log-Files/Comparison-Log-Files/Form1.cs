@@ -49,7 +49,7 @@ namespace Comparison_Log_Files
             string filePath = textBoxFilePath.Text;
             string columnName = "";
             int message = 0;
-            bool saveToText = false;
+           
             DataTable logFileDataTable = new DataTable();
             logFileDataTable.Columns.Add("Message");
 
@@ -67,8 +67,7 @@ namespace Comparison_Log_Files
                 int lineCounter = 0;
                 bool ObtainingFound = false;
 
-                saveToText = SaveParsedLogs(saveToText);
-
+                
                 while (!streamReader.EndOfStream)
                 {
                     line = streamReader.ReadLine();
@@ -123,7 +122,7 @@ namespace Comparison_Log_Files
                     AddDataToTable(message, logFileDataTable, endOfLog, filteredLogfile);
 
                     //If the end of a log file is reached
-                    AddToLogListAndSave(ref columnName, message, saveToText, logFileDataTable, probId, columnCount, ref endOfLog, filteredLogfile);
+                    AddToLogListAndSave(ref columnName, message, logFileDataTable, probId, columnCount, ref endOfLog, filteredLogfile);
                     lineCounter++;
                 }//end while loop 
                 
@@ -134,7 +133,7 @@ namespace Comparison_Log_Files
                 MessageBox.Show("Are you sure the file exists??");
         }
 
-        private void AddToLogListAndSave(ref string columnName, int message, bool saveToText, DataTable logFileDataTable, string probId, int columnCount, ref bool endOfLog, string[] filteredLogfile)
+        private void AddToLogListAndSave(ref string columnName, int message, DataTable logFileDataTable, string probId, int columnCount, ref bool endOfLog, string[] filteredLogfile)
         {
             if (endOfLog)
             {
@@ -142,13 +141,8 @@ namespace Comparison_Log_Files
                 {
                     dataGridViewFiles.DataSource = logFileDataTable;
                     if (logFileDataTable.Rows.Count != 0)
-                    {
-
-                        if (saveToText)
-                        {
-                            columnName = SaveToTextFile(columnName, probId, columnCount);
-                        }
-
+                    {                     
+                        columnName = SaveToTextFile(columnName, probId, columnCount);                      
                         AddDataToLogList(logFileDataTable, probId);
                         dataGridViewFiles.DataSource = null;
                         logFileDataTable.Rows.Clear();
@@ -159,16 +153,16 @@ namespace Comparison_Log_Files
             }
         }
 
-        private static bool SaveParsedLogs(bool saveToText)
-        {
-            DialogResult dialogResult = MessageBox.Show("Do you wish to save the filtered logs as texts files? ", "Save Filtered Logs", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                saveToText = true;
-            }
+        //private static bool SaveParsedLogs(bool saveToText)
+        //{
+        //    DialogResult dialogResult = MessageBox.Show("Do you wish to save the filtered logs as texts files? ", "Save Filtered Logs", MessageBoxButtons.YesNo);
+        //    if (dialogResult == DialogResult.Yes)
+        //    {
+        //        saveToText = true;
+        //    }
 
-            return saveToText;
-        }
+        //    return saveToText;
+        //}
 
         private void CompareLogs()
         {
