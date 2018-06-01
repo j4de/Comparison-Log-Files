@@ -153,19 +153,14 @@ namespace Comparison_Log_Files
             }
         }
 
-        //private static bool SaveParsedLogs(bool saveToText)
-        //{
-        //    DialogResult dialogResult = MessageBox.Show("Do you wish to save the filtered logs as texts files? ", "Save Filtered Logs", MessageBoxButtons.YesNo);
-        //    if (dialogResult == DialogResult.Yes)
-        //    {
-        //        saveToText = true;
-        //    }
-
-        //    return saveToText;
-        //}
-
         private void CompareLogs()
         {
+            long progress = 0;
+            long logListSize = LogList.LongCount();
+           
+            LoadingForm load = new LoadingForm(this, logListSize, progress);
+            load.Show();
+
             //Three lists
             //One:    Log file
             //Two:    Clusters
@@ -210,6 +205,14 @@ namespace Comparison_Log_Files
                         }
 
                     }
+                    progress++;
+                    load.setFilterprogress(progress);
+                    if (load.iscanceled())
+                    {
+                        load.Close();
+                        break;
+                    }
+                    Application.DoEvents();
                 }
 
                 if (cluster.MatchedLogs.Count() + 1 >= minCluster)
@@ -319,7 +322,16 @@ namespace Comparison_Log_Files
 
         private string SaveToTextFile(string columnName, string probId, int columnCount)
         {
-            using (StreamWriter sw = new StreamWriter("p" + probId + ".txt"))
+            string userName = Environment.UserName;
+            string folderLocation = @"C:\Users\" + userName + @"\Documents\LOG FILE COMPARISONS";
+            if (!Directory.Exists(folderLocation))  // if it doesn't exist, create
+                Directory.CreateDirectory(folderLocation);
+            
+            Directory.SetCurrentDirectory(folderLocation);
+            string filename = "p" + probId + ".txt";
+            
+
+            using (StreamWriter sw = new StreamWriter(filename))
             {
                 columnName = dataGridViewFiles.Columns[0].Name.ToString();
                 sw.WriteLine(columnName);

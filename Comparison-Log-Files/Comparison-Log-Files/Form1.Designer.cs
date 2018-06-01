@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.textBoxFilePath = new System.Windows.Forms.TextBox();
             this.browseButton = new System.Windows.Forms.Button();
@@ -39,7 +39,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.listBoxDetails = new System.Windows.Forms.ListBox();
-            this.btnDetails = new System.Windows.Forms.Button();
             this.labelPieChart = new System.Windows.Forms.Label();
             this.linesLabel = new System.Windows.Forms.Label();
             this.linesNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -89,7 +88,6 @@
             this.tableLayoutPanel1.Controls.Add(this.label1, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.chart1, 1, 9);
             this.tableLayoutPanel1.Controls.Add(this.listBoxDetails, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.btnDetails, 16, 16);
             this.tableLayoutPanel1.Controls.Add(this.labelPieChart, 16, 12);
             this.tableLayoutPanel1.Controls.Add(this.linesLabel, 16, 2);
             this.tableLayoutPanel1.Controls.Add(this.linesNumericUpDown, 16, 3);
@@ -98,8 +96,8 @@
             this.tableLayoutPanel1.Controls.Add(this.toleranceLabel, 16, 6);
             this.tableLayoutPanel1.Controls.Add(this.toleranceNumericUpDown, 16, 7);
             this.tableLayoutPanel1.Controls.Add(this.processButton, 16, 9);
-            this.tableLayoutPanel1.Controls.Add(this.btnSaveProcessed, 16, 14);
             this.tableLayoutPanel1.Controls.Add(this.pieChartInfoLabel, 3, 8);
+            this.tableLayoutPanel1.Controls.Add(this.btnSaveProcessed, 16, 16);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -202,20 +200,20 @@
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
             this.tableLayoutPanel1.SetColumnSpan(this.chart1, 14);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(43, 300);
             this.chart1.Name = "chart1";
             this.tableLayoutPanel1.SetRowSpan(this.chart1, 10);
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.IsValueShownAsLabel = true;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.IsValueShownAsLabel = true;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(554, 324);
             this.chart1.TabIndex = 15;
             this.chart1.Text = "chart1";
@@ -231,17 +229,6 @@
             this.tableLayoutPanel1.SetRowSpan(this.listBoxDetails, 5);
             this.listBoxDetails.Size = new System.Drawing.Size(554, 147);
             this.listBoxDetails.TabIndex = 16;
-            // 
-            // btnDetails
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.btnDetails, 3);
-            this.btnDetails.Location = new System.Drawing.Point(649, 531);
-            this.btnDetails.Name = "btnDetails";
-            this.btnDetails.Size = new System.Drawing.Size(108, 27);
-            this.btnDetails.TabIndex = 18;
-            this.btnDetails.Text = "Cluster Details";
-            this.btnDetails.UseVisualStyleBackColor = true;
-            this.btnDetails.Click += new System.EventHandler(this.btnDetails_Click);
             // 
             // labelPieChart
             // 
@@ -349,7 +336,7 @@
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.btnSaveProcessed, 3);
             this.btnSaveProcessed.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveProcessed.Location = new System.Drawing.Point(649, 465);
+            this.btnSaveProcessed.Location = new System.Drawing.Point(649, 531);
             this.btnSaveProcessed.Name = "btnSaveProcessed";
             this.btnSaveProcessed.Size = new System.Drawing.Size(108, 27);
             this.btnSaveProcessed.TabIndex = 19;
@@ -410,7 +397,6 @@
         private System.Windows.Forms.ListBox listBoxDetails;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         public System.Windows.Forms.Label labelPieChart;
-        private System.Windows.Forms.Button btnDetails;
         private System.Windows.Forms.Button btnSaveProcessed;
         private System.Windows.Forms.Label pieChartInfoLabel;
     }
