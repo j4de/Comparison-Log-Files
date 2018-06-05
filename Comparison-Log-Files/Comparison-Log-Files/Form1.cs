@@ -241,14 +241,39 @@ namespace Comparison_Log_Files
             listBoxDetails.Items.Clear();
             if (clusterList.Count > 0)
             {
+                listBoxDetails.Items.Add("Number of lines : " + this.linesNumericUpDown.Text);
+                listBoxDetails.Items.Add("Minimum Cluster Size : " + this.clusterNumericUpDown.Text);
+                listBoxDetails.Items.Add("Tolerance Percentage : " + this.toleranceNumericUpDown.Text);
+                listBoxDetails.Items.Add("----------------------------------");
+                listBoxDetails.Items.Add("Total files : " + LogList.Count.ToString());
                 listBoxDetails.Items.Add("Total clusters found: " + clusterList.Count.ToString());
                 listBoxDetails.Items.Add("Total files clustered: " + (clusterList.Count * minCluster).ToString());
+                // test to get the total number of files clustered
+                listBoxDetails.Items.Add("test : " + clusterLogsCount.Count.ToString());
+                listBoxDetails.Items.Add("----------------------------------");
+                listBoxDetails.Items.Add("Main Cluster Logs : ");
                 foreach (var item in clusterList)
                 {
-                    listBoxDetails.Items.Add("Cluster Name " + item.MainLog.Name.ToString());
+                    listBoxDetails.Items.Add(item.MainLog.Name.ToString());
                 }
-
-
+                listBoxDetails.Items.Add("----------------------------------");
+                listBoxDetails.Items.Add("Logs that match 100% : ");
+                foreach (var item in LogList)
+                {
+                        if (item.LDvalue == 100)
+                        {
+                            listBoxDetails.Items.Add(item.Name);
+                        }
+                }
+                listBoxDetails.Items.Add("----------------------------------");
+                listBoxDetails.Items.Add("Logs that match using Tolerance LD : ");
+                foreach (var item in LogList)
+                {
+                    if (item.LDvalue < 100 && item.LDvalue >= toleranceNumericUpDown.Value)
+                    {
+                        listBoxDetails.Items.Add(item.Name);
+                    }
+                }
             }
             else
             {
