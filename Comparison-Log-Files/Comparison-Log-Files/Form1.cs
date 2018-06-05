@@ -18,7 +18,7 @@ namespace Comparison_Log_Files
     public partial class Form1 : Form
     {
         List<LogFile> LogList = new List<LogFile>();
-        List<Cluster> clusterList = new List<Cluster>();
+        public List<Cluster> clusterList = new List<Cluster>();
         List<string> clusterNames = new List<string>();
         List<int> clusterLogsCount = new List<int>();
         public Form1()
@@ -49,7 +49,7 @@ namespace Comparison_Log_Files
             string filePath = textBoxFilePath.Text;
             string columnName = "";
             int message = 0;
-            bool saveToText = false;
+           
             DataTable logFileDataTable = new DataTable();
             logFileDataTable.Columns.Add("Message");
 
@@ -67,8 +67,7 @@ namespace Comparison_Log_Files
                 int lineCounter = 0;
                 bool ObtainingFound = false;
 
-                saveToText = AreTheLogsToBeSaved(saveToText);
-
+                
                 while (!streamReader.EndOfStream)
                 {
                     line = streamReader.ReadLine();
@@ -123,7 +122,7 @@ namespace Comparison_Log_Files
                     AddDataToTable(message, logFileDataTable, endOfLog, filteredLogfile);
 
                     //If the end of a log file is reached
-                    AddToLogListAndSave(ref columnName, message, saveToText, logFileDataTable, probId, columnCount, ref endOfLog, filteredLogfile);
+                    AddToLogListAndSave(ref columnName, message, logFileDataTable, probId, columnCount, ref endOfLog, filteredLogfile);
                     lineCounter++;
                 }//end while loop 
                 
@@ -134,7 +133,7 @@ namespace Comparison_Log_Files
                 MessageBox.Show("Are you sure the file exists??");
         }
 
-        private void AddToLogListAndSave(ref string columnName, int message, bool saveToText, DataTable logFileDataTable, string probId, int columnCount, ref bool endOfLog, string[] filteredLogfile)
+        private void AddToLogListAndSave(ref string columnName, int message, DataTable logFileDataTable, string probId, int columnCount, ref bool endOfLog, string[] filteredLogfile)
         {
             if (endOfLog)
             {
@@ -142,13 +141,8 @@ namespace Comparison_Log_Files
                 {
                     dataGridViewFiles.DataSource = logFileDataTable;
                     if (logFileDataTable.Rows.Count != 0)
-                    {
-
-                        if (saveToText)
-                        {
-                            columnName = SaveToTextFile(columnName, probId, columnCount);
-                        }
-
+                    {                     
+                        columnName = SaveToTextFile(columnName, probId, columnCount);                      
                         AddDataToLogList(logFileDataTable, probId);
                         dataGridViewFiles.DataSource = null;
                         logFileDataTable.Rows.Clear();
@@ -159,19 +153,14 @@ namespace Comparison_Log_Files
             }
         }
 
-        private static bool AreTheLogsToBeSaved(bool saveToText)
-        {
-            DialogResult dialogResult = MessageBox.Show("Do you wish to save the filtered logs as texts files? ", "Save Filtered Logs", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                saveToText = true;
-            }
-
-            return saveToText;
-        }
-
         private void CompareLogs()
         {
+            long progress = 0;
+            long logListSize = LogList.LongCount();
+           
+            LoadingForm load = new LoadingForm(this, logListSize, progress);
+            load.Show();
+
             //Three lists
             //One:    Log file
             //Two:    Clusters
@@ -216,6 +205,14 @@ namespace Comparison_Log_Files
                         }
 
                     }
+                    progress++;
+                    load.setFilterprogress(progress);
+                    if (load.iscanceled())
+                    {
+                        load.Close();
+                        break;
+                    }
+                    Application.DoEvents();
                 }
 
                 if (cluster.MatchedLogs.Count() + 1 >= minCluster)
@@ -225,11 +222,7 @@ namespace Comparison_Log_Files
                 index++;
 
             }
-            //public void PieChart()
-            //{
-
-            //    
-            //}
+            
             foreach (var item in clusterList)
             {
                 clusterNames.Add(item.MainLog.Name.ToString());
@@ -284,11 +277,12 @@ namespace Comparison_Log_Files
 
         private void ClusterPieChart()
         {
+            pieChartInfoLabel.Text = "Select the item in the pie chart to view its details";
             //3D Pie chart
             chart1.Series[0].ChartType = SeriesChartType.Pie;
             chart1.Series[0].Points.DataBindXY(clusterNames, clusterLogsCount);
             chart1.Legends[0].Enabled = true;
-            chart1.ChartAreas[0].Area3DStyle.Enable3D = true;
+            //chart1.ChartAreas[0].Area3DStyle.Enable3D = true;
             chart1.Focus();
         }
         private void chart1_MouseMove(object sender, MouseEventArgs e)
@@ -297,6 +291,30 @@ namespace Comparison_Log_Files
             var dp = hit.Object as DataPoint;
             Cursor = (dp is null) ? Cursors.Default : Cursors.Hand;
         }
+        public void chart1_MouseClick(object sender, MouseEventArgs e)
+        {
+            GoToDetails(e);
+
+        }
+
+        public void GoToDetails(MouseEventArgs e)
+        {
+            string clusterName = "";
+            HitTestResult hit = chart1.HitTest(e.X, e.Y, ChartElementType.DataPoint);
+            if (hit.PointIndex >= 0 && hit.Series != null)
+            {
+                DataPoint dp = chart1.Series[0].Points[hit.PointIndex];
+                clusterName = dp.AxisLabel;
+
+            }
+            ClusterDetailsForm frm2 = new ClusterDetailsForm
+            {
+                Owner = this
+            };
+            frm2.ClusterSelected(clusterName, clusterList, LogList);
+            frm2.ShowDialog();
+        }
+
         private static bool LogIsInClusterList(List<Cluster> clusterList, LogFile log)
         {
             bool logInList = false;
@@ -329,7 +347,16 @@ namespace Comparison_Log_Files
 
         private string SaveToTextFile(string columnName, string probId, int columnCount)
         {
-            using (StreamWriter sw = new StreamWriter("p" + probId + ".txt"))
+            string userName = Environment.UserName;
+            string folderLocation = @"C:\Users\" + userName + @"\Documents\LOG FILE COMPARISONS";
+            if (!Directory.Exists(folderLocation))  // if it doesn't exist, create
+                Directory.CreateDirectory(folderLocation);
+            
+            Directory.SetCurrentDirectory(folderLocation);
+            string filename = "p" + probId + ".txt";
+            
+
+            using (StreamWriter sw = new StreamWriter(filename))
             {
                 columnName = dataGridViewFiles.Columns[0].Name.ToString();
                 sw.WriteLine(columnName);
@@ -385,7 +412,7 @@ namespace Comparison_Log_Files
             var results = from myRow in logFileDataTable.AsEnumerable()
                           select myRow[0];
             var topRows = results.Reverse().Take(minLines);
-
+            int count = results.Count();
             foreach (var item in topRows)
             {
                 rowSignature += item.ToString();
@@ -396,7 +423,8 @@ namespace Comparison_Log_Files
                 {
                     Name = probId,
                     Signature = rowSignature,
-                    LDvalue = 100
+                    LDvalue = 100,
+                    NumOfLines = count
 
                 });
             }
@@ -406,12 +434,12 @@ namespace Comparison_Log_Files
 
         private void btnDetails_Click(object sender, EventArgs e)
         {
-            ClusterDetailsForm frm2 = new ClusterDetailsForm
-            {
-                Owner = this
-            };
-            //frm2.LogName(cluster);
-            frm2.ShowDialog();
+            //ClusterDetailsForm frm2 = new ClusterDetailsForm
+            //{
+            //    Owner = this
+            //};
+            ////frm2.LogName(cluster);
+            //frm2.ShowDialog();
         }
 
 
