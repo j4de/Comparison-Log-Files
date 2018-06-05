@@ -233,7 +233,7 @@ namespace Comparison_Log_Files
             }
             ClusterPieChart();
             nonClusteredLogs = LogList.Count() - foundClusteredLogs;
-            ///THIS IS FOR TESTING ONLY
+           
             listBoxDetails.Items.Clear();
             if (clusterList.Count > 0)
             {
