@@ -244,8 +244,7 @@ namespace Comparison_Log_Files
                 listBoxDetails.Items.Add("Total files : " + LogList.Count.ToString());
                 listBoxDetails.Items.Add("Total files clustered: " + foundClusteredLogs.ToString());
                 listBoxDetails.Items.Add("Number of logs not in a cluster: " + nonClusteredLogs.ToString());
-                // test to get the total number of files clustered
-                listBoxDetails.Items.Add("test : " + clusterLogsCount.Count.ToString());
+
                 listBoxDetails.Items.Add("----------------------------------");
                 listBoxDetails.Items.Add("Main Cluster Logs : ");
                 foreach (var item in clusterList)
