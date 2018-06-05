@@ -47,9 +47,9 @@
             this.toleranceLabel = new System.Windows.Forms.Label();
             this.toleranceNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.processButton = new System.Windows.Forms.Button();
+            this.pieChartInfoLabel = new System.Windows.Forms.Label();
             this.btnSaveProcessed = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.pieChartInfoLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -147,9 +147,9 @@
             // 
             // textBoxFilePath
             // 
-            this.textBoxFilePath.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.textBoxFilePath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.SetColumnSpan(this.textBoxFilePath, 13);
-            this.textBoxFilePath.Location = new System.Drawing.Point(83, 43);
+            this.textBoxFilePath.Location = new System.Drawing.Point(83, 39);
             this.textBoxFilePath.Name = "textBoxFilePath";
             this.textBoxFilePath.Size = new System.Drawing.Size(514, 20);
             this.textBoxFilePath.TabIndex = 2;
@@ -193,13 +193,15 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(45, 33);
             this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(0, 14, 0, 0);
+            this.label1.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
             this.label1.Size = new System.Drawing.Size(32, 33);
             this.label1.TabIndex = 10;
             this.label1.Text = "Log:";
             // 
             // chart1
             // 
+            this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.chart1.AntiAliasing = System.Windows.Forms.DataVisualization.Charting.AntiAliasingStyles.Text;
             chartArea2.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea2);
             this.tableLayoutPanel1.SetColumnSpan(this.chart1, 14);
@@ -222,6 +224,8 @@
             // 
             // listBoxDetails
             // 
+            this.listBoxDetails.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.SetColumnSpan(this.listBoxDetails, 14);
             this.listBoxDetails.FormattingEnabled = true;
             this.listBoxDetails.Location = new System.Drawing.Point(43, 102);
@@ -332,6 +336,17 @@
             this.processButton.UseVisualStyleBackColor = true;
             this.processButton.Click += new System.EventHandler(this.processButton_Click);
             // 
+            // pieChartInfoLabel
+            // 
+            this.pieChartInfoLabel.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.pieChartInfoLabel, 12);
+            this.pieChartInfoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pieChartInfoLabel.Location = new System.Drawing.Point(123, 264);
+            this.pieChartInfoLabel.Name = "pieChartInfoLabel";
+            this.pieChartInfoLabel.Size = new System.Drawing.Size(0, 24);
+            this.pieChartInfoLabel.TabIndex = 20;
+            this.pieChartInfoLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // btnSaveProcessed
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.btnSaveProcessed, 3);
@@ -348,17 +363,6 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // pieChartInfoLabel
-            // 
-            this.pieChartInfoLabel.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.pieChartInfoLabel, 12);
-            this.pieChartInfoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pieChartInfoLabel.Location = new System.Drawing.Point(123, 264);
-            this.pieChartInfoLabel.Name = "pieChartInfoLabel";
-            this.pieChartInfoLabel.Size = new System.Drawing.Size(0, 24);
-            this.pieChartInfoLabel.TabIndex = 20;
-            this.pieChartInfoLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -366,7 +370,7 @@
             this.ClientSize = new System.Drawing.Size(800, 661);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Log Cluster Utility";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFiles)).EndInit();
