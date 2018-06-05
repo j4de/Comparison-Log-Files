@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Threading;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.IO;
 
 namespace Comparison_Log_Files
 {
@@ -71,11 +72,13 @@ namespace Comparison_Log_Files
         static extern IntPtr SetParent(IntPtr hwc, IntPtr hwp);
         private void RunComparisonBtn(object sender, EventArgs e)
         {
-            string userName = Environment.UserName;
-            string mainLogName = mainLogNameLabel.Text.ToString();
-            string selectedLogName = dgvClusterDetails.SelectedRows[0].Cells[0].Value.ToString();
-            string file1 = @"C:\Users\" + userName + @"\Documents\p" + mainLogName+".txt";
-            string file2 = @"C:\Users\" + userName + @"\Documents\p" + selectedLogName+".txt";
+            string mainLogName = "p"+mainLogNameLabel.Text.ToString()+ ".txt";
+            string selectedLogName = "p"+dgvClusterDetails.SelectedRows[0].Cells[0].Value.ToString()+".txt";
+            string dir = Directory.GetCurrentDirectory();
+            
+            string file1 = Path.Combine(dir, mainLogName);
+            string file2 = Path.Combine(dir, selectedLogName);
+
             string app = "";
             if (txtBoxApplication.Text != "")
             {
@@ -86,7 +89,7 @@ namespace Comparison_Log_Files
                     startInfo.FileName = (app + ".exe");
                     startInfo.Arguments = file1+" "+file2;
                     Process.Start(startInfo);
-                    Thread.Sleep(500);
+                    Thread.Sleep(1000);
 
                 }
                 catch (Win32Exception ex)
