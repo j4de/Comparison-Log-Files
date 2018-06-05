@@ -168,8 +168,6 @@ namespace Comparison_Log_Files
             int index = 0;
             string source, target;
             double result = 0;
-            int nonClusteredLogs = 0;
-            int foundClusteredLogs = 0;
             int minCluster = Convert.ToInt32(clusterNumericUpDown.Value);
             double minTolerance = Convert.ToDouble(toleranceNumericUpDown.Value);
             foreach (LogFile log in LogList)
@@ -229,10 +227,9 @@ namespace Comparison_Log_Files
             {
                 clusterNames.Add(item.MainLog.Name.ToString());
                 clusterLogsCount.Add(item.MatchedLogs.Count + 1);
-                foundClusteredLogs += item.MatchedLogs.Count + 1;
             }
             ClusterPieChart();
-            nonClusteredLogs = LogList.Count() - foundClusteredLogs;
+
             ///THIS IS FOR TESTING ONLY
             listBoxDetails.Items.Clear();
             if (clusterList.Count > 0)
@@ -242,9 +239,10 @@ namespace Comparison_Log_Files
                 listBoxDetails.Items.Add("Tolerance Percentage : " + this.toleranceNumericUpDown.Text);
                 listBoxDetails.Items.Add("----------------------------------");
                 listBoxDetails.Items.Add("Total files : " + LogList.Count.ToString());
-                listBoxDetails.Items.Add("Total files clustered: " + foundClusteredLogs.ToString());
-                listBoxDetails.Items.Add("Number of logs not in a cluster: " + nonClusteredLogs.ToString());
-
+                listBoxDetails.Items.Add("Total clusters found: " + clusterList.Count.ToString());
+                listBoxDetails.Items.Add("Total files clustered: " + (clusterList.Count * minCluster).ToString());
+                // test to get the total number of files clustered
+                //listBoxDetails.Items.Add("test : " + clusterLogsCount.Count.ToString());
                 listBoxDetails.Items.Add("----------------------------------");
                 listBoxDetails.Items.Add("Main Cluster Logs : ");
                 foreach (var item in clusterList)
@@ -279,10 +277,12 @@ namespace Comparison_Log_Files
 
         private void ClusterPieChart()
         {
-            pieChartInfoLabel.Text = "Select an item in the pie chart to view its details";
+            pieChartInfoLabel.Text = "Select the item in the pie chart to view its details";
+            //3D Pie chart
             chart1.Series[0].ChartType = SeriesChartType.Pie;
             chart1.Series[0].Points.DataBindXY(clusterNames, clusterLogsCount);
             chart1.Legends[0].Enabled = true;
+            //chart1.ChartAreas[0].Area3DStyle.Enable3D = true;
             chart1.Focus();
         }
         private void chart1_MouseMove(object sender, MouseEventArgs e)
@@ -348,8 +348,9 @@ namespace Comparison_Log_Files
         private string SaveToTextFile(string columnName, string probId, int columnCount)
         {
             string userName = Environment.UserName;
-            string folderLocation = @"C:\Users\" + userName + @"\Documents\LOG_FILE_COMPARISONS";
-            Directory.CreateDirectory(folderLocation);
+            string folderLocation = @"C:\Users\" + userName + @"\Documents\LOG FILE COMPARISONS";
+            if (!Directory.Exists(folderLocation))  // if it doesn't exist, create
+                Directory.CreateDirectory(folderLocation);
             
             Directory.SetCurrentDirectory(folderLocation);
             string filename = "p" + probId + ".txt";
