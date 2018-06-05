@@ -12,6 +12,7 @@ using System.Threading;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows.Forms.DataVisualization.Charting;
+using CBELogAsTXT;
 
 namespace Comparison_Log_Files
 {
@@ -485,6 +486,34 @@ namespace Comparison_Log_Files
             //Process p = Process.Start("notepad.exe");
         }
 
-        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string outputFile = "";
+            SaveFileDialog sfdSaveSPTXT = new SaveFileDialog();
+            
+            if (sfdSaveSPTXT.ShowDialog(this).Equals(DialogResult.OK))     // SaveFileDialog
+            {
+                outputFile = sfdSaveSPTXT.FileName;                 // FileName
+
+                LogAsTXT lat = new LogAsTXT();                             // CBELogAsTxt Object
+
+                textBoxFilePath.Text = "Working...";
+                Application.DoEvents();
+
+                outputFile = Path.GetDirectoryName(Application.ExecutablePath) + "\\SQLDataSet.txt";
+                //if (lat.GetLogAsTXT((int)numMaxLogs.Value, (int)numDays.Value, txtSearch.Text, txtCustId.Text, (int)numMaxLines.Value, outputFile))
+
+                if (lat.GetLogAsTXT(100, 32, "Mid - Sale", "", 200, outputFile))    // CBELogAsTXT main method to call to get the data from the SQL DB in Azure
+                {
+                    textBoxFilePath.Text = outputFile;
+                }
+                else
+                {
+                    MessageBox.Show("CallSP Error:" + lat.GetLastError());
+                    textBoxFilePath.Text = "Call SP Error..." + lat.GetLastError();
+                }
+            }
+
+        }
     }
 }

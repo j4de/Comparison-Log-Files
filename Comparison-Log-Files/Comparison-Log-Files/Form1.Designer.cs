@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.textBoxFilePath = new System.Windows.Forms.TextBox();
             this.browseButton = new System.Windows.Forms.Button();
@@ -50,6 +50,7 @@
             this.pieChartInfoLabel = new System.Windows.Forms.Label();
             this.btnSaveProcessed = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.btnGetFromDatabase = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -98,6 +99,7 @@
             this.tableLayoutPanel1.Controls.Add(this.processButton, 16, 9);
             this.tableLayoutPanel1.Controls.Add(this.pieChartInfoLabel, 3, 8);
             this.tableLayoutPanel1.Controls.Add(this.btnSaveProcessed, 16, 16);
+            this.tableLayoutPanel1.Controls.Add(this.btnGetFromDatabase, 16, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -202,20 +204,20 @@
             // 
             this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.chart1.AntiAliasing = System.Windows.Forms.DataVisualization.Charting.AntiAliasingStyles.Text;
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
             this.tableLayoutPanel1.SetColumnSpan(this.chart1, 14);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(43, 300);
             this.chart1.Name = "chart1";
             this.tableLayoutPanel1.SetRowSpan(this.chart1, 10);
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series2.IsValueShownAsLabel = true;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart1.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.IsValueShownAsLabel = true;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(554, 324);
             this.chart1.TabIndex = 15;
             this.chart1.Text = "chart1";
@@ -363,6 +365,17 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // btnGetFromDatabase
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.btnGetFromDatabase, 3);
+            this.btnGetFromDatabase.Location = new System.Drawing.Point(649, 3);
+            this.btnGetFromDatabase.Name = "btnGetFromDatabase";
+            this.btnGetFromDatabase.Size = new System.Drawing.Size(108, 23);
+            this.btnGetFromDatabase.TabIndex = 21;
+            this.btnGetFromDatabase.Text = "Get From Database";
+            this.btnGetFromDatabase.UseVisualStyleBackColor = true;
+            this.btnGetFromDatabase.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -403,6 +416,7 @@
         public System.Windows.Forms.Label labelPieChart;
         private System.Windows.Forms.Button btnSaveProcessed;
         private System.Windows.Forms.Label pieChartInfoLabel;
+        private System.Windows.Forms.Button btnGetFromDatabase;
     }
 }
 
