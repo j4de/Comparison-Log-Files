@@ -157,7 +157,7 @@ namespace Comparison_Log_Files
         {
             long progress = 0;
             long logListSize = LogList.LongCount();
-           
+
             LoadingForm load = new LoadingForm(this, logListSize, progress);
             load.Show();
 
@@ -224,7 +224,7 @@ namespace Comparison_Log_Files
                 index++;
 
             }
-            
+
             foreach (var item in clusterList)
             {
                 clusterNames.Add(item.MainLog.Name.ToString());
@@ -233,8 +233,15 @@ namespace Comparison_Log_Files
             }
             ClusterPieChart();
             nonClusteredLogs = LogList.Count() - foundClusteredLogs;
-           
+
             listBoxDetails.Items.Clear();
+            PopulateListBox(nonClusteredLogs, foundClusteredLogs);
+           
+
+        }
+
+        private void PopulateListBox(int nonClusteredLogs, int foundClusteredLogs)
+        {
             if (clusterList.Count > 0)
             {
                 listBoxDetails.Items.Add("Number of lines : " + this.linesNumericUpDown.Text);
@@ -256,10 +263,10 @@ namespace Comparison_Log_Files
                 listBoxDetails.Items.Add("Logs that match 100% : ");
                 foreach (var item in LogList)
                 {
-                        if (item.LDvalue == 100)
-                        {
-                            listBoxDetails.Items.Add(item.Name);
-                        }
+                    if (item.LDvalue == 100)
+                    {
+                        listBoxDetails.Items.Add(item.Name);
+                    }
                 }
                 listBoxDetails.Items.Add("----------------------------------");
                 listBoxDetails.Items.Add("Logs that match using Tolerance LD : ");
@@ -267,7 +274,7 @@ namespace Comparison_Log_Files
                 {
                     if (item.LDvalue < 100 && item.LDvalue >= toleranceNumericUpDown.Value)
                     {
-                        listBoxDetails.Items.Add(item.Name +" LD = "+ item.LDvalue.ToString()+"%");
+                        listBoxDetails.Items.Add(item.Name + "   LD = " + item.LDvalue.ToString() + "%");
                         listBoxDetails.Items.Add("");
                     }
                 }
@@ -276,7 +283,32 @@ namespace Comparison_Log_Files
             {
                 listBoxDetails.Items.Add("No Clusters Found!");
             }
+        }
 
+        private void SaveDetails(ListBox listBoxDetails)
+        {
+            if (listBoxDetails.Items.Count > 1)
+            {
+                string filename = "";
+                SaveFileDialog sfd = new SaveFileDialog
+                {
+                    Filter = "TXT (*.txt)|*.txt",
+                    FileName = ""
+                };
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    filename = sfd.FileName;
+                    StreamWriter sw = new StreamWriter(filename);
+                    foreach (var item in listBoxDetails.Items)
+                    {
+                        sw.WriteLine(item);
+                    }
+                    sw.Close();
+                }              
+            }
+            else
+                MessageBox.Show("No Details to save");
+            
         }
 
         private void ClusterPieChart()
@@ -449,7 +481,10 @@ namespace Comparison_Log_Files
         static extern IntPtr SetParent(IntPtr hwc, IntPtr hwp);
         private void btnSaveListBoxDetails(object sender, EventArgs e)
         {
-            Process p = Process.Start("notepad.exe");
+            SaveDetails(listBoxDetails);
+            //Process p = Process.Start("notepad.exe");
         }
+
+        
     }
 }
