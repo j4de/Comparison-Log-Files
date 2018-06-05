@@ -268,6 +268,7 @@ namespace Comparison_Log_Files
                     if (item.LDvalue < 100 && item.LDvalue >= toleranceNumericUpDown.Value)
                     {
                         listBoxDetails.Items.Add(item.Name +" LD = "+ item.LDvalue.ToString()+"%");
+                        listBoxDetails.Items.Add("");
                     }
                 }
             }
