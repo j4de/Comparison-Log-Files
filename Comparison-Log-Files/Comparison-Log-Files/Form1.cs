@@ -242,6 +242,7 @@ namespace Comparison_Log_Files
                 listBoxDetails.Items.Add("Tolerance Percentage : " + this.toleranceNumericUpDown.Text);
                 listBoxDetails.Items.Add("----------------------------------");
                 listBoxDetails.Items.Add("Total files : " + LogList.Count.ToString());
+                listBoxDetails.Items.Add("Total clusters: " + clusterLogsCount.Count().ToString());
                 listBoxDetails.Items.Add("Total files clustered: " + foundClusteredLogs.ToString());
                 listBoxDetails.Items.Add("Number of logs not in a cluster: " + nonClusteredLogs.ToString());
 
@@ -266,7 +267,7 @@ namespace Comparison_Log_Files
                 {
                     if (item.LDvalue < 100 && item.LDvalue >= toleranceNumericUpDown.Value)
                     {
-                        listBoxDetails.Items.Add(item.Name);
+                        listBoxDetails.Items.Add(item.Name +" LD = "+ item.LDvalue.ToString()+"%");
                     }
                 }
             }
