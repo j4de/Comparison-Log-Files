@@ -60,6 +60,12 @@
     <Compile Include="ClusterDetailsForm.Designer.cs">
       <DependentUpon>ClusterDetailsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatabaseDetailsForm.Designer.cs">
+      <DependentUpon>DatabaseDetailsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SQLDataSet.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -79,6 +85,9 @@
     <Compile Include="SimilarityExtensions.cs" />
     <EmbeddedResource Include="ClusterDetailsForm.resx">
       <DependentUpon>ClusterDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DatabaseDetailsForm.resx">
+      <DependentUpon>DatabaseDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

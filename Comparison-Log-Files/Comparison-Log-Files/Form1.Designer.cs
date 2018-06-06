@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.textBoxFilePath = new System.Windows.Forms.TextBox();
             this.browseButton = new System.Windows.Forms.Button();
@@ -51,6 +51,18 @@
             this.btnSaveProcessed = new System.Windows.Forms.Button();
             this.btnGetFromDatabase = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.textBoxMaxLogs = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBoxNumOfDays = new System.Windows.Forms.TextBox();
+            this.textBoxNarrative = new System.Windows.Forms.TextBox();
+            this.textBoxCustID = new System.Windows.Forms.TextBox();
+            this.textBoxMaxLines = new System.Windows.Forms.TextBox();
+            this.textBoxOutputFileName = new System.Windows.Forms.TextBox();
+            this.labelNumOfDays = new System.Windows.Forms.Label();
+            this.labelNarrative = new System.Windows.Forms.Label();
+            this.labelCustID = new System.Windows.Forms.Label();
+            this.labelMaxLines = new System.Windows.Forms.Label();
+            this.labelOutPutFileName = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -66,8 +78,8 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.75F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
@@ -83,30 +95,42 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.Controls.Add(this.textBoxFilePath, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.browseButton, 16, 1);
+            this.tableLayoutPanel1.Controls.Add(this.labelOutPutFileName, 11, 0);
+            this.tableLayoutPanel1.Controls.Add(this.labelMaxLines, 9, 0);
+            this.tableLayoutPanel1.Controls.Add(this.labelCustID, 7, 0);
+            this.tableLayoutPanel1.Controls.Add(this.labelNarrative, 5, 0);
+            this.tableLayoutPanel1.Controls.Add(this.labelNumOfDays, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.dataGridViewFiles, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.exitButton, 16, 18);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.chart1, 1, 9);
             this.tableLayoutPanel1.Controls.Add(this.listBoxDetails, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.labelPieChart, 16, 12);
-            this.tableLayoutPanel1.Controls.Add(this.linesLabel, 16, 2);
-            this.tableLayoutPanel1.Controls.Add(this.linesNumericUpDown, 16, 3);
-            this.tableLayoutPanel1.Controls.Add(this.clusterLabel, 16, 4);
-            this.tableLayoutPanel1.Controls.Add(this.clusterNumericUpDown, 16, 5);
-            this.tableLayoutPanel1.Controls.Add(this.toleranceLabel, 16, 6);
-            this.tableLayoutPanel1.Controls.Add(this.toleranceNumericUpDown, 16, 7);
-            this.tableLayoutPanel1.Controls.Add(this.processButton, 16, 9);
             this.tableLayoutPanel1.Controls.Add(this.pieChartInfoLabel, 3, 8);
             this.tableLayoutPanel1.Controls.Add(this.btnSaveProcessed, 16, 16);
-            this.tableLayoutPanel1.Controls.Add(this.btnGetFromDatabase, 16, 0);
+            this.tableLayoutPanel1.Controls.Add(this.processButton, 16, 10);
+            this.tableLayoutPanel1.Controls.Add(this.toleranceNumericUpDown, 16, 8);
+            this.tableLayoutPanel1.Controls.Add(this.toleranceLabel, 16, 7);
+            this.tableLayoutPanel1.Controls.Add(this.clusterNumericUpDown, 16, 6);
+            this.tableLayoutPanel1.Controls.Add(this.clusterLabel, 16, 5);
+            this.tableLayoutPanel1.Controls.Add(this.linesNumericUpDown, 16, 4);
+            this.tableLayoutPanel1.Controls.Add(this.linesLabel, 16, 3);
+            this.tableLayoutPanel1.Controls.Add(this.browseButton, 16, 2);
+            this.tableLayoutPanel1.Controls.Add(this.btnGetFromDatabase, 16, 1);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxFilePath, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.label1, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxMaxLogs, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label2, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxNumOfDays, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxNarrative, 5, 1);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxCustID, 7, 1);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxMaxLines, 9, 1);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxOutputFileName, 11, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 20;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.76699F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.854369F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.715582F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.84115F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.854369F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.854369F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.854369F));
@@ -133,7 +157,7 @@
             // 
             this.textBoxFilePath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.SetColumnSpan(this.textBoxFilePath, 13);
-            this.textBoxFilePath.Location = new System.Drawing.Point(83, 57);
+            this.textBoxFilePath.Location = new System.Drawing.Point(83, 89);
             this.textBoxFilePath.Name = "textBoxFilePath";
             this.textBoxFilePath.Size = new System.Drawing.Size(514, 20);
             this.textBoxFilePath.TabIndex = 2;
@@ -142,7 +166,7 @@
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.browseButton, 3);
             this.browseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.browseButton.Location = new System.Drawing.Point(649, 54);
+            this.browseButton.Location = new System.Drawing.Point(649, 86);
             this.browseButton.Name = "browseButton";
             this.browseButton.Size = new System.Drawing.Size(108, 26);
             this.browseButton.TabIndex = 1;
@@ -175,7 +199,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.4F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(46, 51);
+            this.label1.Location = new System.Drawing.Point(46, 83);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
             this.label1.Size = new System.Drawing.Size(31, 32);
@@ -186,20 +210,20 @@
             // 
             this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.chart1.AntiAliasing = System.Windows.Forms.DataVisualization.Charting.AntiAliasingStyles.Text;
-            chartArea6.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea6);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
             this.tableLayoutPanel1.SetColumnSpan(this.chart1, 14);
-            legend6.Name = "Legend1";
-            this.chart1.Legends.Add(legend6);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(43, 310);
             this.chart1.Name = "chart1";
             this.tableLayoutPanel1.SetRowSpan(this.chart1, 10);
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series6.IsValueShownAsLabel = true;
-            series6.Legend = "Legend1";
-            series6.Name = "Series1";
-            this.chart1.Series.Add(series6);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.IsValueShownAsLabel = true;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(554, 314);
             this.chart1.TabIndex = 15;
             this.chart1.Text = "chart1";
@@ -232,7 +256,7 @@
             this.linesLabel.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.linesLabel, 3);
             this.linesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linesLabel.Location = new System.Drawing.Point(649, 102);
+            this.linesLabel.Location = new System.Drawing.Point(649, 134);
             this.linesLabel.Name = "linesLabel";
             this.linesLabel.Size = new System.Drawing.Size(104, 13);
             this.linesLabel.TabIndex = 11;
@@ -246,7 +270,7 @@
             0,
             0,
             0});
-            this.linesNumericUpDown.Location = new System.Drawing.Point(649, 118);
+            this.linesNumericUpDown.Location = new System.Drawing.Point(649, 150);
             this.linesNumericUpDown.Name = "linesNumericUpDown";
             this.linesNumericUpDown.Size = new System.Drawing.Size(108, 20);
             this.linesNumericUpDown.TabIndex = 5;
@@ -262,7 +286,7 @@
             this.clusterLabel.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.clusterLabel, 3);
             this.clusterLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clusterLabel.Location = new System.Drawing.Point(649, 166);
+            this.clusterLabel.Location = new System.Drawing.Point(649, 198);
             this.clusterLabel.Name = "clusterLabel";
             this.clusterLabel.Size = new System.Drawing.Size(70, 13);
             this.clusterLabel.TabIndex = 13;
@@ -271,7 +295,7 @@
             // clusterNumericUpDown
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.clusterNumericUpDown, 3);
-            this.clusterNumericUpDown.Location = new System.Drawing.Point(649, 182);
+            this.clusterNumericUpDown.Location = new System.Drawing.Point(649, 214);
             this.clusterNumericUpDown.Name = "clusterNumericUpDown";
             this.clusterNumericUpDown.Size = new System.Drawing.Size(108, 20);
             this.clusterNumericUpDown.TabIndex = 6;
@@ -287,7 +311,7 @@
             this.toleranceLabel.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.toleranceLabel, 3);
             this.toleranceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toleranceLabel.Location = new System.Drawing.Point(649, 230);
+            this.toleranceLabel.Location = new System.Drawing.Point(649, 262);
             this.toleranceLabel.Name = "toleranceLabel";
             this.toleranceLabel.Size = new System.Drawing.Size(108, 13);
             this.toleranceLabel.TabIndex = 12;
@@ -301,7 +325,7 @@
             0,
             0,
             0});
-            this.toleranceNumericUpDown.Location = new System.Drawing.Point(649, 246);
+            this.toleranceNumericUpDown.Location = new System.Drawing.Point(649, 278);
             this.toleranceNumericUpDown.Name = "toleranceNumericUpDown";
             this.toleranceNumericUpDown.Size = new System.Drawing.Size(108, 20);
             this.toleranceNumericUpDown.TabIndex = 7;
@@ -315,7 +339,7 @@
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.processButton, 3);
             this.processButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.processButton.Location = new System.Drawing.Point(649, 310);
+            this.processButton.Location = new System.Drawing.Point(649, 342);
             this.processButton.Name = "processButton";
             this.processButton.Size = new System.Drawing.Size(108, 26);
             this.processButton.TabIndex = 3;
@@ -349,18 +373,131 @@
             // btnGetFromDatabase
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.btnGetFromDatabase, 3);
-            this.btnGetFromDatabase.Location = new System.Drawing.Point(649, 15);
-            this.btnGetFromDatabase.Margin = new System.Windows.Forms.Padding(3, 15, 3, 3);
+            this.btnGetFromDatabase.Location = new System.Drawing.Point(649, 54);
             this.btnGetFromDatabase.Name = "btnGetFromDatabase";
-            this.btnGetFromDatabase.Size = new System.Drawing.Size(108, 23);
+            this.btnGetFromDatabase.Size = new System.Drawing.Size(108, 26);
             this.btnGetFromDatabase.TabIndex = 21;
             this.btnGetFromDatabase.Text = "Get From Database";
             this.btnGetFromDatabase.UseVisualStyleBackColor = true;
-            this.btnGetFromDatabase.Click += new System.EventHandler(this.button1_Click);
+            this.btnGetFromDatabase.Click += new System.EventHandler(this.btnGetDatabasFile);
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // textBoxMaxLogs
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.textBoxMaxLogs, 2);
+            this.textBoxMaxLogs.Location = new System.Drawing.Point(43, 54);
+            this.textBoxMaxLogs.Name = "textBoxMaxLogs";
+            this.textBoxMaxLogs.Size = new System.Drawing.Size(74, 20);
+            this.textBoxMaxLogs.TabIndex = 22;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label2.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.label2, 2);
+            this.label2.Location = new System.Drawing.Point(43, 38);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 13);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "Max Logs";
+            // 
+            // textBoxNumOfDays
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.textBoxNumOfDays, 2);
+            this.textBoxNumOfDays.Location = new System.Drawing.Point(123, 54);
+            this.textBoxNumOfDays.Name = "textBoxNumOfDays";
+            this.textBoxNumOfDays.Size = new System.Drawing.Size(74, 20);
+            this.textBoxNumOfDays.TabIndex = 24;
+            // 
+            // textBoxNarrative
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.textBoxNarrative, 2);
+            this.textBoxNarrative.Location = new System.Drawing.Point(203, 54);
+            this.textBoxNarrative.Name = "textBoxNarrative";
+            this.textBoxNarrative.Size = new System.Drawing.Size(74, 20);
+            this.textBoxNarrative.TabIndex = 25;
+            // 
+            // textBoxCustID
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.textBoxCustID, 2);
+            this.textBoxCustID.Location = new System.Drawing.Point(283, 54);
+            this.textBoxCustID.Name = "textBoxCustID";
+            this.textBoxCustID.Size = new System.Drawing.Size(74, 20);
+            this.textBoxCustID.TabIndex = 26;
+            // 
+            // textBoxMaxLines
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.textBoxMaxLines, 2);
+            this.textBoxMaxLines.Location = new System.Drawing.Point(363, 54);
+            this.textBoxMaxLines.Name = "textBoxMaxLines";
+            this.textBoxMaxLines.Size = new System.Drawing.Size(74, 20);
+            this.textBoxMaxLines.TabIndex = 27;
+            // 
+            // textBoxOutputFileName
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.textBoxOutputFileName, 2);
+            this.textBoxOutputFileName.Location = new System.Drawing.Point(443, 54);
+            this.textBoxOutputFileName.Name = "textBoxOutputFileName";
+            this.textBoxOutputFileName.Size = new System.Drawing.Size(74, 20);
+            this.textBoxOutputFileName.TabIndex = 28;
+            // 
+            // labelNumOfDays
+            // 
+            this.labelNumOfDays.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelNumOfDays.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.labelNumOfDays, 2);
+            this.labelNumOfDays.Location = new System.Drawing.Point(123, 38);
+            this.labelNumOfDays.Name = "labelNumOfDays";
+            this.labelNumOfDays.Size = new System.Drawing.Size(64, 13);
+            this.labelNumOfDays.TabIndex = 29;
+            this.labelNumOfDays.Text = "NumOfDays";
+            // 
+            // labelNarrative
+            // 
+            this.labelNarrative.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelNarrative.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.labelNarrative, 2);
+            this.labelNarrative.Location = new System.Drawing.Point(203, 38);
+            this.labelNarrative.Name = "labelNarrative";
+            this.labelNarrative.Size = new System.Drawing.Size(50, 13);
+            this.labelNarrative.TabIndex = 30;
+            this.labelNarrative.Text = "Narrative";
+            // 
+            // labelCustID
+            // 
+            this.labelCustID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelCustID.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.labelCustID, 2);
+            this.labelCustID.Location = new System.Drawing.Point(283, 38);
+            this.labelCustID.Name = "labelCustID";
+            this.labelCustID.Size = new System.Drawing.Size(39, 13);
+            this.labelCustID.TabIndex = 31;
+            this.labelCustID.Text = "CustID";
+            // 
+            // labelMaxLines
+            // 
+            this.labelMaxLines.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelMaxLines.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.labelMaxLines, 2);
+            this.labelMaxLines.Location = new System.Drawing.Point(363, 38);
+            this.labelMaxLines.Name = "labelMaxLines";
+            this.labelMaxLines.Size = new System.Drawing.Size(55, 13);
+            this.labelMaxLines.TabIndex = 32;
+            this.labelMaxLines.Text = "Max Lines";
+            // 
+            // labelOutPutFileName
+            // 
+            this.labelOutPutFileName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelOutPutFileName.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.labelOutPutFileName, 2);
+            this.labelOutPutFileName.Location = new System.Drawing.Point(443, 38);
+            this.labelOutPutFileName.Name = "labelOutPutFileName";
+            this.labelOutPutFileName.Size = new System.Drawing.Size(74, 13);
+            this.labelOutPutFileName.TabIndex = 33;
+            this.labelOutPutFileName.Text = "Out File Name";
             // 
             // Form1
             // 
@@ -403,6 +540,18 @@
         private System.Windows.Forms.Button btnSaveProcessed;
         private System.Windows.Forms.Label pieChartInfoLabel;
         private System.Windows.Forms.Button btnGetFromDatabase;
+        private System.Windows.Forms.Label labelOutPutFileName;
+        private System.Windows.Forms.Label labelMaxLines;
+        private System.Windows.Forms.Label labelCustID;
+        private System.Windows.Forms.Label labelNarrative;
+        private System.Windows.Forms.Label labelNumOfDays;
+        private System.Windows.Forms.TextBox textBoxMaxLogs;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBoxNumOfDays;
+        private System.Windows.Forms.TextBox textBoxNarrative;
+        private System.Windows.Forms.TextBox textBoxCustID;
+        private System.Windows.Forms.TextBox textBoxMaxLines;
+        private System.Windows.Forms.TextBox textBoxOutputFileName;
     }
 }
 

@@ -380,7 +380,6 @@ namespace Comparison_Log_Files
             return logInList;
         }
 
-
         private string SaveToTextFile(string columnName, string probId, int columnCount)
         {
             string userName = Environment.UserName;
@@ -477,39 +476,47 @@ namespace Comparison_Log_Files
             //frm2.ShowDialog();
         }
 
-
-        //to open notepad
-        [DllImport("user32.dll")]
-        static extern IntPtr SetParent(IntPtr hwc, IntPtr hwp);
         private void btnSaveListBoxDetails(object sender, EventArgs e)
         {
             SaveDetails(listBoxDetails);
-            //Process p = Process.Start("notepad.exe");
+
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnGetDatabasFile(object sender, EventArgs e)
         {
-            string outputFile = "";
+            int maxLogs = Convert.ToInt32(textBoxMaxLogs.Text);
+            int numofDays = Convert.ToInt32(textBoxNumOfDays.Text);
+            if (textBoxCustID == null)
+            {
+                textBoxCustID.Text = "";
+            }
+            string custID = textBoxCustID.Text;
+            if (Convert.ToInt32(textBoxMaxLines.Text) < 5)
+            {
+                textBoxMaxLines.Text = "5";
+            }
+            int maxLines = Convert.ToInt32(textBoxMaxLines.Text);
+            if (textBoxNarrative.Text == null)
+            {
+                textBoxNarrative.Text = "Mid-Sale";
+            }
+            string narrrative = textBoxNarrative.Text;
+            string outputFile = textBoxOutputFileName.Text;
+           
             SaveFileDialog sfdSaveSPTXT = new SaveFileDialog
             {
                 Filter = "TXT (*.txt)|*.txt",
                 FileName = ""
             };
 
-            if (sfdSaveSPTXT.ShowDialog(this).Equals(DialogResult.OK))     // SaveFileDialog
+            if (sfdSaveSPTXT.ShowDialog(this).Equals(DialogResult.OK))     
             {
-                outputFile = sfdSaveSPTXT.FileName;                 // FileName
-
-                LogAsTXT lat = new LogAsTXT();                             // CBELogAsTxt Object
-
+                outputFile = sfdSaveSPTXT.FileName;                
+                LogAsTXT lat = new LogAsTXT();
                 textBoxFilePath.Text = "Working...";
                 Application.DoEvents();
-                //GetLogAsTXT(100, 32, "Mid - Sale", "", 200, outputFile);                                  // THIS IS NOT REQUIRED – DELETE OR COMMENT
-                //outputFile = Path.GetDirectoryName(Application.ExecutablePath) + "\\SQLDataSet.txt";           // THIS IS NOT REQUIRED – YOU’VE ALREADY SET THE FILENAME ABOVE sfdSave….
-                //if (lat.GetLogAsTXT((int)numMaxLogs.Value, (int)numDays.Value, txtSearch.Text, txtCustId.Text, (int)numMaxLines.Value, outputFile))
-
-                //if (lat.GetLogAsTXT(100, 32, "Mid - Sale", "", 200, outputFile))    // INCORRECT SPACES BETWEEN THE -  CHAR  -   CBELogAsTXT main method to call to get the data from the SQL DB in Azure
-                if (lat.GetLogAsTXT(100, 32, "Mid-Sale", "", 200, outputFile))    // CORRECT NO SPACES AT THE -   CBELogAsTXT main method to call to get the data from the SQL DB in Azure
+               
+                if (lat.GetLogAsTXT(maxLogs, numofDays, narrrative, custID, maxLines, outputFile))    // CORRECT NO SPACES AT THE -   CBELogAsTXT main method to call to get the data from the SQL DB in Azure
                 {
                     textBoxFilePath.Text = outputFile;
                 }
