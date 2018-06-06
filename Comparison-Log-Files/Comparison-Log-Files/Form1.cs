@@ -12,7 +12,7 @@ using System.Threading;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows.Forms.DataVisualization.Charting;
-using CBELogAsTXT;
+//using CBELogAsTXT;
 using System.Drawing.Drawing2D;
 
 namespace Comparison_Log_Files
@@ -482,31 +482,20 @@ namespace Comparison_Log_Files
 
         }
 
-        private void btnGetDatabasFile(object sender, EventArgs e)
+        private void btnGetDatabaseFile(object sender, EventArgs e)
         {
-            int maxLogs = Convert.ToInt32(textBoxMaxLogs.Text);
-            int numofDays = Convert.ToInt32(textBoxNumOfDays.Text);
-            if (textBoxCustID == null)
-            {
-                textBoxCustID.Text = "";
-            }
-            string custID = textBoxCustID.Text;
-            if (Convert.ToInt32(textBoxMaxLines.Text) < 5)
-            {
-                textBoxMaxLines.Text = "5";
-            }
-            int maxLines = Convert.ToInt32(textBoxMaxLines.Text);
-            if (textBoxNarrative.Text == null)
-            {
-                textBoxNarrative.Text = "Mid-Sale";
-            }
-            string narrrative = textBoxNarrative.Text;
-            string outputFile = textBoxOutputFileName.Text;
-           
+            DefaultDatabaseData();
+
+            int maxLogs = Convert.ToInt32(maxLogsNumericUpDown.Value);
+            int numofDays = Convert.ToInt32(NumOfDaysNumericUpDown.Value);
+            int maxLines = Convert.ToInt32(maxLinesNumericUpDown.Value);
+            string narrrative = tbxNarrative.Text;
+            string outputFile = tbxOutputFileName.Text;
+            string custID = tbxCustID.Text;
             SaveFileDialog sfdSaveSPTXT = new SaveFileDialog
             {
                 Filter = "TXT (*.txt)|*.txt",
-                FileName = ""
+                FileName = outputFile
             };
 
             if (sfdSaveSPTXT.ShowDialog(this).Equals(DialogResult.OK))     
@@ -515,7 +504,7 @@ namespace Comparison_Log_Files
                 LogAsTXT lat = new LogAsTXT();
                 textBoxFilePath.Text = "Working...";
                 Application.DoEvents();
-               
+
                 if (lat.GetLogAsTXT(maxLogs, numofDays, narrrative, custID, maxLines, outputFile))    // CORRECT NO SPACES AT THE -   CBELogAsTXT main method to call to get the data from the SQL DB in Azure
                 {
                     textBoxFilePath.Text = outputFile;
@@ -527,6 +516,20 @@ namespace Comparison_Log_Files
                 }
             }
 
+        }
+
+        private void DefaultDatabaseData()
+        {
+            
+            if (tbxNarrative.Text == "")
+            {
+                tbxNarrative.Text = "Unknown";
+            }
+            if (tbxOutputFileName.Text == "")
+            {
+                tbxOutputFileName.Text = "GetLogAsTxt";
+            }
+           
         }
 
         public bool GetLogAsTXT(int maxLogsToReturn, int timePeriodInDays, string searchNarrative, string custId, int maxLineCount, string outputFileName)
