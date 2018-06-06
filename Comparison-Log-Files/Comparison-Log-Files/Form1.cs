@@ -13,6 +13,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows.Forms.DataVisualization.Charting;
 using CBELogAsTXT;
+using System.Drawing.Drawing2D;
 
 namespace Comparison_Log_Files
 {
@@ -541,6 +542,12 @@ namespace Comparison_Log_Files
                 }
             }
             return result;
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+            LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle, Color.LightSlateGray, Color.LightSteelBlue, 135F);
+            e.Graphics.FillRectangle(brush, this.ClientRectangle);
         }
     }
 }
