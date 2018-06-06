@@ -32,6 +32,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CBELogAsTXT, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\CBELogAsTXT.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Controls.DataVisualization.Toolkit, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -56,6 +60,7 @@
     <Compile Include="ClusterDetailsForm.Designer.cs">
       <DependentUpon>ClusterDetailsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SQLDataSet.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

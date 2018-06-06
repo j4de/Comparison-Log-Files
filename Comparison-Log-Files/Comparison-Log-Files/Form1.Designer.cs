@@ -50,6 +50,7 @@
             this.pieChartInfoLabel = new System.Windows.Forms.Label();
             this.btnSaveProcessed = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.btnGetFromDatabase = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -98,6 +99,7 @@
             this.tableLayoutPanel1.Controls.Add(this.processButton, 16, 9);
             this.tableLayoutPanel1.Controls.Add(this.pieChartInfoLabel, 3, 8);
             this.tableLayoutPanel1.Controls.Add(this.btnSaveProcessed, 16, 16);
+            this.tableLayoutPanel1.Controls.Add(this.btnGetFromDatabase, 16, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -147,19 +149,15 @@
             // 
             // textBoxFilePath
             // 
-            this.textBoxFilePath.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxFilePath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.SetColumnSpan(this.textBoxFilePath, 13);
-            this.textBoxFilePath.Location = new System.Drawing.Point(83, 36);
+            this.textBoxFilePath.Location = new System.Drawing.Point(83, 39);
             this.textBoxFilePath.Name = "textBoxFilePath";
             this.textBoxFilePath.Size = new System.Drawing.Size(514, 20);
             this.textBoxFilePath.TabIndex = 2;
             // 
             // browseButton
             // 
-            this.browseButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.SetColumnSpan(this.browseButton, 3);
             this.browseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.browseButton.Location = new System.Drawing.Point(649, 36);
@@ -181,8 +179,6 @@
             // 
             // exitButton
             // 
-            this.exitButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.SetColumnSpan(this.exitButton, 3);
             this.exitButton.Location = new System.Drawing.Point(649, 597);
             this.exitButton.Name = "exitButton";
@@ -194,22 +190,20 @@
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(43, 33);
+            this.label1.Location = new System.Drawing.Point(45, 33);
             this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(0, 14, 0, 0);
-            this.label1.Size = new System.Drawing.Size(34, 33);
+            this.label1.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.label1.Size = new System.Drawing.Size(32, 33);
             this.label1.TabIndex = 10;
             this.label1.Text = "Log:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // chart1
             // 
-            this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.chart1.AntiAliasing = System.Windows.Forms.DataVisualization.Charting.AntiAliasingStyles.Text;
             chartArea1.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea1);
             this.tableLayoutPanel1.SetColumnSpan(this.chart1, 14);
@@ -232,8 +226,7 @@
             // 
             // listBoxDetails
             // 
-            this.listBoxDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.listBoxDetails.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.SetColumnSpan(this.listBoxDetails, 14);
             this.listBoxDetails.FormattingEnabled = true;
@@ -253,20 +246,17 @@
             // 
             // linesLabel
             // 
-            this.linesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.linesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.linesLabel.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.linesLabel, 3);
             this.linesLabel.Location = new System.Drawing.Point(649, 86);
             this.linesLabel.Name = "linesLabel";
-            this.linesLabel.Size = new System.Drawing.Size(108, 13);
+            this.linesLabel.Size = new System.Drawing.Size(88, 13);
             this.linesLabel.TabIndex = 11;
             this.linesLabel.Text = "Min Lines Length";
             // 
             // linesNumericUpDown
             // 
-            this.linesNumericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.SetColumnSpan(this.linesNumericUpDown, 3);
             this.linesNumericUpDown.Increment = new decimal(new int[] {
             5,
@@ -285,20 +275,17 @@
             // 
             // clusterLabel
             // 
-            this.clusterLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.clusterLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.clusterLabel.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.clusterLabel, 3);
             this.clusterLabel.Location = new System.Drawing.Point(649, 152);
             this.clusterLabel.Name = "clusterLabel";
-            this.clusterLabel.Size = new System.Drawing.Size(108, 13);
+            this.clusterLabel.Size = new System.Drawing.Size(59, 13);
             this.clusterLabel.TabIndex = 13;
             this.clusterLabel.Text = "Min Cluster";
             // 
             // clusterNumericUpDown
             // 
-            this.clusterNumericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.SetColumnSpan(this.clusterNumericUpDown, 3);
             this.clusterNumericUpDown.Location = new System.Drawing.Point(649, 168);
             this.clusterNumericUpDown.Name = "clusterNumericUpDown";
@@ -312,20 +299,17 @@
             // 
             // toleranceLabel
             // 
-            this.toleranceLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.toleranceLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.toleranceLabel.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.toleranceLabel, 3);
             this.toleranceLabel.Location = new System.Drawing.Point(649, 218);
             this.toleranceLabel.Name = "toleranceLabel";
-            this.toleranceLabel.Size = new System.Drawing.Size(108, 13);
+            this.toleranceLabel.Size = new System.Drawing.Size(92, 13);
             this.toleranceLabel.TabIndex = 12;
             this.toleranceLabel.Text = "Min Tolerance LD";
             // 
             // toleranceNumericUpDown
             // 
-            this.toleranceNumericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.SetColumnSpan(this.toleranceNumericUpDown, 3);
             this.toleranceNumericUpDown.Increment = new decimal(new int[] {
             5,
@@ -344,8 +328,6 @@
             // 
             // processButton
             // 
-            this.processButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.SetColumnSpan(this.processButton, 3);
             this.processButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.processButton.Location = new System.Drawing.Point(649, 300);
@@ -369,8 +351,6 @@
             // 
             // btnSaveProcessed
             // 
-            this.btnSaveProcessed.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.SetColumnSpan(this.btnSaveProcessed, 3);
             this.btnSaveProcessed.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaveProcessed.Location = new System.Drawing.Point(649, 531);
@@ -384,6 +364,17 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // btnGetFromDatabase
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.btnGetFromDatabase, 3);
+            this.btnGetFromDatabase.Location = new System.Drawing.Point(649, 3);
+            this.btnGetFromDatabase.Name = "btnGetFromDatabase";
+            this.btnGetFromDatabase.Size = new System.Drawing.Size(108, 23);
+            this.btnGetFromDatabase.TabIndex = 21;
+            this.btnGetFromDatabase.Text = "Get From Database";
+            this.btnGetFromDatabase.UseVisualStyleBackColor = true;
+            this.btnGetFromDatabase.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
@@ -425,6 +416,7 @@
         public System.Windows.Forms.Label labelPieChart;
         private System.Windows.Forms.Button btnSaveProcessed;
         private System.Windows.Forms.Label pieChartInfoLabel;
+        private System.Windows.Forms.Button btnGetFromDatabase;
     }
 }
 
