@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.mainLogLabel = new System.Windows.Forms.Label();
@@ -82,7 +82,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(443, 503);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(432, 443);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label1
@@ -90,10 +90,10 @@
             this.label1.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.label1, 9);
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(47, 0);
+            this.label1.Location = new System.Drawing.Point(46, 0);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.label1.Size = new System.Drawing.Size(299, 46);
+            this.label1.Size = new System.Drawing.Size(299, 44);
             this.label1.TabIndex = 0;
             this.label1.Text = "Cluster Details";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -104,7 +104,7 @@
             this.mainLogLabel.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.mainLogLabel, 2);
             this.mainLogLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mainLogLabel.Location = new System.Drawing.Point(47, 83);
+            this.mainLogLabel.Location = new System.Drawing.Point(46, 71);
             this.mainLogLabel.Name = "mainLogLabel";
             this.mainLogLabel.Size = new System.Drawing.Size(70, 17);
             this.mainLogLabel.TabIndex = 2;
@@ -116,7 +116,7 @@
             this.mainLogNameLabel.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.mainLogNameLabel, 2);
             this.mainLogNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mainLogNameLabel.Location = new System.Drawing.Point(132, 80);
+            this.mainLogNameLabel.Location = new System.Drawing.Point(129, 68);
             this.mainLogNameLabel.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.mainLogNameLabel.Name = "mainLogNameLabel";
             this.mainLogNameLabel.Size = new System.Drawing.Size(63, 20);
@@ -126,9 +126,9 @@
             // txtBoxApplication
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.txtBoxApplication, 4);
-            this.txtBoxApplication.Location = new System.Drawing.Point(47, 403);
+            this.txtBoxApplication.Location = new System.Drawing.Point(46, 355);
             this.txtBoxApplication.Name = "txtBoxApplication";
-            this.txtBoxApplication.Size = new System.Drawing.Size(170, 20);
+            this.txtBoxApplication.Size = new System.Drawing.Size(166, 20);
             this.txtBoxApplication.TabIndex = 6;
             // 
             // fileAppLabel
@@ -136,10 +136,10 @@
             this.fileAppLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.fileAppLabel.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.fileAppLabel, 6);
-            this.fileAppLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fileAppLabel.Location = new System.Drawing.Point(47, 375);
+            this.fileAppLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fileAppLabel.Location = new System.Drawing.Point(46, 330);
             this.fileAppLabel.Name = "fileAppLabel";
-            this.fileAppLabel.Size = new System.Drawing.Size(184, 25);
+            this.fileAppLabel.Size = new System.Drawing.Size(169, 22);
             this.fileAppLabel.TabIndex = 7;
             this.fileAppLabel.Text = "External Application";
             // 
@@ -149,7 +149,7 @@
             this.linesLabel.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.linesLabel, 2);
             this.linesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linesLabel.Location = new System.Drawing.Point(220, 83);
+            this.linesLabel.Location = new System.Drawing.Point(215, 71);
             this.linesLabel.Margin = new System.Windows.Forms.Padding(0);
             this.linesLabel.Name = "linesLabel";
             this.linesLabel.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
@@ -160,9 +160,9 @@
             // backToMainButton
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.backToMainButton, 2);
-            this.backToMainButton.Location = new System.Drawing.Point(311, 453);
+            this.backToMainButton.Location = new System.Drawing.Point(304, 399);
             this.backToMainButton.Name = "backToMainButton";
-            this.backToMainButton.Size = new System.Drawing.Size(82, 23);
+            this.backToMainButton.Size = new System.Drawing.Size(80, 23);
             this.backToMainButton.TabIndex = 9;
             this.backToMainButton.Text = "Back";
             this.backToMainButton.UseVisualStyleBackColor = true;
@@ -170,19 +170,19 @@
             // 
             // dgvClusterDetails
             // 
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvClusterDetails.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvClusterDetails.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvClusterDetails.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.dgvClusterDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanel1.SetColumnSpan(this.dgvClusterDetails, 8);
             this.dgvClusterDetails.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvClusterDetails.Location = new System.Drawing.Point(47, 103);
+            this.dgvClusterDetails.Location = new System.Drawing.Point(46, 91);
             this.dgvClusterDetails.MultiSelect = false;
             this.dgvClusterDetails.Name = "dgvClusterDetails";
             this.tableLayoutPanel1.SetRowSpan(this.dgvClusterDetails, 5);
             this.dgvClusterDetails.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvClusterDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvClusterDetails.Size = new System.Drawing.Size(346, 244);
+            this.dgvClusterDetails.Size = new System.Drawing.Size(338, 214);
             this.dgvClusterDetails.TabIndex = 10;
             // 
             // numberOfLinesLabel
@@ -191,7 +191,7 @@
             this.numberOfLinesLabel.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.numberOfLinesLabel, 2);
             this.numberOfLinesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numberOfLinesLabel.Location = new System.Drawing.Point(308, 80);
+            this.numberOfLinesLabel.Location = new System.Drawing.Point(301, 68);
             this.numberOfLinesLabel.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.numberOfLinesLabel.Name = "numberOfLinesLabel";
             this.numberOfLinesLabel.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
@@ -202,7 +202,7 @@
             // runComparisonButton
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.runComparisonButton, 3);
-            this.runComparisonButton.Location = new System.Drawing.Point(267, 403);
+            this.runComparisonButton.Location = new System.Drawing.Point(261, 355);
             this.runComparisonButton.Name = "runComparisonButton";
             this.runComparisonButton.Size = new System.Drawing.Size(123, 23);
             this.runComparisonButton.TabIndex = 8;
@@ -214,7 +214,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(443, 503);
+            this.ClientSize = new System.Drawing.Size(432, 443);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "ClusterDetailsForm";
             this.Text = "ClusterDetailsForm";
