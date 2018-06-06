@@ -63,7 +63,7 @@ namespace Comparison_Log_Files
                 int columnCount = 1;
                 bool endOfLog = false;
                 string[] filteredLogfile = new string[2];
-                string line = streamReader.ReadLine();
+                string line = "";// streamReader.ReadLine();
                 logFileData = line.Split('\n');
                 int lineCounter = 0;
                 bool ObtainingFound = false;
@@ -489,8 +489,12 @@ namespace Comparison_Log_Files
         private void button1_Click(object sender, EventArgs e)
         {
             string outputFile = "";
-            SaveFileDialog sfdSaveSPTXT = new SaveFileDialog();
-            
+            SaveFileDialog sfdSaveSPTXT = new SaveFileDialog
+            {
+                Filter = "TXT (*.txt)|*.txt",
+                FileName = ""
+            };
+
             if (sfdSaveSPTXT.ShowDialog(this).Equals(DialogResult.OK))     // SaveFileDialog
             {
                 outputFile = sfdSaveSPTXT.FileName;                 // FileName
@@ -499,11 +503,12 @@ namespace Comparison_Log_Files
 
                 textBoxFilePath.Text = "Working...";
                 Application.DoEvents();
-
-                outputFile = Path.GetDirectoryName(Application.ExecutablePath) + "\\SQLDataSet.txt";
+                //GetLogAsTXT(100, 32, "Mid - Sale", "", 200, outputFile);                                  // THIS IS NOT REQUIRED – DELETE OR COMMENT
+                //outputFile = Path.GetDirectoryName(Application.ExecutablePath) + "\\SQLDataSet.txt";           // THIS IS NOT REQUIRED – YOU’VE ALREADY SET THE FILENAME ABOVE sfdSave….
                 //if (lat.GetLogAsTXT((int)numMaxLogs.Value, (int)numDays.Value, txtSearch.Text, txtCustId.Text, (int)numMaxLines.Value, outputFile))
 
-                if (lat.GetLogAsTXT(100, 32, "Mid - Sale", "", 200, outputFile))    // CBELogAsTXT main method to call to get the data from the SQL DB in Azure
+                //if (lat.GetLogAsTXT(100, 32, "Mid - Sale", "", 200, outputFile))    // INCORRECT SPACES BETWEEN THE -  CHAR  -   CBELogAsTXT main method to call to get the data from the SQL DB in Azure
+                if (lat.GetLogAsTXT(100, 32, "Mid-Sale", "", 200, outputFile))    // CORRECT NO SPACES AT THE -   CBELogAsTXT main method to call to get the data from the SQL DB in Azure
                 {
                     textBoxFilePath.Text = outputFile;
                 }
@@ -514,6 +519,28 @@ namespace Comparison_Log_Files
                 }
             }
 
+        }
+
+        public bool GetLogAsTXT(int maxLogsToReturn, int timePeriodInDays, string searchNarrative, string custId, int maxLineCount, string outputFileName)
+        {
+            int maxlogs = maxLogsToReturn;
+            int time = timePeriodInDays;
+            string nar = searchNarrative;
+            string custid = custId;
+            int maxlines = maxLineCount;
+            string filename = outputFileName;
+            bool result = false;
+            if (maxlogs <= 100)
+            {
+                if (time <= 32)
+                {
+                    if (maxlines <= 200)
+                    {
+                        result = true;
+                    }
+                }
+            }
+            return result;
         }
     }
 }

@@ -72,34 +72,40 @@ namespace Comparison_Log_Files
         static extern IntPtr SetParent(IntPtr hwc, IntPtr hwp);
         private void RunComparisonBtn(object sender, EventArgs e)
         {
-            string mainLogName = "p"+mainLogNameLabel.Text.ToString()+ ".txt";
-            string selectedLogName = "p"+dgvClusterDetails.SelectedRows[0].Cells[0].Value.ToString()+".txt";
-            string dir = Directory.GetCurrentDirectory();
-            
-            string file1 = Path.Combine(dir, mainLogName);
-            string file2 = Path.Combine(dir, selectedLogName);
-
-            string app = "";
-            if (txtBoxApplication.Text != "")
+            if (dgvClusterDetails.SelectedRows.Count > 0)
             {
-                app = txtBoxApplication.Text;
-                try
-                {
-                    ProcessStartInfo startInfo = new ProcessStartInfo();
-                    startInfo.FileName = (app + ".exe");
-                    startInfo.Arguments = file1+" "+file2;
-                    Process.Start(startInfo);
-                    Thread.Sleep(1000);
+                string mainLogName = "p" + mainLogNameLabel.Text.ToString() + ".txt";
+                string selectedLogName = "p" + dgvClusterDetails.SelectedRows[0].Cells[0].Value.ToString() + ".txt";
+                string dir = Directory.GetCurrentDirectory();
 
-                }
-                catch (Win32Exception ex)
+                string file1 = Path.Combine(dir, mainLogName);
+                string file2 = Path.Combine(dir, selectedLogName);
+
+                string app = "";
+                if (txtBoxApplication.Text != "")
                 {
-                    MessageBox.Show(ex.ToString() + "\n\nAPPLICATION NOT FOUND !!\nPerhaps you misspelt it?");
+                    app = txtBoxApplication.Text;
+                    try
+                    {
+                        ProcessStartInfo startInfo = new ProcessStartInfo();
+                        startInfo.FileName = (app + ".exe");
+                        startInfo.Arguments = file1 + " " + file2;
+                        Process.Start(startInfo);
+                        Thread.Sleep(1000);
+
+                    }
+                    catch (Win32Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString() + "\n\nAPPLICATION NOT FOUND !!\nPerhaps you misspelt it?");
+                    }
                 }
+                else
+                    MessageBox.Show("Please enter the name of the application you wish to open");
             }
             else
-                MessageBox.Show("Please enter the name of the application you wish to open");
+                MessageBox.Show("No file to compare !!");
         }
+            
 
         
     }
