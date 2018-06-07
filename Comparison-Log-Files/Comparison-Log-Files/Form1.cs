@@ -271,7 +271,8 @@ namespace Comparison_Log_Files
                     {
                         if (matchedLog.LDvalue == 100)
                         {
-                            listBoxDetails.Items.Add(matchedLog.Name.ToString());
+                            listBoxDetails.Items.Add(matchedLog.Name.ToString() + "   Main Log = " + cluster.MainLog.Name.ToString());
+                            
                         }
                     }
                 }
@@ -284,7 +285,7 @@ namespace Comparison_Log_Files
                     {
                         if (matchedLog.LDvalue < 100 && matchedLog.LDvalue >= toleranceNumericUpDown.Value)
                         {
-                            listBoxDetails.Items.Add(matchedLog.Name + " LD = " + matchedLog.LDvalue.ToString() + "%");
+                            listBoxDetails.Items.Add(matchedLog.Name + " LD = " + matchedLog.LDvalue.ToString() + "%" + "   Main Log = " + cluster.MainLog.Name.ToString());
                             listBoxDetails.Items.Add("");
                         }
                     }
