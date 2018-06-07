@@ -12,7 +12,7 @@ using System.Threading;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows.Forms.DataVisualization.Charting;
-//using CBELogAsTXT;
+using CBELogAsTXT;
 using System.Drawing.Drawing2D;
 
 namespace Comparison_Log_Files
@@ -108,7 +108,7 @@ namespace Comparison_Log_Files
                             filteredLogfile[message] = logFileData[0].Substring(logFileData[0].LastIndexOf('|') + 1);
                         }
 
-                        if (lineCounter > 30)
+                        if (lineCounter > 200)
                         {
                             if (!ObtainingFound)
                             {
