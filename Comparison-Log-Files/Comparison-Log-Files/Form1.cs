@@ -193,8 +193,8 @@ namespace Comparison_Log_Files
                             if (LogList[nextindex].Signature == log.Signature)
                             {
                                 cluster.MatchedLogs.Add(LogList[nextindex]);
-
                             }
+
                             else
                             {
                                 source = log.Signature;
@@ -203,14 +203,12 @@ namespace Comparison_Log_Files
                                 if (result >= minTolerance)
                                 {
                                     LogList[nextindex].LDvalue = Convert.ToInt32(result);
-                                    cluster.MatchedLogs.Add(LogList[nextindex]);
+                                    cluster.MatchedLogs.Add(LogList[nextindex]);   
                                 }
                             }
                         }
-
                     }
-                    progress++;
-                    load.setFilterprogress(progress);
+                   
                     if (load.iscanceled())
                     {
                         load.Close();
@@ -224,7 +222,8 @@ namespace Comparison_Log_Files
                     clusterList.Add(cluster);
                 }
                 index++;
-
+                progress++;
+                load.setFilterprogress(progress);
             }
 
             foreach (var item in clusterList)
@@ -233,6 +232,7 @@ namespace Comparison_Log_Files
                 clusterLogsCount.Add(item.MatchedLogs.Count + 1);
                 foundClusteredLogs += item.MatchedLogs.Count + 1;
             }
+            
             ClusterPieChart();
             nonClusteredLogs = LogList.Count() - foundClusteredLogs;
 
@@ -263,23 +263,33 @@ namespace Comparison_Log_Files
                 }
                 listBoxDetails.Items.Add("----------------------------------");
                 listBoxDetails.Items.Add("Logs that match 100% : ");
-                foreach (var item in LogList)
+
+                foreach (var cluster in clusterList)
                 {
-                    if (item.LDvalue == 100)
+                    
+                    foreach (var matchedLog in cluster.MatchedLogs)
                     {
-                        listBoxDetails.Items.Add(item.Name);
+                        if (matchedLog.LDvalue == 100)
+                        {
+                            listBoxDetails.Items.Add(matchedLog.Name.ToString());
+                        }
                     }
                 }
                 listBoxDetails.Items.Add("----------------------------------");
                 listBoxDetails.Items.Add("Logs that match using Tolerance LD : ");
-                foreach (var item in LogList)
+                foreach (var cluster in clusterList)
                 {
-                    if (item.LDvalue < 100 && item.LDvalue >= toleranceNumericUpDown.Value)
+
+                    foreach (var matchedLog in cluster.MatchedLogs)
                     {
-                        listBoxDetails.Items.Add(item.Name + "   LD = " + item.LDvalue.ToString() + "%");
-                        listBoxDetails.Items.Add("");
+                        if (matchedLog.LDvalue < 100 && matchedLog.LDvalue >= toleranceNumericUpDown.Value)
+                        {
+                            listBoxDetails.Items.Add(matchedLog.Name + " LD = " + matchedLog.LDvalue.ToString() + "%");
+                            listBoxDetails.Items.Add("");
+                        }
                     }
                 }
+                
             }
             else
             {
