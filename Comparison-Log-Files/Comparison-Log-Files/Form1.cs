@@ -511,7 +511,7 @@ namespace Comparison_Log_Files
 
             if (sfdSaveSPTXT.ShowDialog(this).Equals(DialogResult.OK))     
             {
-                outputFile = sfdSaveSPTXT.FileName;                
+                outputFile = sfdSaveSPTXT.FileName;
                 LogAsTXT lat = new LogAsTXT();
                 textBoxFilePath.Text = "Working...";
                 Application.DoEvents();

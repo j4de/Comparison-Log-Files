@@ -82,6 +82,9 @@ namespace Comparison_Log_Files
                 string file2 = Path.Combine(dir, selectedLogName);
 
                 string app = "";
+
+               
+
                 if (txtBoxApplication.Text != "")
                 {
                     app = txtBoxApplication.Text;
@@ -90,6 +93,8 @@ namespace Comparison_Log_Files
                         ProcessStartInfo startInfo = new ProcessStartInfo();
                         startInfo.FileName = (app + ".exe");
                         startInfo.Arguments = file1 + " " + file2;
+                        //startInfo.UseShellExecute = false;
+                        //startInfo.RedirectStandardOutput = true;
                         Process.Start(startInfo);
                         Thread.Sleep(1000);
 
@@ -105,8 +110,16 @@ namespace Comparison_Log_Files
             else
                 MessageBox.Show("No file to compare !!");
         }
-            
 
-        
+        private void btnGetApp_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+
+                txtBoxApplication.Text = openFileDialog.FileName;
+
+            }
+        }
     }
 }
