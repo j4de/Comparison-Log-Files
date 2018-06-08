@@ -27,6 +27,16 @@ namespace Comparison_Log_Files
         {
             InitializeComponent();
             CenterToScreen();
+            SetToolTip();
+        }
+
+        private void SetToolTip()
+        {
+            ToolTip tip = new ToolTip();
+            tip.SetToolTip(this.chart1, "Click a pie chart item to view its details");
+            tip.SetToolTip(this.btnGetFromDatabase, "Review options before retrieving a file from Azure");
+            tip.SetToolTip(this.btnViewResults, "Process the log file and display the results");
+            tip.SetToolTip(this.browseButton, "Search for a log file on local directory");
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -130,7 +140,7 @@ namespace Comparison_Log_Files
                 CompareLogs();
             }
             else
-                MessageBox.Show("Are you sure the file exists??");
+                MessageBox.Show("Please choose a valid file.");
         }
 
         private void AddToLogListAndSave(ref string columnName, int message, DataTable logFileDataTable, string probId, int columnCount, ref bool endOfLog, string[] filteredLogfile)
@@ -475,16 +485,6 @@ namespace Comparison_Log_Files
             
         }
 
-        private void btnDetails_Click(object sender, EventArgs e)
-        {
-            //ClusterDetailsForm frm2 = new ClusterDetailsForm
-            //{
-            //    Owner = this
-            //};
-            ////frm2.LogName(cluster);
-            //frm2.ShowDialog();
-        }
-
         private void btnSaveListBoxDetails(object sender, EventArgs e)
         {
             SaveDetails(listBoxDetails);
@@ -568,5 +568,7 @@ namespace Comparison_Log_Files
             LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle, Color.LightSlateGray, Color.LightSteelBlue, 135F);
             e.Graphics.FillRectangle(brush, this.ClientRectangle);
         }
+
+        
     }
 }
