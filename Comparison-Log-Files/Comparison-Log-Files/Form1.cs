@@ -27,6 +27,16 @@ namespace Comparison_Log_Files
         {
             InitializeComponent();
             CenterToScreen();
+            SetToolTip();
+        }
+
+        private void SetToolTip()
+        {
+            ToolTip tip = new ToolTip();
+            tip.SetToolTip(this.chart1, "Click a pie chart item to view its details");
+            tip.SetToolTip(this.btnGetFromDatabase, "Review options before retrieving a file from Azure");
+            tip.SetToolTip(this.btnViewResults, "Process the log file and display the results");
+            tip.SetToolTip(this.browseButton, "Search for a log file on local directory");
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -64,7 +74,7 @@ namespace Comparison_Log_Files
                 int columnCount = 1;
                 bool endOfLog = false;
                 string[] filteredLogfile = new string[2];
-                string line = "";// streamReader.ReadLine();
+                string line = "";
                 logFileData = line.Split('\n');
                 int lineCounter = 0;
                 bool ObtainingFound = false;
@@ -127,12 +137,10 @@ namespace Comparison_Log_Files
                     AddToLogListAndSave(ref columnName, message, logFileDataTable, probId, columnCount, ref endOfLog, filteredLogfile);
                     lineCounter++;
                 }//end while loop 
-                
-                //MessageBox.Show("The log file has been processed");
                 CompareLogs();
             }
             else
-                MessageBox.Show("Are you sure the file exists??");
+                MessageBox.Show("Please choose a valid file.");
         }
 
         private void AddToLogListAndSave(ref string columnName, int message, DataTable logFileDataTable, string probId, int columnCount, ref bool endOfLog, string[] filteredLogfile)
@@ -257,33 +265,39 @@ namespace Comparison_Log_Files
 
                 listBoxDetails.Items.Add("----------------------------------");
                 listBoxDetails.Items.Add("Main Cluster Logs : ");
+                foreach (var item in clusterList)
+                {
+                    listBoxDetails.Items.Add(item.MainLog.Name.ToString());
+                }
+                listBoxDetails.Items.Add("----------------------------------");
+                listBoxDetails.Items.Add("Logs that match 100% : ");
+
                 foreach (var cluster in clusterList)
                 {
-                    listBoxDetails.Items.Add("");
-                    listBoxDetails.Items.Add(cluster.MainLog.Name.ToString() + " :");
-                    //listBoxDetails.Items.Add("--------------");
+                    
                     foreach (var matchedLog in cluster.MatchedLogs)
                     {
-                        listBoxDetails.Items.Add(matchedLog.Name + " LD = " + matchedLog.LDvalue.ToString() + "%");
+                        if (matchedLog.LDvalue == 100)
+                        {
+                            listBoxDetails.Items.Add(matchedLog.Name.ToString() + "   Main Log = " + cluster.MainLog.Name.ToString());
+                            
+                        }
                     }
                 }
-                
-                //listBoxDetails.Items.Add("----------------------------------");
-                //listBoxDetails.Items.Add("Logs Not In A Cluster : ");
-                //foreach (var item in LogList)
-                //{
-                //    foreach (var cluster in clusterList)
-                //    {
-                //        foreach (var matchedlog in cluster.MatchedLogs)
-                //        {
-                //            if (item.Name == matchedlog.Name)
-                //            {
-                //                break;
-                //            }
-                //        }
-                //        listBoxDetails.Items.Add(item.Name.ToString());
-                //    }
-                //}
+                listBoxDetails.Items.Add("----------------------------------");
+                listBoxDetails.Items.Add("Logs that match using Tolerance LD : ");
+                foreach (var cluster in clusterList)
+                {
+
+                    foreach (var matchedLog in cluster.MatchedLogs)
+                    {
+                        if (matchedLog.LDvalue < 100 && matchedLog.LDvalue >= toleranceNumericUpDown.Value)
+                        {
+                            listBoxDetails.Items.Add(matchedLog.Name + " LD = " + matchedLog.LDvalue.ToString() + "%" + "   Main Log = " + cluster.MainLog.Name.ToString());
+                            listBoxDetails.Items.Add("");
+                        }
+                    }
+                }
                 
             }
             else
@@ -320,7 +334,7 @@ namespace Comparison_Log_Files
 
         private void ClusterPieChart()
         {
-            pieChartInfoLabel.Text = "Select an item in the pie chart to view its details";
+            
             chart1.Series[0].ChartType = SeriesChartType.Pie;
             chart1.Series[0].Points.DataBindXY(clusterNames, clusterLogsCount);
             chart1.Legends[0].Enabled = true;
@@ -471,16 +485,6 @@ namespace Comparison_Log_Files
             
         }
 
-        private void btnDetails_Click(object sender, EventArgs e)
-        {
-            //ClusterDetailsForm frm2 = new ClusterDetailsForm
-            //{
-            //    Owner = this
-            //};
-            ////frm2.LogName(cluster);
-            //frm2.ShowDialog();
-        }
-
         private void btnSaveListBoxDetails(object sender, EventArgs e)
         {
             SaveDetails(listBoxDetails);
@@ -505,7 +509,7 @@ namespace Comparison_Log_Files
 
             if (sfdSaveSPTXT.ShowDialog(this).Equals(DialogResult.OK))     
             {
-                outputFile = sfdSaveSPTXT.FileName;                
+                outputFile = sfdSaveSPTXT.FileName;
                 LogAsTXT lat = new LogAsTXT();
                 textBoxFilePath.Text = "Working...";
                 Application.DoEvents();
@@ -564,5 +568,7 @@ namespace Comparison_Log_Files
             LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle, Color.LightSlateGray, Color.LightSteelBlue, 135F);
             e.Graphics.FillRectangle(brush, this.ClientRectangle);
         }
+
+        
     }
 }

@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.mainLogLabel = new System.Windows.Forms.Label();
             this.mainLogNameLabel = new System.Windows.Forms.Label();
             this.txtBoxApplication = new System.Windows.Forms.TextBox();
-            this.fileAppLabel = new System.Windows.Forms.Label();
             this.linesLabel = new System.Windows.Forms.Label();
-            this.backToMainButton = new System.Windows.Forms.Button();
             this.dgvClusterDetails = new System.Windows.Forms.DataGridView();
             this.numberOfLinesLabel = new System.Windows.Forms.Label();
+            this.backToMainButton = new System.Windows.Forms.Button();
             this.runComparisonButton = new System.Windows.Forms.Button();
+            this.btnGetApp = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClusterDetails)).BeginInit();
             this.SuspendLayout();
@@ -61,13 +61,13 @@
             this.tableLayoutPanel1.Controls.Add(this.label1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.mainLogLabel, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.mainLogNameLabel, 3, 1);
-            this.tableLayoutPanel1.Controls.Add(this.txtBoxApplication, 1, 8);
-            this.tableLayoutPanel1.Controls.Add(this.fileAppLabel, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.txtBoxApplication, 3, 8);
             this.tableLayoutPanel1.Controls.Add(this.linesLabel, 5, 1);
-            this.tableLayoutPanel1.Controls.Add(this.backToMainButton, 7, 9);
             this.tableLayoutPanel1.Controls.Add(this.dgvClusterDetails, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.numberOfLinesLabel, 7, 1);
-            this.tableLayoutPanel1.Controls.Add(this.runComparisonButton, 6, 8);
+            this.tableLayoutPanel1.Controls.Add(this.backToMainButton, 1, 9);
+            this.tableLayoutPanel1.Controls.Add(this.runComparisonButton, 7, 9);
+            this.tableLayoutPanel1.Controls.Add(this.btnGetApp, 1, 8);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -82,6 +82,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(432, 443);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -97,6 +98,7 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Cluster Details";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            
             // 
             // mainLogLabel
             // 
@@ -125,23 +127,11 @@
             // 
             // txtBoxApplication
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.txtBoxApplication, 4);
-            this.txtBoxApplication.Location = new System.Drawing.Point(46, 355);
+            this.tableLayoutPanel1.SetColumnSpan(this.txtBoxApplication, 6);
+            this.txtBoxApplication.Location = new System.Drawing.Point(132, 355);
             this.txtBoxApplication.Name = "txtBoxApplication";
-            this.txtBoxApplication.Size = new System.Drawing.Size(166, 20);
+            this.txtBoxApplication.Size = new System.Drawing.Size(252, 20);
             this.txtBoxApplication.TabIndex = 6;
-            // 
-            // fileAppLabel
-            // 
-            this.fileAppLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.fileAppLabel.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.fileAppLabel, 6);
-            this.fileAppLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fileAppLabel.Location = new System.Drawing.Point(46, 330);
-            this.fileAppLabel.Name = "fileAppLabel";
-            this.fileAppLabel.Size = new System.Drawing.Size(169, 22);
-            this.fileAppLabel.TabIndex = 7;
-            this.fileAppLabel.Text = "External Application";
             // 
             // linesLabel
             // 
@@ -157,21 +147,10 @@
             this.linesLabel.TabIndex = 4;
             this.linesLabel.Text = "Lines:";
             // 
-            // backToMainButton
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.backToMainButton, 2);
-            this.backToMainButton.Location = new System.Drawing.Point(304, 399);
-            this.backToMainButton.Name = "backToMainButton";
-            this.backToMainButton.Size = new System.Drawing.Size(80, 23);
-            this.backToMainButton.TabIndex = 9;
-            this.backToMainButton.Text = "Back";
-            this.backToMainButton.UseVisualStyleBackColor = true;
-            this.backToMainButton.Click += new System.EventHandler(this.backToMainButton_Click);
-            // 
             // dgvClusterDetails
             // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvClusterDetails.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvClusterDetails.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvClusterDetails.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.dgvClusterDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanel1.SetColumnSpan(this.dgvClusterDetails, 8);
@@ -199,16 +178,39 @@
             this.numberOfLinesLabel.TabIndex = 5;
             this.numberOfLinesLabel.Text = "1234567";
             // 
+            // backToMainButton
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.backToMainButton, 2);
+            this.backToMainButton.Location = new System.Drawing.Point(46, 399);
+            this.backToMainButton.Name = "backToMainButton";
+            this.backToMainButton.Size = new System.Drawing.Size(80, 23);
+            this.backToMainButton.TabIndex = 9;
+            this.backToMainButton.Text = "Back";
+            this.backToMainButton.UseVisualStyleBackColor = true;
+            this.backToMainButton.Click += new System.EventHandler(this.backToMainButton_Click);
+            // 
             // runComparisonButton
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.runComparisonButton, 3);
-            this.runComparisonButton.Location = new System.Drawing.Point(261, 355);
+            this.runComparisonButton.Location = new System.Drawing.Point(304, 399);
             this.runComparisonButton.Name = "runComparisonButton";
-            this.runComparisonButton.Size = new System.Drawing.Size(123, 23);
+            this.runComparisonButton.Size = new System.Drawing.Size(80, 23);
             this.runComparisonButton.TabIndex = 8;
             this.runComparisonButton.Text = "Run Comparison";
             this.runComparisonButton.UseVisualStyleBackColor = true;
             this.runComparisonButton.Click += new System.EventHandler(this.RunComparisonBtn);
+            this.AcceptButton = runComparisonButton;
+            // 
+            // btnGetApp
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.btnGetApp, 2);
+            this.btnGetApp.Location = new System.Drawing.Point(46, 355);
+            this.btnGetApp.Name = "btnGetApp";
+            this.btnGetApp.Size = new System.Drawing.Size(80, 23);
+            this.btnGetApp.TabIndex = 11;
+            this.btnGetApp.Text = "Get App";
+            this.btnGetApp.UseVisualStyleBackColor = true;
+            this.btnGetApp.Click += new System.EventHandler(this.btnGetApp_Click);
             // 
             // ClusterDetailsForm
             // 
@@ -232,11 +234,11 @@
         private System.Windows.Forms.Label mainLogLabel;
         private System.Windows.Forms.Label mainLogNameLabel;
         private System.Windows.Forms.TextBox txtBoxApplication;
-        private System.Windows.Forms.Label fileAppLabel;
         private System.Windows.Forms.Label numberOfLinesLabel;
         private System.Windows.Forms.Label linesLabel;
         private System.Windows.Forms.Button runComparisonButton;
         private System.Windows.Forms.Button backToMainButton;
         private System.Windows.Forms.DataGridView dgvClusterDetails;
+        private System.Windows.Forms.Button btnGetApp;
     }
 }
