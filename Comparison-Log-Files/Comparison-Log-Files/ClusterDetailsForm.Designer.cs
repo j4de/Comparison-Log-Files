@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.mainLogLabel = new System.Windows.Forms.Label();
             this.mainLogNameLabel = new System.Windows.Forms.Label();
             this.txtBoxApplication = new System.Windows.Forms.TextBox();
             this.linesLabel = new System.Windows.Forms.Label();
-            this.backToMainButton = new System.Windows.Forms.Button();
             this.dgvClusterDetails = new System.Windows.Forms.DataGridView();
             this.numberOfLinesLabel = new System.Windows.Forms.Label();
+            this.backToMainButton = new System.Windows.Forms.Button();
             this.runComparisonButton = new System.Windows.Forms.Button();
             this.btnGetApp = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
@@ -98,6 +98,7 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Cluster Details";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            
             // 
             // mainLogLabel
             // 
@@ -146,21 +147,10 @@
             this.linesLabel.TabIndex = 4;
             this.linesLabel.Text = "Lines:";
             // 
-            // backToMainButton
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.backToMainButton, 2);
-            this.backToMainButton.Location = new System.Drawing.Point(46, 399);
-            this.backToMainButton.Name = "backToMainButton";
-            this.backToMainButton.Size = new System.Drawing.Size(80, 23);
-            this.backToMainButton.TabIndex = 9;
-            this.backToMainButton.Text = "Back";
-            this.backToMainButton.UseVisualStyleBackColor = true;
-            this.backToMainButton.Click += new System.EventHandler(this.backToMainButton_Click);
-            // 
             // dgvClusterDetails
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvClusterDetails.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvClusterDetails.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvClusterDetails.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.dgvClusterDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanel1.SetColumnSpan(this.dgvClusterDetails, 8);
@@ -188,6 +178,17 @@
             this.numberOfLinesLabel.TabIndex = 5;
             this.numberOfLinesLabel.Text = "1234567";
             // 
+            // backToMainButton
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.backToMainButton, 2);
+            this.backToMainButton.Location = new System.Drawing.Point(46, 399);
+            this.backToMainButton.Name = "backToMainButton";
+            this.backToMainButton.Size = new System.Drawing.Size(80, 23);
+            this.backToMainButton.TabIndex = 9;
+            this.backToMainButton.Text = "Back";
+            this.backToMainButton.UseVisualStyleBackColor = true;
+            this.backToMainButton.Click += new System.EventHandler(this.backToMainButton_Click);
+            // 
             // runComparisonButton
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.runComparisonButton, 3);
@@ -198,6 +199,7 @@
             this.runComparisonButton.Text = "Run Comparison";
             this.runComparisonButton.UseVisualStyleBackColor = true;
             this.runComparisonButton.Click += new System.EventHandler(this.RunComparisonBtn);
+            this.AcceptButton = runComparisonButton;
             // 
             // btnGetApp
             // 

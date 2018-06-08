@@ -77,13 +77,9 @@ namespace Comparison_Log_Files
                 string mainLogName = "p" + mainLogNameLabel.Text.ToString() + ".txt";
                 string selectedLogName = "p" + dgvClusterDetails.SelectedRows[0].Cells[0].Value.ToString() + ".txt";
                 string dir = Directory.GetCurrentDirectory();
-
                 string file1 = Path.Combine(dir, mainLogName);
                 string file2 = Path.Combine(dir, selectedLogName);
-
                 string app = "";
-
-               
 
                 if (txtBoxApplication.Text != "")
                 {
@@ -91,17 +87,15 @@ namespace Comparison_Log_Files
                     try
                     {
                         ProcessStartInfo startInfo = new ProcessStartInfo();
-                        startInfo.FileName = (app + ".exe");
+                        startInfo.FileName = (app);
                         startInfo.Arguments = file1 + " " + file2;
-                        //startInfo.UseShellExecute = false;
-                        //startInfo.RedirectStandardOutput = true;
                         Process.Start(startInfo);
                         Thread.Sleep(1000);
 
                     }
-                    catch (Win32Exception ex)
+                    catch (Win32Exception)
                     {
-                        MessageBox.Show(ex.ToString() + "\n\nAPPLICATION NOT FOUND !!\nPerhaps you misspelt it?");
+                        MessageBox.Show("There seems to be a problem locating the application. Make sure the file path and is correct");
                     }
                 }
                 else
@@ -121,5 +115,7 @@ namespace Comparison_Log_Files
 
             }
         }
+
+       
     }
 }

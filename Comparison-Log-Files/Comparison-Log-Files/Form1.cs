@@ -64,7 +64,7 @@ namespace Comparison_Log_Files
                 int columnCount = 1;
                 bool endOfLog = false;
                 string[] filteredLogfile = new string[2];
-                string line = "";// streamReader.ReadLine();
+                string line = "";
                 logFileData = line.Split('\n');
                 int lineCounter = 0;
                 bool ObtainingFound = false;
@@ -127,8 +127,6 @@ namespace Comparison_Log_Files
                     AddToLogListAndSave(ref columnName, message, logFileDataTable, probId, columnCount, ref endOfLog, filteredLogfile);
                     lineCounter++;
                 }//end while loop 
-                
-                MessageBox.Show("The log file has been processed");
                 CompareLogs();
             }
             else
