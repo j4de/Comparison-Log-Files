@@ -324,7 +324,7 @@ namespace Comparison_Log_Files
 
         private void ClusterPieChart()
         {
-            pieChartInfoLabel.Text = "Select an item in the pie chart to view its details";
+            
             chart1.Series[0].ChartType = SeriesChartType.Pie;
             chart1.Series[0].Points.DataBindXY(clusterNames, clusterLogsCount);
             chart1.Legends[0].Enabled = true;
