@@ -95,7 +95,7 @@ namespace Comparison_Log_Files
                     }
                     catch (Win32Exception)
                     {
-                        MessageBox.Show("There seems to be a problem locating the application. Make sure the file path and is correct");
+                        MessageBox.Show("There seems to be a problem locating the application. Make sure the file path is correct");
                     }
                 }
                 else
