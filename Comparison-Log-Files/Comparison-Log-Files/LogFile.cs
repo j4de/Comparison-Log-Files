@@ -12,6 +12,8 @@ namespace Comparison_Log_Files
         public string Signature { get; set; }
         public int LDvalue { get; set; }
         public int NumOfLines { get; set; }
+        public string CustomerID { get; set; }
+        public string Version { get; set; }
         public LogFile()
         {
 

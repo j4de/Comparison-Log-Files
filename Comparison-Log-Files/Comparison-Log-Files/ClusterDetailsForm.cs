@@ -43,6 +43,8 @@ namespace Comparison_Log_Files
             tblClusterDetails.Columns.Add("Log File");
             tblClusterDetails.Columns.Add("Lines");
             tblClusterDetails.Columns.Add("LD");
+            tblClusterDetails.Columns.Add("CustomerID");
+            tblClusterDetails.Columns.Add("Version");
 
             foreach (Cluster item in clustListForm2)
             {
