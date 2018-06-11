@@ -267,37 +267,42 @@ namespace Comparison_Log_Files
                 listBoxDetails.Items.Add("Main Cluster Logs : ");
                 foreach (var item in clusterList)
                 {
+                    listBoxDetails.Items.Add("");
                     listBoxDetails.Items.Add(item.MainLog.Name.ToString());
+                    foreach (var matchedLog in item.MatchedLogs)
+                    {
+                        listBoxDetails.Items.Add(matchedLog.Name + " LD = " + matchedLog.LDvalue.ToString() + "%");
+                    }
                 }
-                listBoxDetails.Items.Add("----------------------------------");
-                listBoxDetails.Items.Add("Logs that match 100% : ");
+                //listBoxDetails.Items.Add("----------------------------------");
+                //listBoxDetails.Items.Add("Logs that match 100% : ");
 
-                foreach (var cluster in clusterList)
-                {
+                //foreach (var cluster in clusterList)
+                //{
                     
-                    foreach (var matchedLog in cluster.MatchedLogs)
-                    {
-                        if (matchedLog.LDvalue == 100)
-                        {
-                            listBoxDetails.Items.Add(matchedLog.Name.ToString() + "   Main Log = " + cluster.MainLog.Name.ToString());
+                //    foreach (var matchedLog in cluster.MatchedLogs)
+                //    {
+                //        if (matchedLog.LDvalue == 100)
+                //        {
+                //            listBoxDetails.Items.Add(matchedLog.Name.ToString() + "   Main Log = " + cluster.MainLog.Name.ToString());
                             
-                        }
-                    }
-                }
-                listBoxDetails.Items.Add("----------------------------------");
-                listBoxDetails.Items.Add("Logs that match using Tolerance LD : ");
-                foreach (var cluster in clusterList)
-                {
+                //        }
+                //    }
+                //}
+                //listBoxDetails.Items.Add("----------------------------------");
+                //listBoxDetails.Items.Add("Logs that match using Tolerance LD : ");
+                //foreach (var cluster in clusterList)
+                //{
 
-                    foreach (var matchedLog in cluster.MatchedLogs)
-                    {
-                        if (matchedLog.LDvalue < 100 && matchedLog.LDvalue >= toleranceNumericUpDown.Value)
-                        {
-                            listBoxDetails.Items.Add(matchedLog.Name + " LD = " + matchedLog.LDvalue.ToString() + "%" + "   Main Log = " + cluster.MainLog.Name.ToString());
-                            listBoxDetails.Items.Add("");
-                        }
-                    }
-                }
+                //    foreach (var matchedLog in cluster.MatchedLogs)
+                //    {
+                //        if (matchedLog.LDvalue < 100 && matchedLog.LDvalue >= toleranceNumericUpDown.Value)
+                //        {
+                //            listBoxDetails.Items.Add(matchedLog.Name + " LD = " + matchedLog.LDvalue.ToString() + "%" + "   Main Log = " + cluster.MainLog.Name.ToString());
+                //            listBoxDetails.Items.Add("");
+                //        }
+                //    }
+                //}
                 
             }
             else
