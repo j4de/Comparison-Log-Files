@@ -20,9 +20,10 @@ namespace Comparison_Log_Files
     public partial class Form1 : Form
     {
         List<LogFile> LogList = new List<LogFile>();
-        public List<Cluster> clusterList = new List<Cluster>();
+        List<Cluster> clusterList = new List<Cluster>();
         List<string> clusterNames = new List<string>();
         List<int> clusterLogsCount = new List<int>();
+
         public Form1()
         {
             InitializeComponent();
@@ -61,7 +62,14 @@ namespace Comparison_Log_Files
             string filePath = textBoxFilePath.Text;
             string columnName = "";
             int message = 0;
-           
+            string probId = "";
+            int columnCount = 1;
+            bool endOfLog = false;
+            string[] filteredLogfile = new string[2];
+            string line = "";
+            int lineCounter = 0;
+            bool ObtainingFound = false;
+
             DataTable logFileDataTable = new DataTable();
             logFileDataTable.Columns.Add("Message");
 
@@ -69,17 +77,9 @@ namespace Comparison_Log_Files
             {
                 StreamReader streamReader = new StreamReader(filePath);
                 string[] logFileData = new string[File.ReadAllLines(filePath).Length];
-
-                string probId = "";
-                int columnCount = 1;
-                bool endOfLog = false;
-                string[] filteredLogfile = new string[2];
-                string line = "";
+               
                 logFileData = line.Split('\n');
-                int lineCounter = 0;
-                bool ObtainingFound = false;
-
-                
+                            
                 while (!streamReader.EndOfStream)
                 {
                     line = streamReader.ReadLine();
@@ -254,18 +254,20 @@ namespace Comparison_Log_Files
         {
             if (clusterList.Count > 0)
             {
-                listBoxDetails.Items.Add("Number of lines : " + this.linesNumericUpDown.Text);
-                listBoxDetails.Items.Add("Minimum Cluster Size : " + this.clusterNumericUpDown.Text);
-                listBoxDetails.Items.Add("Tolerance Percentage : " + this.toleranceNumericUpDown.Text);
-                listBoxDetails.Items.Add("----------------------------------");
-                listBoxDetails.Items.Add("Total files : " + LogList.Count.ToString());
-                listBoxDetails.Items.Add("Total clusters: " + clusterLogsCount.Count().ToString());
-                listBoxDetails.Items.Add("Total files clustered: " + foundClusteredLogs.ToString());
-                listBoxDetails.Items.Add("Number of logs not in a cluster: " + nonClusteredLogs.ToString());
+                listBoxDetails.Items.Add("Number of lines....................." + this.linesNumericUpDown.Text);
+                listBoxDetails.Items.Add("Minimum Cluster Size............ " + this.clusterNumericUpDown.Text);
+                listBoxDetails.Items.Add("Tolerance Percentage......... " + this.toleranceNumericUpDown.Text);
+                listBoxDetails.Items.Add("==================================");
+                listBoxDetails.Items.Add("Total files............................. " + LogList.Count.ToString());
+                listBoxDetails.Items.Add("Total clusters........................ " + clusterLogsCount.Count().ToString());
+                listBoxDetails.Items.Add("Total files clustered.............. " + foundClusteredLogs.ToString());
+                listBoxDetails.Items.Add("Logs not in a cluster............. " + nonClusteredLogs.ToString());
 
                 
-                listBoxDetails.Items.Add("----------------------------------");
-                listBoxDetails.Items.Add("Clusters Found");
+                listBoxDetails.Items.Add("==================================");
+                listBoxDetails.Items.Add("");
+                listBoxDetails.Items.Add("  Clusters Found");
+                listBoxDetails.Items.Add("");
                 foreach (var item in clusterList)
                 {
                     listBoxDetails.Items.Add("==================================");
@@ -274,19 +276,17 @@ namespace Comparison_Log_Files
                     {
                         listBoxDetails.Items.Add("................."+matchedLog.Name + " LD = " + matchedLog.LDvalue.ToString() + "%");
                     }
-                }
-
-              
+                }           
                 
             }
             else
             {
-                listBoxDetails.Items.Add("------------No Clusters Found!-----------");
-                listBoxDetails.Items.Add("Number of lines : " + this.linesNumericUpDown.Text);
-                listBoxDetails.Items.Add("Minimum Cluster Size : " + this.clusterNumericUpDown.Text);
-                listBoxDetails.Items.Add("Tolerance Percentage : " + this.toleranceNumericUpDown.Text);
-                listBoxDetails.Items.Add("----------------------------------");
-                listBoxDetails.Items.Add("Total files : " + LogList.Count.ToString());
+                listBoxDetails.Items.Add("\n------------No Clusters Found!-----------\n");
+                listBoxDetails.Items.Add("  Number of lines      : " + this.linesNumericUpDown.Text);
+                listBoxDetails.Items.Add("  Minimum Cluster Size : " + this.clusterNumericUpDown.Text);
+                listBoxDetails.Items.Add("  Tolerance Percentage : " + this.toleranceNumericUpDown.Text);
+                listBoxDetails.Items.Add("-----------------------------------------");
+                listBoxDetails.Items.Add("  Total files          : " + LogList.Count.ToString());
             }
         }
 
@@ -534,11 +534,11 @@ namespace Comparison_Log_Files
             int maxlines = maxLineCount;
             string filename = outputFileName;
             bool result = false;
-            if (maxlogs <= 100)
+            if (maxlogs <= 1000)
             {
                 if (time <= 32)
                 {
-                    if (maxlines <= 200)
+                    if (maxlines <= 2000)
                     {
                         result = true;
                     }
