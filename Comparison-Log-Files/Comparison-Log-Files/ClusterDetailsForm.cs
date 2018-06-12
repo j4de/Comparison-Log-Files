@@ -43,6 +43,8 @@ namespace Comparison_Log_Files
             tblClusterDetails.Columns.Add("Log File");
             tblClusterDetails.Columns.Add("Lines");
             tblClusterDetails.Columns.Add("LD");
+            tblClusterDetails.Columns.Add("CustomerID");
+            tblClusterDetails.Columns.Add("Version");
 
             foreach (Cluster item in clustListForm2)
             {
@@ -95,7 +97,7 @@ namespace Comparison_Log_Files
                     }
                     catch (Win32Exception)
                     {
-                        MessageBox.Show("There seems to be a problem locating the application. Make sure the file path and is correct");
+                        MessageBox.Show("There seems to be a problem locating the application. Make sure the file path is correct");
                     }
                 }
                 else
