@@ -23,7 +23,6 @@ namespace Comparison_Log_Files
         {
             
             InitializeComponent();
-
             //Set default
             txtBoxApplication.Text = "Winmerge";
             CenterToScreen();

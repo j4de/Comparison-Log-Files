@@ -263,46 +263,30 @@ namespace Comparison_Log_Files
                 listBoxDetails.Items.Add("Total files clustered: " + foundClusteredLogs.ToString());
                 listBoxDetails.Items.Add("Number of logs not in a cluster: " + nonClusteredLogs.ToString());
 
+                
                 listBoxDetails.Items.Add("----------------------------------");
-                listBoxDetails.Items.Add("Main Cluster Logs : ");
+                listBoxDetails.Items.Add("Clusters Found");
                 foreach (var item in clusterList)
                 {
-                    listBoxDetails.Items.Add(item.MainLog.Name.ToString());
-                }
-                listBoxDetails.Items.Add("----------------------------------");
-                listBoxDetails.Items.Add("Logs that match 100% : ");
-
-                foreach (var cluster in clusterList)
-                {
-                    
-                    foreach (var matchedLog in cluster.MatchedLogs)
+                    listBoxDetails.Items.Add("==================================");
+                    listBoxDetails.Items.Add("Main Log: "+item.MainLog.Name.ToString());
+                    foreach (var matchedLog in item.MatchedLogs)
                     {
-                        if (matchedLog.LDvalue == 100)
-                        {
-                            listBoxDetails.Items.Add(matchedLog.Name.ToString() + "   Main Log = " + cluster.MainLog.Name.ToString());
-                            
-                        }
+                        listBoxDetails.Items.Add("................."+matchedLog.Name + " LD = " + matchedLog.LDvalue.ToString() + "%");
                     }
                 }
-                listBoxDetails.Items.Add("----------------------------------");
-                listBoxDetails.Items.Add("Logs that match using Tolerance LD : ");
-                foreach (var cluster in clusterList)
-                {
 
-                    foreach (var matchedLog in cluster.MatchedLogs)
-                    {
-                        if (matchedLog.LDvalue < 100 && matchedLog.LDvalue >= toleranceNumericUpDown.Value)
-                        {
-                            listBoxDetails.Items.Add(matchedLog.Name + " LD = " + matchedLog.LDvalue.ToString() + "%" + "   Main Log = " + cluster.MainLog.Name.ToString());
-                            listBoxDetails.Items.Add("");
-                        }
-                    }
-                }
+              
                 
             }
             else
             {
-                listBoxDetails.Items.Add("No Clusters Found!");
+                listBoxDetails.Items.Add("------------No Clusters Found!-----------");
+                listBoxDetails.Items.Add("Number of lines : " + this.linesNumericUpDown.Text);
+                listBoxDetails.Items.Add("Minimum Cluster Size : " + this.clusterNumericUpDown.Text);
+                listBoxDetails.Items.Add("Tolerance Percentage : " + this.toleranceNumericUpDown.Text);
+                listBoxDetails.Items.Add("----------------------------------");
+                listBoxDetails.Items.Add("Total files : " + LogList.Count.ToString());
             }
         }
 
