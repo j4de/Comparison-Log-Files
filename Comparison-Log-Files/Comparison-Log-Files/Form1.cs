@@ -477,14 +477,26 @@ namespace Comparison_Log_Files
 
         private void btnGetDatabaseFile(object sender, EventArgs e)
         {
+            
             DefaultDatabaseData();
+
+            LogAsTXT lat = new LogAsTXT();
+            List<String> lstNarratives = lat.GetNarratives(32);
+            List<String> lstProbCusts = lat.GetProblemCustomerRefs(new List<String>() { "1234567", "1234568", "1234569" });
+            
+
 
             int maxLogs = Convert.ToInt32(maxLogsNumericUpDown.Value);
             int numofDays = Convert.ToInt32(NumOfDaysNumericUpDown.Value);
             int maxLines = Convert.ToInt32(maxLinesNumericUpDown.Value);
             string narrrative = tbxNarrative.Text;
             string outputFile = tbxOutputFileName.Text;
-            string custID = tbxCustID.Text;
+            string custID = "";
+            if (comboBoxCustomerID.SelectedItem != null)
+            {
+                custID = comboBoxCustomerID.SelectedItem.ToString();
+            }
+            
             SaveFileDialog sfdSaveSPTXT = new SaveFileDialog
             {
                 Filter = "TXT (*.txt)|*.txt",
@@ -494,10 +506,10 @@ namespace Comparison_Log_Files
             if (sfdSaveSPTXT.ShowDialog(this).Equals(DialogResult.OK))     
             {
                 outputFile = sfdSaveSPTXT.FileName;
-                LogAsTXT lat = new LogAsTXT();
+                
                 textBoxFilePath.Text = "Working...";
                 Application.DoEvents();
-
+                
                 if (lat.GetLogAsTXT(maxLogs, numofDays, narrrative, custID, maxLines, outputFile))    // CORRECT NO SPACES AT THE -   CBELogAsTXT main method to call to get the data from the SQL DB in Azure
                 {
                     textBoxFilePath.Text = outputFile;
@@ -507,7 +519,9 @@ namespace Comparison_Log_Files
                     MessageBox.Show("CallSP Error:" + lat.GetLastError());
                     textBoxFilePath.Text = "Call SP Error..." + lat.GetLastError();
                 }
+                
             }
+
 
         }
 
@@ -553,6 +567,15 @@ namespace Comparison_Log_Files
             e.Graphics.FillRectangle(brush, this.ClientRectangle);
         }
 
-        
+        private void comboBoxCustomerID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LogAsTXT lat = new LogAsTXT();
+            List<String> lstCusts = lat.GetCustomerList();
+            foreach (var customer in lstCusts)
+            {
+                comboBoxCustomerID.Items.Add(customer);
+            }
+            
+        }
     }
 }

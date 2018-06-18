@@ -60,9 +60,8 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CBELogAsTXT, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>\\server-1\Public\declan martin\CBELogAsTXT.dll</HintPath>
+    <Reference Include="CBELogAsTXT">
+      <HintPath>bin\Debug\CBELogAsTXT.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
