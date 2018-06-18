@@ -577,5 +577,11 @@ namespace Comparison_Log_Files
             }
             
         }
+
+        private void Automation_Settings_Click(object sender, EventArgs e)
+        {
+            AutomationForm autof = new AutomationForm();
+            autof.Show();
+        }
     }
 }

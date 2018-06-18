@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            this.Automation = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridViewFiles = new System.Windows.Forms.DataGridView();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.listBoxDetails = new System.Windows.Forms.ListBox();
@@ -40,6 +40,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxFilePath = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.comboBoxCustomerID = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.labelNarrative = new System.Windows.Forms.Label();
             this.tbxNarrative = new System.Windows.Forms.TextBox();
@@ -68,8 +69,8 @@
             this.lableHeading = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.comboBoxCustomerID = new System.Windows.Forms.ComboBox();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.Automation_Settings = new System.Windows.Forms.Button();
+            this.Automation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -82,79 +83,80 @@
             ((System.ComponentModel.ISupportInitialize)(this.linesNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
-            // tableLayoutPanel1
+            // Automation
             // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPanel1.ColumnCount = 20;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.243543F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.656826F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.125F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.875F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.904059F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.751825F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.576642F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.321168F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.79562F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.591241F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2.335766F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.21168F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0.5839416F));
-            this.tableLayoutPanel1.Controls.Add(this.dataGridViewFiles, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.chart1, 1, 12);
-            this.tableLayoutPanel1.Controls.Add(this.listBoxDetails, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.labelPieChart, 9, 11);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.textBoxFilePath, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 13, 2);
-            this.tableLayoutPanel1.Controls.Add(this.panel2, 13, 13);
-            this.tableLayoutPanel1.Controls.Add(this.exitButton, 17, 22);
-            this.tableLayoutPanel1.Controls.Add(this.btnSaveProcessed, 12, 22);
-            this.tableLayoutPanel1.Controls.Add(this.browseButton, 13, 1);
-            this.tableLayoutPanel1.Controls.Add(this.lableHeading, 5, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 24;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.300485F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.523425F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.931973F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.555556F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.962963F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.851852F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.363368F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.361874F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.877221F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.71567F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.55412F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.01034F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.877221F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.877221F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.71567F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.55412F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.50081F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.022157F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.462585F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.931973F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.272109F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1370, 691);
-            this.tableLayoutPanel1.TabIndex = 0;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
+            this.Automation.BackColor = System.Drawing.Color.Transparent;
+            this.Automation.ColumnCount = 20;
+            this.Automation.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3F));
+            this.Automation.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.243543F));
+            this.Automation.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.656826F));
+            this.Automation.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.125F));
+            this.Automation.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.875F));
+            this.Automation.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.Automation.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.Automation.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.Automation.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.Automation.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.Automation.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.904059F));
+            this.Automation.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.751825F));
+            this.Automation.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.576642F));
+            this.Automation.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.321168F));
+            this.Automation.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.79562F));
+            this.Automation.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.591241F));
+            this.Automation.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2.335766F));
+            this.Automation.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.Automation.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.21168F));
+            this.Automation.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0.5839416F));
+            this.Automation.Controls.Add(this.dataGridViewFiles, 0, 0);
+            this.Automation.Controls.Add(this.chart1, 1, 12);
+            this.Automation.Controls.Add(this.listBoxDetails, 1, 2);
+            this.Automation.Controls.Add(this.labelPieChart, 9, 11);
+            this.Automation.Controls.Add(this.label1, 1, 1);
+            this.Automation.Controls.Add(this.textBoxFilePath, 2, 1);
+            this.Automation.Controls.Add(this.panel1, 13, 2);
+            this.Automation.Controls.Add(this.panel2, 13, 13);
+            this.Automation.Controls.Add(this.exitButton, 17, 22);
+            this.Automation.Controls.Add(this.btnSaveProcessed, 12, 22);
+            this.Automation.Controls.Add(this.browseButton, 13, 1);
+            this.Automation.Controls.Add(this.lableHeading, 5, 0);
+            this.Automation.Controls.Add(this.Automation_Settings, 18, 1);
+            this.Automation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Automation.Location = new System.Drawing.Point(0, 0);
+            this.Automation.Name = "Automation";
+            this.Automation.RowCount = 24;
+            this.Automation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.300485F));
+            this.Automation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.523425F));
+            this.Automation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.931973F));
+            this.Automation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.555556F));
+            this.Automation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.962963F));
+            this.Automation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.851852F));
+            this.Automation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.363368F));
+            this.Automation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.361874F));
+            this.Automation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.877221F));
+            this.Automation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.71567F));
+            this.Automation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.55412F));
+            this.Automation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.01034F));
+            this.Automation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.877221F));
+            this.Automation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.877221F));
+            this.Automation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.71567F));
+            this.Automation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.55412F));
+            this.Automation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.50081F));
+            this.Automation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.022157F));
+            this.Automation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.462585F));
+            this.Automation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.931973F));
+            this.Automation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.272109F));
+            this.Automation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.Automation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.Automation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.Automation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.Automation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.Automation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.Automation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.Automation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.Automation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.Automation.Size = new System.Drawing.Size(1370, 691);
+            this.Automation.TabIndex = 0;
+            this.Automation.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // dataGridViewFiles
             // 
@@ -169,20 +171,20 @@
             // 
             this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.chart1.AntiAliasing = System.Windows.Forms.DataVisualization.Charting.AntiAliasingStyles.Text;
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
-            this.tableLayoutPanel1.SetColumnSpan(this.chart1, 10);
-            legend3.Name = "Legend1";
-            this.chart1.Legends.Add(legend3);
+            chartArea6.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea6);
+            this.Automation.SetColumnSpan(this.chart1, 10);
+            legend6.Name = "Legend1";
+            this.chart1.Legends.Add(legend6);
             this.chart1.Location = new System.Drawing.Point(43, 348);
             this.chart1.Name = "chart1";
-            this.tableLayoutPanel1.SetRowSpan(this.chart1, 12);
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series3.IsValueShownAsLabel = true;
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chart1.Series.Add(series3);
+            this.Automation.SetRowSpan(this.chart1, 12);
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series6.IsValueShownAsLabel = true;
+            series6.Legend = "Legend1";
+            series6.Name = "Series1";
+            this.chart1.Series.Add(series6);
             this.chart1.Size = new System.Drawing.Size(700, 322);
             this.chart1.TabIndex = 15;
             this.chart1.Text = "chart1";
@@ -194,12 +196,12 @@
             this.listBoxDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.SetColumnSpan(this.listBoxDetails, 10);
+            this.Automation.SetColumnSpan(this.listBoxDetails, 10);
             this.listBoxDetails.FormattingEnabled = true;
             this.listBoxDetails.Location = new System.Drawing.Point(43, 77);
             this.listBoxDetails.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.listBoxDetails.Name = "listBoxDetails";
-            this.tableLayoutPanel1.SetRowSpan(this.listBoxDetails, 10);
+            this.Automation.SetRowSpan(this.listBoxDetails, 10);
             this.listBoxDetails.Size = new System.Drawing.Size(700, 238);
             this.listBoxDetails.TabIndex = 16;
             // 
@@ -228,7 +230,7 @@
             this.textBoxFilePath.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.SetColumnSpan(this.textBoxFilePath, 9);
+            this.Automation.SetColumnSpan(this.textBoxFilePath, 9);
             this.textBoxFilePath.Location = new System.Drawing.Point(100, 46);
             this.textBoxFilePath.Margin = new System.Windows.Forms.Padding(3, 7, 3, 3);
             this.textBoxFilePath.Name = "textBoxFilePath";
@@ -239,7 +241,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.Beige;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.tableLayoutPanel1.SetColumnSpan(this.panel1, 6);
+            this.Automation.SetColumnSpan(this.panel1, 6);
             this.panel1.Controls.Add(this.comboBoxCustomerID);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.labelNarrative);
@@ -256,9 +258,18 @@
             this.panel1.Controls.Add(this.maxLogsNumericUpDown);
             this.panel1.Location = new System.Drawing.Point(820, 70);
             this.panel1.Name = "panel1";
-            this.tableLayoutPanel1.SetRowSpan(this.panel1, 10);
+            this.Automation.SetRowSpan(this.panel1, 10);
             this.panel1.Size = new System.Drawing.Size(524, 245);
             this.panel1.TabIndex = 44;
+            // 
+            // comboBoxCustomerID
+            // 
+            this.comboBoxCustomerID.FormattingEnabled = true;
+            this.comboBoxCustomerID.Location = new System.Drawing.Point(8, 61);
+            this.comboBoxCustomerID.Name = "comboBoxCustomerID";
+            this.comboBoxCustomerID.Size = new System.Drawing.Size(506, 21);
+            this.comboBoxCustomerID.TabIndex = 45;
+            this.comboBoxCustomerID.SelectedIndexChanged += new System.EventHandler(this.comboBoxCustomerID_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -461,7 +472,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.Beige;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.tableLayoutPanel1.SetColumnSpan(this.panel2, 6);
+            this.Automation.SetColumnSpan(this.panel2, 6);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.clusterLabel);
             this.panel2.Controls.Add(this.clusterNumericUpDown);
@@ -472,7 +483,7 @@
             this.panel2.Controls.Add(this.btnViewResults);
             this.panel2.Location = new System.Drawing.Point(820, 354);
             this.panel2.Name = "panel2";
-            this.tableLayoutPanel1.SetRowSpan(this.panel2, 5);
+            this.Automation.SetRowSpan(this.panel2, 5);
             this.panel2.Size = new System.Drawing.Size(524, 159);
             this.panel2.TabIndex = 45;
             // 
@@ -584,7 +595,7 @@
             // exitButton
             // 
             this.exitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.SetColumnSpan(this.exitButton, 2);
+            this.Automation.SetColumnSpan(this.exitButton, 2);
             this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exitButton.Location = new System.Drawing.Point(1249, 646);
             this.exitButton.Name = "exitButton";
@@ -597,7 +608,7 @@
             // btnSaveProcessed
             // 
             this.btnSaveProcessed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.SetColumnSpan(this.btnSaveProcessed, 2);
+            this.Automation.SetColumnSpan(this.btnSaveProcessed, 2);
             this.btnSaveProcessed.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaveProcessed.Location = new System.Drawing.Point(823, 646);
             this.btnSaveProcessed.Name = "btnSaveProcessed";
@@ -624,7 +635,7 @@
             // 
             this.lableHeading.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lableHeading.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.lableHeading, 11);
+            this.Automation.SetColumnSpan(this.lableHeading, 11);
             this.lableHeading.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lableHeading.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lableHeading.Location = new System.Drawing.Point(352, 5);
@@ -638,25 +649,26 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // comboBoxCustomerID
+            // Automation_Settings
             // 
-            this.comboBoxCustomerID.FormattingEnabled = true;
-            this.comboBoxCustomerID.Location = new System.Drawing.Point(8, 61);
-            this.comboBoxCustomerID.Name = "comboBoxCustomerID";
-            this.comboBoxCustomerID.Size = new System.Drawing.Size(506, 21);
-            this.comboBoxCustomerID.TabIndex = 45;
-            this.comboBoxCustomerID.SelectedIndexChanged += new System.EventHandler(this.comboBoxCustomerID_SelectedIndexChanged);
+            this.Automation_Settings.Location = new System.Drawing.Point(1180, 42);
+            this.Automation_Settings.Name = "Automation_Settings";
+            this.Automation_Settings.Size = new System.Drawing.Size(171, 22);
+            this.Automation_Settings.TabIndex = 46;
+            this.Automation_Settings.Text = "Automation Settings";
+            this.Automation_Settings.UseVisualStyleBackColor = true;
+            this.Automation_Settings.Click += new System.EventHandler(this.Automation_Settings_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 691);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.Automation);
             this.Name = "Form1";
             this.Text = "Log Cluster Utility";
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.Automation.ResumeLayout(false);
+            this.Automation.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFiles)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -675,7 +687,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel Automation;
         private System.Windows.Forms.DataGridView dataGridViewFiles;
         private System.Windows.Forms.Button browseButton;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
@@ -712,6 +724,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboBoxCustomerID;
+        private System.Windows.Forms.Button Automation_Settings;
     }
 }
 
