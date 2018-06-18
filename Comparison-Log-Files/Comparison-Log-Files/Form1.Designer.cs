@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridViewFiles = new System.Windows.Forms.DataGridView();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -40,9 +40,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxFilePath = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.comboBoxNarrative = new System.Windows.Forms.ComboBox();
+            this.comboBoxCustomerID = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.labelNarrative = new System.Windows.Forms.Label();
-            this.tbxNarrative = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.NumOfDaysNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.maxLinesNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -68,7 +69,6 @@
             this.lableHeading = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.comboBoxCustomerID = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -169,20 +169,20 @@
             // 
             this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.chart1.AntiAliasing = System.Windows.Forms.DataVisualization.Charting.AntiAliasingStyles.Text;
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
             this.tableLayoutPanel1.SetColumnSpan(this.chart1, 10);
-            legend3.Name = "Legend1";
-            this.chart1.Legends.Add(legend3);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(43, 348);
             this.chart1.Name = "chart1";
             this.tableLayoutPanel1.SetRowSpan(this.chart1, 12);
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series3.IsValueShownAsLabel = true;
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chart1.Series.Add(series3);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.IsValueShownAsLabel = true;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(700, 322);
             this.chart1.TabIndex = 15;
             this.chart1.Text = "chart1";
@@ -240,10 +240,10 @@
             this.panel1.BackColor = System.Drawing.Color.Beige;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tableLayoutPanel1.SetColumnSpan(this.panel1, 6);
+            this.panel1.Controls.Add(this.comboBoxNarrative);
             this.panel1.Controls.Add(this.comboBoxCustomerID);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.labelNarrative);
-            this.panel1.Controls.Add(this.tbxNarrative);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.NumOfDaysNumericUpDown);
             this.panel1.Controls.Add(this.maxLinesNumericUpDown);
@@ -259,6 +259,24 @@
             this.tableLayoutPanel1.SetRowSpan(this.panel1, 10);
             this.panel1.Size = new System.Drawing.Size(524, 245);
             this.panel1.TabIndex = 44;
+            // 
+            // comboBoxNarrative
+            // 
+            this.comboBoxNarrative.FormattingEnabled = true;
+            this.comboBoxNarrative.Location = new System.Drawing.Point(8, 102);
+            this.comboBoxNarrative.Name = "comboBoxNarrative";
+            this.comboBoxNarrative.Size = new System.Drawing.Size(506, 21);
+            this.comboBoxNarrative.TabIndex = 46;
+            this.comboBoxNarrative.Click += new System.EventHandler(this.comboBoxNarrative_Clicked);
+            // 
+            // comboBoxCustomerID
+            // 
+            this.comboBoxCustomerID.FormattingEnabled = true;
+            this.comboBoxCustomerID.Location = new System.Drawing.Point(8, 61);
+            this.comboBoxCustomerID.Name = "comboBoxCustomerID";
+            this.comboBoxCustomerID.Size = new System.Drawing.Size(506, 21);
+            this.comboBoxCustomerID.TabIndex = 45;
+            this.comboBoxCustomerID.Click += new System.EventHandler(this.comboBoxCustomerID_Click);
             // 
             // label3
             // 
@@ -284,17 +302,6 @@
             this.labelNarrative.Size = new System.Drawing.Size(50, 13);
             this.labelNarrative.TabIndex = 30;
             this.labelNarrative.Text = "Narrative";
-            // 
-            // tbxNarrative
-            // 
-            this.tbxNarrative.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbxNarrative.Location = new System.Drawing.Point(7, 101);
-            this.tbxNarrative.Margin = new System.Windows.Forms.Padding(3, 3, 5, 3);
-            this.tbxNarrative.Name = "tbxNarrative";
-            this.tbxNarrative.Size = new System.Drawing.Size(506, 20);
-            this.tbxNarrative.TabIndex = 39;
             // 
             // label2
             // 
@@ -638,15 +645,6 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // comboBoxCustomerID
-            // 
-            this.comboBoxCustomerID.FormattingEnabled = true;
-            this.comboBoxCustomerID.Location = new System.Drawing.Point(8, 61);
-            this.comboBoxCustomerID.Name = "comboBoxCustomerID";
-            this.comboBoxCustomerID.Size = new System.Drawing.Size(506, 21);
-            this.comboBoxCustomerID.TabIndex = 45;
-            this.comboBoxCustomerID.SelectedIndexChanged += new System.EventHandler(this.comboBoxCustomerID_SelectedIndexChanged);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -699,7 +697,6 @@
         private System.Windows.Forms.Label labelNarrative;
         private System.Windows.Forms.Label labelNumOfDays;
         private System.Windows.Forms.Label lbMaxLogs;
-        private System.Windows.Forms.TextBox tbxNarrative;
         private System.Windows.Forms.NumericUpDown maxLinesNumericUpDown;
         private System.Windows.Forms.NumericUpDown NumOfDaysNumericUpDown;
         private System.Windows.Forms.NumericUpDown maxLogsNumericUpDown;
@@ -712,6 +709,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboBoxCustomerID;
+        private System.Windows.Forms.ComboBox comboBoxNarrative;
     }
 }
 

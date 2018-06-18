@@ -23,12 +23,19 @@ namespace Comparison_Log_Files
         List<Cluster> clusterList = new List<Cluster>();
         List<string> clusterNames = new List<string>();
         List<int> clusterLogsCount = new List<int>();
+        List<string> customerNamesList = new List<string>();
+        string custIDNumber = "";
+        string fullCustomerName = "";
+        bool comboCustomerIdClicked = false;
+        bool comboNarrativeIdClicked = false;
+        
 
         public Form1()
         {
             InitializeComponent();
             CenterToScreen();
             SetToolTip();
+
         }
 
         private void SetToolTip()
@@ -55,6 +62,7 @@ namespace Comparison_Log_Files
 
         private void processButton_Click(object sender, EventArgs e)
         {
+            
             LogList.Clear();
             clusterList.Clear();
             clusterNames.Clear();
@@ -118,7 +126,7 @@ namespace Comparison_Log_Files
                             filteredLogfile[message] = logFileData[0].Substring(logFileData[0].LastIndexOf('|') + 1);
                         }
 
-                        if (lineCounter > 200)
+                        if (lineCounter > 500)
                         {
                             if (!ObtainingFound)
                             {
@@ -189,7 +197,7 @@ namespace Comparison_Log_Files
                 if (!LogIsInClusterList(clusterList, log))
                 {
 
-                    cluster.MainLog.Name = log.Name;
+                    cluster.MainLog.ProblemID = log.ProblemID;
                     cluster.MainLog.Signature = log.Signature;
 
                     for (int nextindex = index + 1; nextindex < LogList.Count(); nextindex++)
@@ -236,7 +244,7 @@ namespace Comparison_Log_Files
 
             foreach (var item in clusterList)
             {
-                clusterNames.Add(item.MainLog.Name.ToString());
+                clusterNames.Add(item.MainLog.ProblemID.ToString());
                 clusterLogsCount.Add(item.MatchedLogs.Count + 1);
                 foundClusteredLogs += item.MatchedLogs.Count + 1;
             }
@@ -254,6 +262,7 @@ namespace Comparison_Log_Files
         {
             if (clusterList.Count > 0)
             {
+                listBoxDetails.Items.Add("Customer ID............." + fullCustomerName);
                 listBoxDetails.Items.Add("Number of lines....................." + this.linesNumericUpDown.Text);
                 listBoxDetails.Items.Add("Minimum Cluster Size............ " + this.clusterNumericUpDown.Text);
                 listBoxDetails.Items.Add("Tolerance Percentage......... " + this.toleranceNumericUpDown.Text);
@@ -262,8 +271,9 @@ namespace Comparison_Log_Files
                 listBoxDetails.Items.Add("Total clusters........................ " + clusterLogsCount.Count().ToString());
                 listBoxDetails.Items.Add("Total files clustered.............. " + foundClusteredLogs.ToString());
                 listBoxDetails.Items.Add("Logs not in a cluster............. " + nonClusteredLogs.ToString());
+               
 
-                
+
                 listBoxDetails.Items.Add("==================================");
                 listBoxDetails.Items.Add("");
                 listBoxDetails.Items.Add("  Clusters Found");
@@ -271,10 +281,10 @@ namespace Comparison_Log_Files
                 foreach (var item in clusterList)
                 {
                     listBoxDetails.Items.Add("==================================");
-                    listBoxDetails.Items.Add("Main Log: "+item.MainLog.Name.ToString());
+                    listBoxDetails.Items.Add("Main Log: "+item.MainLog.ProblemID.ToString());
                     foreach (var matchedLog in item.MatchedLogs)
                     {
-                        listBoxDetails.Items.Add("................."+matchedLog.Name + " LD = " + matchedLog.LDvalue.ToString() + "%");
+                        listBoxDetails.Items.Add("................."+matchedLog.ProblemID + " LD = " + matchedLog.LDvalue.ToString() + "%");
                     }
                 }           
                 
@@ -359,7 +369,7 @@ namespace Comparison_Log_Files
             bool logInList = false;
             foreach (var cluster in clusterList)
             {
-                if (log.Name.Equals(cluster.MainLog.Name))
+                if (log.ProblemID.Equals(cluster.MainLog.ProblemID))
                 {
                     logInList = true;
                     break;
@@ -368,7 +378,7 @@ namespace Comparison_Log_Files
                 {
                     foreach (LogFile mainLog in cluster.MatchedLogs)
                     {
-                        if (mainLog.Name.Equals(log.Name))
+                        if (mainLog.ProblemID.Equals(log.ProblemID))
                         {
                             logInList = true;
                             break;
@@ -445,7 +455,18 @@ namespace Comparison_Log_Files
         {
             int minLines = Convert.ToInt32(linesNumericUpDown.Value);
             string rowSignature = "";
-
+            string customerName = "";
+            
+            foreach (var name in customerNamesList)
+            {
+                if (comboBoxCustomerID.SelectedItem.ToString() == name.Split('~')[0])
+                {
+                    customerName = name;
+                    fullCustomerName = name;
+                    break;
+                }
+                
+            }
             var results = from myRow in logFileDataTable.AsEnumerable()
                           select myRow[0];
             var topRows = results.Reverse().Take(minLines);
@@ -458,10 +479,11 @@ namespace Comparison_Log_Files
             {
                 LogList.Add(new LogFile
                 {
-                    Name = probId,
+                    ProblemID = probId,
                     Signature = rowSignature,
                     LDvalue = 100,
-                    NumOfLines = count
+                    NumOfLines = count,
+                    CustomerID = customerName
 
                 });
             }
@@ -476,20 +498,21 @@ namespace Comparison_Log_Files
         }
 
         private void btnGetDatabaseFile(object sender, EventArgs e)
-        {
-            
+        {            
             DefaultDatabaseData();
-
             LogAsTXT lat = new LogAsTXT();
-            List<String> lstNarratives = lat.GetNarratives(32);
-            List<String> lstProbCusts = lat.GetProblemCustomerRefs(new List<String>() { "1234567", "1234568", "1234569" });
             
-
-
+            List<String> lstProbCusts = lat.GetProblemCustomerRefs(new List<String>() { "1234567", "1234568", "1234569" });
             int maxLogs = Convert.ToInt32(maxLogsNumericUpDown.Value);
             int numofDays = Convert.ToInt32(NumOfDaysNumericUpDown.Value);
             int maxLines = Convert.ToInt32(maxLinesNumericUpDown.Value);
-            string narrrative = tbxNarrative.Text;
+
+            string narrative = "";
+            if (comboBoxNarrative.SelectedItem != null)
+            {
+                narrative = comboBoxNarrative.SelectedItem.ToString();
+            }
+
             string outputFile = tbxOutputFileName.Text;
             string custID = "";
             if (comboBoxCustomerID.SelectedItem != null)
@@ -510,7 +533,7 @@ namespace Comparison_Log_Files
                 textBoxFilePath.Text = "Working...";
                 Application.DoEvents();
                 
-                if (lat.GetLogAsTXT(maxLogs, numofDays, narrrative, custID, maxLines, outputFile))    // CORRECT NO SPACES AT THE -   CBELogAsTXT main method to call to get the data from the SQL DB in Azure
+                if (lat.GetLogAsTXT(maxLogs, numofDays, narrative, custID, maxLines, outputFile))
                 {
                     textBoxFilePath.Text = outputFile;
                 }
@@ -527,16 +550,57 @@ namespace Comparison_Log_Files
 
         private void DefaultDatabaseData()
         {
-            
-            if (tbxNarrative.Text == "")
-            {
-                tbxNarrative.Text = "Unknown";
-            }
+           
             if (tbxOutputFileName.Text == "")
             {
                 tbxOutputFileName.Text = "GetLogAsTxt";
             }
            
+        }
+        private void comboBoxCustomerID_Click(object sender, EventArgs e)
+        {
+            if (comboCustomerIdClicked == false)
+            {
+                populateComboBoxCustomerID();
+            }
+            comboCustomerIdClicked = true;
+
+
+        }
+        private void populateComboBoxCustomerID()
+        {
+            
+            LogAsTXT lat = new LogAsTXT();
+            List<String> lstCusts = lat.GetCustomerList();
+            foreach (var customer in lstCusts)
+            {
+                custIDNumber = customer.Split('~')[0];
+                comboBoxCustomerID.Items.Add(custIDNumber);
+                fullCustomerName = customer.Split('~')[1];
+                customerNamesList.Add(customer);
+
+            }
+        }
+
+        private void comboBoxNarrative_Clicked(object sender, EventArgs e)
+        {
+            if (comboNarrativeIdClicked == false)
+            {
+                populateComboNarative();
+            }
+            comboNarrativeIdClicked = true;
+
+
+        }
+
+        private void populateComboNarative()
+        {
+            LogAsTXT lat = new LogAsTXT();
+            List<String> lstNarratives = lat.GetNarratives(32);
+            foreach (var narrative in lstNarratives)
+            {
+                comboBoxNarrative.Items.Add(narrative);
+            }
         }
 
         public bool GetLogAsTXT(int maxLogsToReturn, int timePeriodInDays, string searchNarrative, string custId, int maxLineCount, string outputFileName)
@@ -567,15 +631,6 @@ namespace Comparison_Log_Files
             e.Graphics.FillRectangle(brush, this.ClientRectangle);
         }
 
-        private void comboBoxCustomerID_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            LogAsTXT lat = new LogAsTXT();
-            List<String> lstCusts = lat.GetCustomerList();
-            foreach (var customer in lstCusts)
-            {
-                comboBoxCustomerID.Items.Add(customer);
-            }
-            
-        }
+       
     }
 }

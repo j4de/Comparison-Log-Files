@@ -30,20 +30,20 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.labelCustomerID = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.mainLogLabel = new System.Windows.Forms.Label();
-            this.mainLogNameLabel = new System.Windows.Forms.Label();
             this.txtBoxApplication = new System.Windows.Forms.TextBox();
-            this.linesLabel = new System.Windows.Forms.Label();
             this.dgvClusterDetails = new System.Windows.Forms.DataGridView();
-            this.numberOfLinesLabel = new System.Windows.Forms.Label();
             this.backToMainButton = new System.Windows.Forms.Button();
-            this.runComparisonButton = new System.Windows.Forms.Button();
             this.btnGetApp = new System.Windows.Forms.Button();
+            this.runComparisonButton = new System.Windows.Forms.Button();
+            this.mainLogNameLabel = new System.Windows.Forms.Label();
+            this.linesLabel = new System.Windows.Forms.Label();
+            this.numberOfLinesLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClusterDetails)).BeginInit();
             this.SuspendLayout();
@@ -62,7 +62,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.738998F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.65706F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.Controls.Add(this.label5, 6, 1);
+            this.tableLayoutPanel1.Controls.Add(this.labelCustomerID, 6, 1);
             this.tableLayoutPanel1.Controls.Add(this.label1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.mainLogLabel, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.txtBoxApplication, 3, 8);
@@ -94,6 +94,19 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(659, 454);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
+            // labelCustomerID
+            // 
+            this.labelCustomerID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelCustomerID.AutoSize = true;
+            this.labelCustomerID.BackColor = System.Drawing.Color.Beige;
+            this.labelCustomerID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCustomerID.Location = new System.Drawing.Point(356, 75);
+            this.labelCustomerID.Margin = new System.Windows.Forms.Padding(0);
+            this.labelCustomerID.Name = "labelCustomerID";
+            this.labelCustomerID.Size = new System.Drawing.Size(92, 15);
+            this.labelCustomerID.TabIndex = 15;
+            this.labelCustomerID.Text = "SuperValue123";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -120,19 +133,6 @@
             this.mainLogLabel.TabIndex = 2;
             this.mainLogLabel.Text = "Main Log:";
             // 
-            // mainLogNameLabel
-            // 
-            this.mainLogNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.mainLogNameLabel.AutoSize = true;
-            this.mainLogNameLabel.BackColor = System.Drawing.Color.Beige;
-            this.mainLogNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mainLogNameLabel.Location = new System.Drawing.Point(128, 75);
-            this.mainLogNameLabel.Margin = new System.Windows.Forms.Padding(0);
-            this.mainLogNameLabel.Name = "mainLogNameLabel";
-            this.mainLogNameLabel.Size = new System.Drawing.Size(56, 15);
-            this.mainLogNameLabel.TabIndex = 3;
-            this.mainLogNameLabel.Text = "1234567";
-            // 
             // txtBoxApplication
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.txtBoxApplication, 6);
@@ -140,19 +140,6 @@
             this.txtBoxApplication.Name = "txtBoxApplication";
             this.txtBoxApplication.Size = new System.Drawing.Size(373, 20);
             this.txtBoxApplication.TabIndex = 6;
-            // 
-            // linesLabel
-            // 
-            this.linesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.linesLabel.AutoSize = true;
-            this.linesLabel.BackColor = System.Drawing.Color.Beige;
-            this.linesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linesLabel.Location = new System.Drawing.Point(184, 75);
-            this.linesLabel.Margin = new System.Windows.Forms.Padding(0);
-            this.linesLabel.Name = "linesLabel";
-            this.linesLabel.Size = new System.Drawing.Size(40, 15);
-            this.linesLabel.TabIndex = 4;
-            this.linesLabel.Text = "Lines:";
             // 
             // dgvClusterDetails
             // 
@@ -171,19 +158,6 @@
             this.dgvClusterDetails.Size = new System.Drawing.Size(517, 219);
             this.dgvClusterDetails.TabIndex = 10;
             // 
-            // numberOfLinesLabel
-            // 
-            this.numberOfLinesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.numberOfLinesLabel.AutoSize = true;
-            this.numberOfLinesLabel.BackColor = System.Drawing.Color.Beige;
-            this.numberOfLinesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numberOfLinesLabel.Location = new System.Drawing.Point(225, 75);
-            this.numberOfLinesLabel.Margin = new System.Windows.Forms.Padding(0);
-            this.numberOfLinesLabel.Name = "numberOfLinesLabel";
-            this.numberOfLinesLabel.Size = new System.Drawing.Size(56, 15);
-            this.numberOfLinesLabel.TabIndex = 5;
-            this.numberOfLinesLabel.Text = "1234567";
-            // 
             // backToMainButton
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.backToMainButton, 2);
@@ -194,6 +168,17 @@
             this.backToMainButton.Text = "Back";
             this.backToMainButton.UseVisualStyleBackColor = true;
             this.backToMainButton.Click += new System.EventHandler(this.backToMainButton_Click);
+            // 
+            // btnGetApp
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.btnGetApp, 2);
+            this.btnGetApp.Location = new System.Drawing.Point(69, 363);
+            this.btnGetApp.Name = "btnGetApp";
+            this.btnGetApp.Size = new System.Drawing.Size(80, 23);
+            this.btnGetApp.TabIndex = 11;
+            this.btnGetApp.Text = "Get App";
+            this.btnGetApp.UseVisualStyleBackColor = true;
+            this.btnGetApp.Click += new System.EventHandler(this.btnGetApp_Click);
             // 
             // runComparisonButton
             // 
@@ -207,16 +192,44 @@
             this.runComparisonButton.UseVisualStyleBackColor = true;
             this.runComparisonButton.Click += new System.EventHandler(this.RunComparisonBtn);
             // 
-            // btnGetApp
+            // mainLogNameLabel
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.btnGetApp, 2);
-            this.btnGetApp.Location = new System.Drawing.Point(69, 363);
-            this.btnGetApp.Name = "btnGetApp";
-            this.btnGetApp.Size = new System.Drawing.Size(80, 23);
-            this.btnGetApp.TabIndex = 11;
-            this.btnGetApp.Text = "Get App";
-            this.btnGetApp.UseVisualStyleBackColor = true;
-            this.btnGetApp.Click += new System.EventHandler(this.btnGetApp_Click);
+            this.mainLogNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.mainLogNameLabel.AutoSize = true;
+            this.mainLogNameLabel.BackColor = System.Drawing.Color.Beige;
+            this.mainLogNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mainLogNameLabel.Location = new System.Drawing.Point(128, 75);
+            this.mainLogNameLabel.Margin = new System.Windows.Forms.Padding(0);
+            this.mainLogNameLabel.Name = "mainLogNameLabel";
+            this.mainLogNameLabel.Size = new System.Drawing.Size(56, 15);
+            this.mainLogNameLabel.TabIndex = 3;
+            this.mainLogNameLabel.Text = "1234567";
+            // 
+            // linesLabel
+            // 
+            this.linesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.linesLabel.AutoSize = true;
+            this.linesLabel.BackColor = System.Drawing.Color.Beige;
+            this.linesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linesLabel.Location = new System.Drawing.Point(184, 75);
+            this.linesLabel.Margin = new System.Windows.Forms.Padding(0);
+            this.linesLabel.Name = "linesLabel";
+            this.linesLabel.Size = new System.Drawing.Size(40, 15);
+            this.linesLabel.TabIndex = 4;
+            this.linesLabel.Text = "Lines:";
+            // 
+            // numberOfLinesLabel
+            // 
+            this.numberOfLinesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.numberOfLinesLabel.AutoSize = true;
+            this.numberOfLinesLabel.BackColor = System.Drawing.Color.Beige;
+            this.numberOfLinesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numberOfLinesLabel.Location = new System.Drawing.Point(225, 75);
+            this.numberOfLinesLabel.Margin = new System.Windows.Forms.Padding(0);
+            this.numberOfLinesLabel.Name = "numberOfLinesLabel";
+            this.numberOfLinesLabel.Size = new System.Drawing.Size(56, 15);
+            this.numberOfLinesLabel.TabIndex = 5;
+            this.numberOfLinesLabel.Text = "1234567";
             // 
             // label2
             // 
@@ -257,19 +270,6 @@
             this.label4.TabIndex = 14;
             this.label4.Text = "V123";
             // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Beige;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(356, 75);
-            this.label5.Margin = new System.Windows.Forms.Padding(0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(92, 15);
-            this.label5.TabIndex = 15;
-            this.label5.Text = "SuperValue123";
-            // 
             // ClusterDetailsForm
             // 
             this.AcceptButton = this.runComparisonButton;
@@ -299,7 +299,7 @@
         private System.Windows.Forms.Button backToMainButton;
         private System.Windows.Forms.DataGridView dgvClusterDetails;
         private System.Windows.Forms.Button btnGetApp;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label labelCustomerID;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
