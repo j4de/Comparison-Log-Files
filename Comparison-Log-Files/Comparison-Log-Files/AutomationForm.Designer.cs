@@ -237,7 +237,7 @@
             this.Save_Auto.Name = "Save_Auto";
             this.Save_Auto.Size = new System.Drawing.Size(169, 23);
             this.Save_Auto.TabIndex = 29;
-            this.Save_Auto.Text = "Save";
+            this.Save_Auto.Text = "Save Settings";
             this.Save_Auto.UseVisualStyleBackColor = true;
             // 
             // openFileDialog1
