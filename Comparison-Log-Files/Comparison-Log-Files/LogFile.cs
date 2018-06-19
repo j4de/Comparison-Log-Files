@@ -14,6 +14,7 @@ namespace Comparison_Log_Files
         public int NumOfLines { get; set; }
         public string CustomerID { get; set; }
         public string Version { get; set; }
+        public string Narrative { get; set; }
         public LogFile()
         {
 

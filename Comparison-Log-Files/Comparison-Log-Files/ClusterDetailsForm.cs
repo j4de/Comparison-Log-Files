@@ -51,7 +51,15 @@ namespace Comparison_Log_Files
                 {
                     mainLogNameLabel.Text = clusterName;
                     numberOfLinesLabel.Text = (item.MainLog.NumOfLines - 1).ToString();
-                    labelCustomerID.Text = item.MainLog.CustomerID.ToString();
+                    if (item.MainLog.CustomerID == null)
+                    {
+                        labelCustomerID.Text = "";
+                    }
+                    else
+                    {
+                        labelCustomerID.Text = item.MainLog.CustomerID.ToString();
+                    }
+                    
                     foreach (LogFile log in item.MatchedLogs)
                     {
                         numberOfLinesLabel.Text = (log.NumOfLines - 1).ToString();

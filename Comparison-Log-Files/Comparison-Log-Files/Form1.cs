@@ -25,7 +25,9 @@ namespace Comparison_Log_Files
         List<int> clusterLogsCount = new List<int>();
         List<string> customerNamesList = new List<string>();
         string custIDNumber = "";
-        string fullCustomerName = "";
+        string customerIDName = "";
+        string narrative = "";
+        string customerIDNumberAndName = "";
         bool comboCustomerIdClicked = false;
         bool comboNarrativeIdClicked = false;
         
@@ -262,18 +264,29 @@ namespace Comparison_Log_Files
         {
             if (clusterList.Count > 0)
             {
-                listBoxDetails.Items.Add("Customer ID............." + fullCustomerName);
+                listBoxDetails.Items.Add("==================================");
+                listBoxDetails.Items.Add("Database Log Options");
+                listBoxDetails.Items.Add("==================================");
+                listBoxDetails.Items.Add("Customer ID............." + customerIDNumberAndName);
+                listBoxDetails.Items.Add("Narrative ............... " +narrative);
+                listBoxDetails.Items.Add("Max lines ............... "+ maxLinesNumericUpDown.Value.ToString());
+                listBoxDetails.Items.Add("Number of days ........ "+ NumOfDaysNumericUpDown.Value.ToString());
+                listBoxDetails.Items.Add("Max logs ................. "+ maxLogsNumericUpDown.Value.ToString());
+                listBoxDetails.Items.Add("");
+                listBoxDetails.Items.Add("==================================");
+                listBoxDetails.Items.Add("Cluster Options");
+                listBoxDetails.Items.Add("==================================");
                 listBoxDetails.Items.Add("Number of lines....................." + this.linesNumericUpDown.Text);
                 listBoxDetails.Items.Add("Minimum Cluster Size............ " + this.clusterNumericUpDown.Text);
                 listBoxDetails.Items.Add("Tolerance Percentage......... " + this.toleranceNumericUpDown.Text);
+                listBoxDetails.Items.Add("");
+                listBoxDetails.Items.Add("==================================");
+                listBoxDetails.Items.Add("============= RESULTS ============");
                 listBoxDetails.Items.Add("==================================");
                 listBoxDetails.Items.Add("Total files............................. " + LogList.Count.ToString());
                 listBoxDetails.Items.Add("Total clusters........................ " + clusterLogsCount.Count().ToString());
                 listBoxDetails.Items.Add("Total files clustered.............. " + foundClusteredLogs.ToString());
                 listBoxDetails.Items.Add("Logs not in a cluster............. " + nonClusteredLogs.ToString());
-               
-
-
                 listBoxDetails.Items.Add("==================================");
                 listBoxDetails.Items.Add("");
                 listBoxDetails.Items.Add("  Clusters Found");
@@ -292,9 +305,22 @@ namespace Comparison_Log_Files
             else
             {
                 listBoxDetails.Items.Add("\n------------No Clusters Found!-----------\n");
-                listBoxDetails.Items.Add("  Number of lines      : " + this.linesNumericUpDown.Text);
-                listBoxDetails.Items.Add("  Minimum Cluster Size : " + this.clusterNumericUpDown.Text);
-                listBoxDetails.Items.Add("  Tolerance Percentage : " + this.toleranceNumericUpDown.Text);
+                listBoxDetails.Items.Add("==================================");
+                listBoxDetails.Items.Add("Database Log Options");
+                listBoxDetails.Items.Add("==================================");
+                listBoxDetails.Items.Add("Customer ID............." + customerIDNumberAndName);
+                listBoxDetails.Items.Add("Narrative ............... " + narrative);
+                listBoxDetails.Items.Add("Max lines ............... " + maxLinesNumericUpDown.Value.ToString());
+                listBoxDetails.Items.Add("Number of days ........ " + NumOfDaysNumericUpDown.Value.ToString());
+                listBoxDetails.Items.Add("Max logs ................. " + maxLogsNumericUpDown.Value.ToString());
+                listBoxDetails.Items.Add("");
+                listBoxDetails.Items.Add("==================================");
+                listBoxDetails.Items.Add("Cluster Options");
+                listBoxDetails.Items.Add("==================================");
+                listBoxDetails.Items.Add("Number of lines....................." + this.linesNumericUpDown.Text);
+                listBoxDetails.Items.Add("Minimum Cluster Size............ " + this.clusterNumericUpDown.Text);
+                listBoxDetails.Items.Add("Tolerance Percentage......... " + this.toleranceNumericUpDown.Text);
+                listBoxDetails.Items.Add("");
                 listBoxDetails.Items.Add("-----------------------------------------");
                 listBoxDetails.Items.Add("  Total files          : " + LogList.Count.ToString());
             }
@@ -455,18 +481,35 @@ namespace Comparison_Log_Files
         {
             int minLines = Convert.ToInt32(linesNumericUpDown.Value);
             string rowSignature = "";
-            string customerName = "";
-            
-            foreach (var name in customerNamesList)
+            customerIDNumberAndName = "";
+            if (comboBoxCustomerID.SelectedItem == null)
             {
-                if (comboBoxCustomerID.SelectedItem.ToString() == name.Split('~')[0])
-                {
-                    customerName = name;
-                    fullCustomerName = name;
-                    break;
-                }
-                
+                customerIDNumberAndName = "No customer ID selected";
             }
+            else
+            if (comboBoxCustomerID.SelectedItem.ToString() == "")
+            {
+                customerIDNumberAndName = "No customer ID selected";
+            }
+            else
+            {
+                foreach (var name in customerNamesList)
+                {
+                    if (comboBoxCustomerID.SelectedItem.ToString() == name.Split('~')[0])
+                    {
+                        customerIDNumberAndName = name;
+                        customerIDName = name;
+                        break;
+                    }
+                    else
+                    {
+                        customerIDNumberAndName = comboBoxCustomerID.SelectedItem.ToString();
+                        customerIDName = comboBoxCustomerID.SelectedItem.ToString();
+                    }
+
+                }
+            }
+           
             var results = from myRow in logFileDataTable.AsEnumerable()
                           select myRow[0];
             var topRows = results.Reverse().Take(minLines);
@@ -483,7 +526,8 @@ namespace Comparison_Log_Files
                     Signature = rowSignature,
                     LDvalue = 100,
                     NumOfLines = count,
-                    CustomerID = customerName
+                    CustomerID = customerIDNumberAndName,
+                    Narrative = narrative
 
                 });
             }
@@ -502,7 +546,7 @@ namespace Comparison_Log_Files
             DefaultDatabaseData();
             LogAsTXT lat = new LogAsTXT();
             
-            List<String> lstProbCusts = lat.GetProblemCustomerRefs(new List<String>() { "1234567", "1234568", "1234569" });
+            //List<String> lstProbCusts = lat.GetProblemCustomerRefs(new List<String>() { "1234567", "1234568", "1234569" });
             int maxLogs = Convert.ToInt32(maxLogsNumericUpDown.Value);
             int numofDays = Convert.ToInt32(NumOfDaysNumericUpDown.Value);
             int maxLines = Convert.ToInt32(maxLinesNumericUpDown.Value);
@@ -555,6 +599,14 @@ namespace Comparison_Log_Files
             {
                 tbxOutputFileName.Text = "GetLogAsTxt";
             }
+            if (comboBoxNarrative.SelectedItem == null)
+            {
+                narrative = "No narrative selected";
+            }
+            else
+            {
+                narrative = comboBoxNarrative.SelectedItem.ToString();
+            }
            
         }
         private void comboBoxCustomerID_Click(object sender, EventArgs e)
@@ -574,9 +626,11 @@ namespace Comparison_Log_Files
             List<String> lstCusts = lat.GetCustomerList();
             foreach (var customer in lstCusts)
             {
+                //Only take the part of the string before the ~ character. This is used for the Azure query. 
+                //The other part is the actual client name.
                 custIDNumber = customer.Split('~')[0];
                 comboBoxCustomerID.Items.Add(custIDNumber);
-                fullCustomerName = customer.Split('~')[1];
+                customerIDName = customer.Split('~')[1];
                 customerNamesList.Add(customer);
 
             }
