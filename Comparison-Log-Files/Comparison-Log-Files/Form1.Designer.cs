@@ -267,7 +267,6 @@
             this.comboBoxNarrative.Name = "comboBoxNarrative";
             this.comboBoxNarrative.Size = new System.Drawing.Size(506, 21);
             this.comboBoxNarrative.TabIndex = 46;
-            this.comboBoxNarrative.Click += new System.EventHandler(this.comboBoxNarrative_Clicked);
             // 
             // comboBoxCustomerID
             // 
@@ -276,7 +275,6 @@
             this.comboBoxCustomerID.Name = "comboBoxCustomerID";
             this.comboBoxCustomerID.Size = new System.Drawing.Size(506, 21);
             this.comboBoxCustomerID.TabIndex = 45;
-            this.comboBoxCustomerID.Click += new System.EventHandler(this.comboBoxCustomerID_Click);
             // 
             // label3
             // 

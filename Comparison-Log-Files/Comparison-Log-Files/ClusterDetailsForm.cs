@@ -47,18 +47,14 @@ namespace Comparison_Log_Files
 
             foreach (Cluster item in clustListForm2)
             {
+                
+
                 if (item.MainLog.ProblemID.Equals(clusterName))
                 {
                     mainLogNameLabel.Text = clusterName;
                     numberOfLinesLabel.Text = (item.MainLog.NumOfLines - 1).ToString();
-                    if (item.MainLog.CustomerID == null)
-                    {
-                        labelCustomerID.Text = "";
-                    }
-                    else
-                    {
-                        labelCustomerID.Text = item.MainLog.CustomerID.ToString();
-                    }
+                    
+                    
                     
                     foreach (LogFile log in item.MatchedLogs)
                     {
@@ -69,7 +65,8 @@ namespace Comparison_Log_Files
                                 log.NumOfLines -1,
                                 log.LDvalue,
                                 log.CustomerID
-                                );                     
+                                );
+                        labelCustomerID.Text = log.CustomerID.ToString();
                     }
                     dgvClusterDetails.DataSource = tblClusterDetails;
                 }
