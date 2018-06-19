@@ -37,7 +37,10 @@ namespace Comparison_Log_Files
 
         private void Remove_Click(object sender, EventArgs e)
         {
-            
+            for (int i = listBoxFiles.SelectedItems.Count - 1; i >= 0; i--)
+            {
+                listBoxFiles.Items.Remove(listBoxFiles.SelectedItems[i]);
+            }
         }
     }
 }

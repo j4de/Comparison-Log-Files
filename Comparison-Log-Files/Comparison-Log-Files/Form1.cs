@@ -583,5 +583,16 @@ namespace Comparison_Log_Files
             AutomationForm autof = new AutomationForm();
             autof.Show();
         }
+
+        //for testing only. to be deleted later
+        private void btnImg_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog chartSave = new SaveFileDialog
+            {
+                Filter = "PNG (*.png)|*.png"
+                //FileName = outputFile
+            };
+            //this.chart1.SaveImage("\\server-1\\Public\\declan martin\\LogComparison\\LogComparison", ChartImageFormat.Png);
+        }
     }
 }
