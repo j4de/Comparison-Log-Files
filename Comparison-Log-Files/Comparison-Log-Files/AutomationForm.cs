@@ -42,5 +42,10 @@ namespace Comparison_Log_Files
                 listBoxFiles.Items.Remove(listBoxFiles.SelectedItems[i]);
             }
         }
+
+        private void saveLoc_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+        }
     }
 }

@@ -67,10 +67,10 @@
             this.btnSaveProcessed = new System.Windows.Forms.Button();
             this.browseButton = new System.Windows.Forms.Button();
             this.lableHeading = new System.Windows.Forms.Label();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.Automation_settions = new System.Windows.Forms.Button();
             this.test = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -643,10 +643,6 @@
             this.lableHeading.TabIndex = 42;
             this.lableHeading.Text = "Choose a log from the database or browse the file directory";
             // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
             // Automation_settions
             // 
             this.Automation_settions.Location = new System.Drawing.Point(1180, 42);
@@ -666,6 +662,10 @@
             this.test.Text = "test";
             this.test.UseVisualStyleBackColor = true;
             this.test.Click += new System.EventHandler(this.test_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // Form1
             // 

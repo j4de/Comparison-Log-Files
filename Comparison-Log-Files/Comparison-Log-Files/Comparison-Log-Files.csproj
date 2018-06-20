@@ -81,6 +81,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutomationINI.cs" />
     <Compile Include="AutomationForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -696,7 +696,11 @@ namespace Comparison_Log_Files
             string pathstring = System.IO.Path.Combine(foldername, "Automation"+ DateTime.Now.ToFileTime());
             System.IO.Directory.CreateDirectory(pathstring);
 
-            this.chart1.SaveImage(pathstring, ChartImageFormat.Png);
+            SaveFileDialog dlg = new SaveFileDialog();
+            if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                this.chart1.SaveImage(dlg.FileName, ChartImageFormat.Png);
+
+            //this.chart1.SaveImage(pathstring, ChartImageFormat.Png);
 
             //SaveFileDialog sfdSaveSPTXT = new SaveFileDialog
             //{

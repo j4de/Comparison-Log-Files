@@ -46,6 +46,7 @@
             this.Back_auto = new System.Windows.Forms.Button();
             this.Save_Auto = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveLoc = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.clusterNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toleranceNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.linesNumericUpDown)).BeginInit();
@@ -244,11 +245,22 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // saveLoc
+            // 
+            this.saveLoc.Location = new System.Drawing.Point(221, 415);
+            this.saveLoc.Name = "saveLoc";
+            this.saveLoc.Size = new System.Drawing.Size(169, 23);
+            this.saveLoc.TabIndex = 30;
+            this.saveLoc.Text = "Save Location";
+            this.saveLoc.UseVisualStyleBackColor = true;
+            this.saveLoc.Click += new System.EventHandler(this.saveLoc_Click);
+            // 
             // AutomationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.saveLoc);
             this.Controls.Add(this.Save_Auto);
             this.Controls.Add(this.Back_auto);
             this.Controls.Add(this.Frequency_Time);
@@ -297,5 +309,6 @@
         private System.Windows.Forms.Button Back_auto;
         private System.Windows.Forms.Button Save_Auto;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button saveLoc;
     }
 }
