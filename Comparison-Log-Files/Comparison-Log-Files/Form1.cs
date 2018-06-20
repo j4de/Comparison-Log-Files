@@ -685,6 +685,25 @@ namespace Comparison_Log_Files
             e.Graphics.FillRectangle(brush, this.ClientRectangle);
         }
 
-       
+        private void Automation_settions_Click(object sender, EventArgs e)
+        {
+            AutomationForm autoForm = new AutomationForm();
+            autoForm.Show();
+        }
+
+        private void test_Click(object sender, EventArgs e)
+        {
+            string foldername = @"\\server-1\Public\declan martin\LogComparison\LogComparison";
+            string pathstring = System.IO.Path.Combine(foldername, "Automation"+ DateTime.Now.ToFileTime());
+            System.IO.Directory.CreateDirectory(pathstring);
+
+            this.chart1.SaveImage(pathstring, ChartImageFormat.Png);
+
+            //SaveFileDialog sfdSaveSPTXT = new SaveFileDialog
+            //{
+            //    Filter = "Png (*.png)|*.png"
+
+            //};
+        }
     }
 }
