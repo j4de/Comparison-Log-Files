@@ -69,6 +69,8 @@
             this.lableHeading = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.Automation_settions = new System.Windows.Forms.Button();
+            this.test = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -118,6 +120,8 @@
             this.tableLayoutPanel1.Controls.Add(this.btnSaveProcessed, 12, 22);
             this.tableLayoutPanel1.Controls.Add(this.browseButton, 13, 1);
             this.tableLayoutPanel1.Controls.Add(this.lableHeading, 5, 0);
+            this.tableLayoutPanel1.Controls.Add(this.Automation_settions, 18, 1);
+            this.tableLayoutPanel1.Controls.Add(this.test, 17, 19);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -644,6 +648,26 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // Automation_settions
+            // 
+            this.Automation_settions.Location = new System.Drawing.Point(1180, 42);
+            this.Automation_settions.Name = "Automation_settions";
+            this.Automation_settions.Size = new System.Drawing.Size(171, 22);
+            this.Automation_settions.TabIndex = 46;
+            this.Automation_settions.Text = "Automation Settings";
+            this.Automation_settions.UseVisualStyleBackColor = true;
+            this.Automation_settions.Click += new System.EventHandler(this.Automation_settions_Click);
+            // 
+            // test
+            // 
+            this.test.Location = new System.Drawing.Point(1113, 559);
+            this.test.Name = "test";
+            this.test.Size = new System.Drawing.Size(61, 23);
+            this.test.TabIndex = 47;
+            this.test.Text = "test";
+            this.test.UseVisualStyleBackColor = true;
+            this.test.Click += new System.EventHandler(this.test_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -709,6 +733,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboBoxCustomerID;
         private System.Windows.Forms.ComboBox comboBoxNarrative;
+        private System.Windows.Forms.Button Automation_settions;
+        private System.Windows.Forms.Button test;
     }
 }
 
