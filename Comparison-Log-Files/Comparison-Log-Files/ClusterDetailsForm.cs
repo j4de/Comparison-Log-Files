@@ -58,6 +58,7 @@ namespace Comparison_Log_Files
                     
                     foreach (LogFile log in item.MatchedLogs)
                     {
+                        
                         numberOfLinesLabel.Text = (log.NumOfLines - 1).ToString();
                         
                             tblClusterDetails.Rows.Add(
