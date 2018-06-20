@@ -91,7 +91,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(659, 454);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(776, 429);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // labelCustomerID
@@ -100,22 +100,22 @@
             this.labelCustomerID.AutoSize = true;
             this.labelCustomerID.BackColor = System.Drawing.Color.Beige;
             this.labelCustomerID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCustomerID.Location = new System.Drawing.Point(356, 75);
+            this.labelCustomerID.Location = new System.Drawing.Point(419, 69);
             this.labelCustomerID.Margin = new System.Windows.Forms.Padding(0);
             this.labelCustomerID.Name = "labelCustomerID";
-            this.labelCustomerID.Size = new System.Drawing.Size(92, 15);
+            this.labelCustomerID.Size = new System.Drawing.Size(10, 15);
             this.labelCustomerID.TabIndex = 15;
-            this.labelCustomerID.Text = "SuperValue123";
+            this.labelCustomerID.Text = " ";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.label1, 9);
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(69, 0);
+            this.label1.Location = new System.Drawing.Point(81, 0);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.label1.Size = new System.Drawing.Size(299, 45);
+            this.label1.Size = new System.Drawing.Size(299, 42);
             this.label1.TabIndex = 0;
             this.label1.Text = "Cluster Details";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -126,7 +126,7 @@
             this.mainLogLabel.AutoSize = true;
             this.mainLogLabel.BackColor = System.Drawing.Color.Beige;
             this.mainLogLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mainLogLabel.Location = new System.Drawing.Point(66, 75);
+            this.mainLogLabel.Location = new System.Drawing.Point(78, 69);
             this.mainLogLabel.Margin = new System.Windows.Forms.Padding(0);
             this.mainLogLabel.Name = "mainLogLabel";
             this.mainLogLabel.Size = new System.Drawing.Size(62, 15);
@@ -136,32 +136,34 @@
             // txtBoxApplication
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.txtBoxApplication, 6);
-            this.txtBoxApplication.Location = new System.Drawing.Point(187, 363);
+            this.txtBoxApplication.Location = new System.Drawing.Point(220, 339);
             this.txtBoxApplication.Name = "txtBoxApplication";
-            this.txtBoxApplication.Size = new System.Drawing.Size(373, 20);
+            this.txtBoxApplication.Size = new System.Drawing.Size(468, 20);
             this.txtBoxApplication.TabIndex = 6;
             // 
             // dgvClusterDetails
             // 
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgvClusterDetails.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvClusterDetails.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvClusterDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvClusterDetails.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.dgvClusterDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanel1.SetColumnSpan(this.dgvClusterDetails, 8);
-            this.dgvClusterDetails.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvClusterDetails.Location = new System.Drawing.Point(69, 93);
+            this.dgvClusterDetails.Location = new System.Drawing.Point(81, 87);
             this.dgvClusterDetails.MultiSelect = false;
             this.dgvClusterDetails.Name = "dgvClusterDetails";
             this.tableLayoutPanel1.SetRowSpan(this.dgvClusterDetails, 5);
             this.dgvClusterDetails.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvClusterDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvClusterDetails.Size = new System.Drawing.Size(517, 219);
+            this.dgvClusterDetails.Size = new System.Drawing.Size(610, 204);
             this.dgvClusterDetails.TabIndex = 10;
             // 
             // backToMainButton
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.backToMainButton, 2);
-            this.backToMainButton.Location = new System.Drawing.Point(69, 408);
+            this.backToMainButton.Location = new System.Drawing.Point(81, 381);
             this.backToMainButton.Name = "backToMainButton";
             this.backToMainButton.Size = new System.Drawing.Size(80, 23);
             this.backToMainButton.TabIndex = 9;
@@ -172,7 +174,7 @@
             // btnGetApp
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.btnGetApp, 2);
-            this.btnGetApp.Location = new System.Drawing.Point(69, 363);
+            this.btnGetApp.Location = new System.Drawing.Point(81, 339);
             this.btnGetApp.Name = "btnGetApp";
             this.btnGetApp.Size = new System.Drawing.Size(80, 23);
             this.btnGetApp.TabIndex = 11;
@@ -184,7 +186,7 @@
             // 
             this.runComparisonButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.SetColumnSpan(this.runComparisonButton, 3);
-            this.runComparisonButton.Location = new System.Drawing.Point(506, 408);
+            this.runComparisonButton.Location = new System.Drawing.Point(611, 381);
             this.runComparisonButton.Name = "runComparisonButton";
             this.runComparisonButton.Size = new System.Drawing.Size(80, 23);
             this.runComparisonButton.TabIndex = 8;
@@ -198,12 +200,11 @@
             this.mainLogNameLabel.AutoSize = true;
             this.mainLogNameLabel.BackColor = System.Drawing.Color.Beige;
             this.mainLogNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mainLogNameLabel.Location = new System.Drawing.Point(128, 75);
+            this.mainLogNameLabel.Location = new System.Drawing.Point(151, 69);
             this.mainLogNameLabel.Margin = new System.Windows.Forms.Padding(0);
             this.mainLogNameLabel.Name = "mainLogNameLabel";
-            this.mainLogNameLabel.Size = new System.Drawing.Size(56, 15);
+            this.mainLogNameLabel.Size = new System.Drawing.Size(0, 15);
             this.mainLogNameLabel.TabIndex = 3;
-            this.mainLogNameLabel.Text = "1234567";
             // 
             // linesLabel
             // 
@@ -211,7 +212,7 @@
             this.linesLabel.AutoSize = true;
             this.linesLabel.BackColor = System.Drawing.Color.Beige;
             this.linesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linesLabel.Location = new System.Drawing.Point(184, 75);
+            this.linesLabel.Location = new System.Drawing.Point(217, 69);
             this.linesLabel.Margin = new System.Windows.Forms.Padding(0);
             this.linesLabel.Name = "linesLabel";
             this.linesLabel.Size = new System.Drawing.Size(40, 15);
@@ -224,12 +225,11 @@
             this.numberOfLinesLabel.AutoSize = true;
             this.numberOfLinesLabel.BackColor = System.Drawing.Color.Beige;
             this.numberOfLinesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numberOfLinesLabel.Location = new System.Drawing.Point(225, 75);
+            this.numberOfLinesLabel.Location = new System.Drawing.Point(265, 69);
             this.numberOfLinesLabel.Margin = new System.Windows.Forms.Padding(0);
             this.numberOfLinesLabel.Name = "numberOfLinesLabel";
-            this.numberOfLinesLabel.Size = new System.Drawing.Size(56, 15);
+            this.numberOfLinesLabel.Size = new System.Drawing.Size(0, 15);
             this.numberOfLinesLabel.TabIndex = 5;
-            this.numberOfLinesLabel.Text = "1234567";
             // 
             // label2
             // 
@@ -237,7 +237,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Beige;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(281, 75);
+            this.label2.Location = new System.Drawing.Point(331, 69);
             this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 15);
@@ -250,7 +250,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Beige;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(448, 75);
+            this.label3.Location = new System.Drawing.Point(528, 69);
             this.label3.Margin = new System.Windows.Forms.Padding(0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 15);
@@ -263,19 +263,18 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Beige;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(499, 75);
+            this.label4.Location = new System.Drawing.Point(588, 69);
             this.label4.Margin = new System.Windows.Forms.Padding(0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 15);
+            this.label4.Size = new System.Drawing.Size(0, 15);
             this.label4.TabIndex = 14;
-            this.label4.Text = "V123";
             // 
             // ClusterDetailsForm
             // 
             this.AcceptButton = this.runComparisonButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(659, 454);
+            this.ClientSize = new System.Drawing.Size(776, 429);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "ClusterDetailsForm";
             this.Text = "ClusterDetailsForm";

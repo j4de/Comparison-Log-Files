@@ -37,6 +37,8 @@ namespace Comparison_Log_Files
             InitializeComponent();
             CenterToScreen();
             SetToolTip();
+            populateComboBoxCustomerID();
+            populateComboNarative();
 
         }
 
@@ -64,7 +66,17 @@ namespace Comparison_Log_Files
 
         private void processButton_Click(object sender, EventArgs e)
         {
+            narrative = comboBoxNarrative.SelectedItem.ToString();
+            if (comboBoxCustomerID.SelectedItem != null)
+            {
+                customerIDNumberAndName = comboBoxCustomerID.SelectedItem.ToString();
+            }
+            else
+            {
+                custIDNumber = "Not found";
+            }
             
+
             LogList.Clear();
             clusterList.Clear();
             clusterNames.Clear();
@@ -142,7 +154,7 @@ namespace Comparison_Log_Files
 
                     //If it hasn't reached the end of a log file
                     AddDataToTable(message, logFileDataTable, endOfLog, filteredLogfile);
-
+                    
                     //If the end of a log file is reached
                     AddToLogListAndSave(ref columnName, message, logFileDataTable, probId, columnCount, ref endOfLog, filteredLogfile);
                     lineCounter++;
@@ -262,6 +274,7 @@ namespace Comparison_Log_Files
 
         private void PopulateListBox(int nonClusteredLogs, int foundClusteredLogs)
         {
+            
             if (clusterList.Count > 0)
             {
                 listBoxDetails.Items.Add("==================================");
@@ -481,24 +494,18 @@ namespace Comparison_Log_Files
         {
             int minLines = Convert.ToInt32(linesNumericUpDown.Value);
             string rowSignature = "";
-            customerIDNumberAndName = "";
-            if (comboBoxCustomerID.SelectedItem == null)
+           
+            
+            LogAsTXT lat = new LogAsTXT();
+            List<String> lstCusts = lat.GetCustomerList();
+            if (comboBoxCustomerID.SelectedItem != null)
             {
-                customerIDNumberAndName = "No customer ID selected";
-            }
-            else
-            if (comboBoxCustomerID.SelectedItem.ToString() == "")
-            {
-                customerIDNumberAndName = "No customer ID selected";
-            }
-            else
-            {
-                foreach (var name in customerNamesList)
+                foreach (var name in lstCusts)
                 {
                     if (comboBoxCustomerID.SelectedItem.ToString() == name.Split('~')[0])
                     {
                         customerIDNumberAndName = name;
-                        customerIDName = name;
+                        customerIDName = name.Split('~')[0];
                         break;
                     }
                     else
@@ -509,7 +516,7 @@ namespace Comparison_Log_Files
 
                 }
             }
-           
+
             var results = from myRow in logFileDataTable.AsEnumerable()
                           select myRow[0];
             var topRows = results.Reverse().Take(minLines);
@@ -531,8 +538,16 @@ namespace Comparison_Log_Files
 
                 });
             }
-           
+
+
+        }
+
+        private string GetCustomerIDAndName(string custName)
+        {
+            string custname = custName;
             
+            
+            return custname;
         }
 
         private void btnSaveListBoxDetails(object sender, EventArgs e)
@@ -543,7 +558,7 @@ namespace Comparison_Log_Files
 
         private void btnGetDatabaseFile(object sender, EventArgs e)
         {            
-            DefaultDatabaseData();
+            DefaultFileName();
             LogAsTXT lat = new LogAsTXT();
             
             //List<String> lstProbCusts = lat.GetProblemCustomerRefs(new List<String>() { "1234567", "1234568", "1234569" });
@@ -592,69 +607,53 @@ namespace Comparison_Log_Files
 
         }
 
-        private void DefaultDatabaseData()
+        private void DefaultFileName()
         {
            
             if (tbxOutputFileName.Text == "")
             {
                 tbxOutputFileName.Text = "GetLogAsTxt";
             }
-            if (comboBoxNarrative.SelectedItem == null)
-            {
-                narrative = "No narrative selected";
-            }
-            else
-            {
-                narrative = comboBoxNarrative.SelectedItem.ToString();
-            }
-           
+                       
         }
-        private void comboBoxCustomerID_Click(object sender, EventArgs e)
+        
+        private void populateComboBoxCustomerID()
         {
             if (comboCustomerIdClicked == false)
             {
-                populateComboBoxCustomerID();
+                
+                customerNamesList.Clear();
+                LogAsTXT lat = new LogAsTXT();
+                List<String> lstCusts = lat.GetCustomerList();
+                foreach (var customer in lstCusts)
+                {
+                    //Only take the part of the string before the ~ character. This is used for the Azure query. 
+                    //The other part is the actual client name.
+                    custIDNumber = customer.Split('~')[0];
+                    comboBoxCustomerID.Items.Add(custIDNumber);
+                    customerIDName = customer.Split('~')[1];
+                    customerNamesList.Add(customer);
+
+                }
+                comboBoxCustomerID.SelectedIndex = 0;
             }
             comboCustomerIdClicked = true;
-
-
-        }
-        private void populateComboBoxCustomerID()
-        {
-            
-            LogAsTXT lat = new LogAsTXT();
-            List<String> lstCusts = lat.GetCustomerList();
-            foreach (var customer in lstCusts)
-            {
-                //Only take the part of the string before the ~ character. This is used for the Azure query. 
-                //The other part is the actual client name.
-                custIDNumber = customer.Split('~')[0];
-                comboBoxCustomerID.Items.Add(custIDNumber);
-                customerIDName = customer.Split('~')[1];
-                customerNamesList.Add(customer);
-
-            }
         }
 
-        private void comboBoxNarrative_Clicked(object sender, EventArgs e)
+       
+        private void populateComboNarative()
         {
             if (comboNarrativeIdClicked == false)
             {
-                populateComboNarative();
+                LogAsTXT lat = new LogAsTXT();
+                List<String> lstNarratives = lat.GetNarratives(32);
+                foreach (var narrative in lstNarratives)
+                {
+                    comboBoxNarrative.Items.Add(narrative);
+                }
+                comboBoxNarrative.SelectedIndex = 0;
             }
             comboNarrativeIdClicked = true;
-
-
-        }
-
-        private void populateComboNarative()
-        {
-            LogAsTXT lat = new LogAsTXT();
-            List<String> lstNarratives = lat.GetNarratives(32);
-            foreach (var narrative in lstNarratives)
-            {
-                comboBoxNarrative.Items.Add(narrative);
-            }
         }
 
         public bool GetLogAsTXT(int maxLogsToReturn, int timePeriodInDays, string searchNarrative, string custId, int maxLineCount, string outputFileName)
