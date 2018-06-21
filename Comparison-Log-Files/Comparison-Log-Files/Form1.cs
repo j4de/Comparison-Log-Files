@@ -79,7 +79,7 @@ namespace Comparison_Log_Files
             string filePath = textBoxFilePath.Text;
             string columnName = "";
             int message = 0;
-            string probId = "";
+            string problemID = "";
             int columnCount = 1;
             bool endOfLog = false;
             string[] filteredLogfile = new string[2];
@@ -111,7 +111,7 @@ namespace Comparison_Log_Files
                         {
                             if (logLine.Contains("Obtaining"))
                             {
-                                probId = logLine.Substring(0, 7);
+                                problemID = logLine.Substring(0, 7);
                                 ObtainingFound = true;
                                 continue;
                             }
@@ -151,7 +151,7 @@ namespace Comparison_Log_Files
                     AddDataToTable(message, logFileDataTable, endOfLog, filteredLogfile);
 
                     //If the end of a log file is reached
-                    AddToLogListAndSave(ref columnName, message, logFileDataTable, probId, columnCount, ref endOfLog, filteredLogfile);
+                    AddToLogListAndSave(ref columnName, message, logFileDataTable, problemID, columnCount, ref endOfLog, filteredLogfile);
                     lineCounter++;
                 }//end while loop 
                 CompareLogs();
@@ -299,7 +299,6 @@ namespace Comparison_Log_Files
             {
                 load.Close();
                 listBoxDetails.Items.Clear();
-                chart1.Series.Clear();
                 NoLogsReturnedListBox();
             }
 
@@ -486,10 +485,7 @@ namespace Comparison_Log_Files
 
         private void ClusterPieChart()
         {
-            if (true)
-            {
-
-            }
+            //chart1.Series.Clear();
             chart1.Series[0].ChartType = SeriesChartType.Pie;
             chart1.Series[0].Points.DataBindXY(clusterNames, clusterLogsCount);
             chart1.Legends[0].Enabled = true;
@@ -503,11 +499,11 @@ namespace Comparison_Log_Files
         }
         public void chart1_MouseClick(object sender, MouseEventArgs e)
         {
-            GoToDetails(e);
+            GoToDetailsForm(e);
 
         }
 
-        public void GoToDetails(MouseEventArgs e)
+        public void GoToDetailsForm(MouseEventArgs e)
         {
             string clusterName = "";
             HitTestResult hit = chart1.HitTest(e.X, e.Y, ChartElementType.DataPoint);
@@ -521,7 +517,7 @@ namespace Comparison_Log_Files
             {
                 Owner = this
             };
-            frm2.ClusterSelected(clusterName, clusterList, LogList);
+            frm2.ClusterSelected(clusterName, clusterList, LogList, customerIDNumberAndName);
             frm2.ShowDialog();
         }
 
@@ -616,15 +612,18 @@ namespace Comparison_Log_Files
         {
             int minLines = Convert.ToInt32(linesNumericUpDown.Value);
             string rowSignature = "";
-           
-            
+            string tillNumber = "";
+            string version = "";
             LogAsTXT lat = new LogAsTXT();
             List<String> lstCusts = lat.GetCustomerList();
-            if (comboBoxCustomerID.SelectedItem != null)
+            List<string> problemCustomers = new List<string>();
+            lat.GetProblemCustomerRefs(problemCustomers);
+
+            if (comboBoxCustomerID.Text != "")
             {
                 foreach (var name in lstCusts)
                 {
-                    if (comboBoxCustomerID.SelectedItem.ToString() == name.Split('~')[0])
+                    if (comboBoxCustomerID.Text == name.Split('~')[0])
                     {
                         customerIDNumberAndName = name;
                         customerIDName = name.Split('~')[0];
@@ -632,13 +631,63 @@ namespace Comparison_Log_Files
                     }
                     else
                     {
-                        customerIDNumberAndName = comboBoxCustomerID.SelectedItem.ToString();
-                        customerIDName = comboBoxCustomerID.SelectedItem.ToString();
+                        customerIDNumberAndName = comboBoxCustomerID.Text;
+                        customerIDName = comboBoxCustomerID.Text;
                     }
 
                 }
             }
+            foreach (var CustID in lstCusts)
+            {
+                foreach (var problemCustID in problemCustomers)
+                {
+                    if (problemCustID.Split(',')[0] != CustID)
+                    {
+                        lstCusts.Add(problemCustID.Split(',')[0]);
+                    }
+                    break;
+                }
+            }
+            foreach (var problemCustID in problemCustomers)
+            {
+                if(customerIDNumberAndName == problemCustID.Split('~')[0])
+                {
+                    tillNumber = problemCustID.Split(',')[3];
+                    version = problemCustID.Split(',')[4];
+                    break;
+                }
+            }
+            //custIDNumber = comboBoxCustomerID.Text;
 
+            //foreach (var problemCustID in problemCustomers)
+            //{
+            //    if (!lstCusts.Contains(problemCustID.Split(',')[0]))
+            //    {
+            //        lstCusts.Add(problemCustID.Split(',')[0]);
+            //    }
+            //    if (custIDNumber == problemCustID.Split('~')[0])
+            //    {
+            //        customerIDNumberAndName = problemCustID.Split(',')[0];
+            //        tillNumber = problemCustID.Split(',')[3];
+            //        version = problemCustID.Split(',')[4];
+            //        break;
+            //    }
+            //    foreach (var name in lstCusts)
+            //    {
+            //        if (custIDNumber == name.Split('~')[0])
+            //        {
+            //            if (name.Split(',')[0] == problemCustID.Split(',')[0])
+            //            {
+            //                customerIDNumberAndName = problemCustID.Split(',')[0];
+            //                tillNumber = problemCustID.Split(',')[3];
+            //                version = problemCustID.Split(',')[4];
+            //                break;
+            //            }
+
+            //        }
+
+            //    }
+            //}
             var results = from myRow in logFileDataTable.AsEnumerable()
                           select myRow[0];
             var topRows = results.Reverse().Take(minLines);
@@ -704,15 +753,15 @@ namespace Comparison_Log_Files
             else
             {
                 userInputCustomerID = comboBoxCustomerID.Text;
-                //List<String> lstCusts = lat.GetCustomerList();
-                //foreach (var customer in lstCusts)
-                //{
-                //    if (!lstCusts.Contains(custID))
-                //    {
-                //        lstCusts.Add(custID);
-                //        break;
-                //    }
-                //}
+                List<String> lstCusts = lat.GetCustomerList();
+                foreach (var customer in lstCusts)
+                {
+                    if (!lstCusts.Contains(custID))
+                    {
+                        lstCusts.Add(custID);
+                        break;
+                    }
+                }
             }
             SaveFileDialog sfdSaveSPTXT = new SaveFileDialog
             {
