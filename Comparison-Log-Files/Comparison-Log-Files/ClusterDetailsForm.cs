@@ -19,6 +19,7 @@ namespace Comparison_Log_Files
         List<Cluster> clustListForm2;
         List<LogFile> logListForm2; 
         string clusterName = "";
+        string customerID = "";
         public ClusterDetailsForm()
         {
             
@@ -32,9 +33,9 @@ namespace Comparison_Log_Files
         {
             this.Close();
         }
-        public void ClusterSelected(string cName, List<Cluster> clusterList, List<LogFile> logList)
+        public void ClusterSelected(string cName, List<Cluster> clusterList, List<LogFile> logList, string customerIDNumber)
         {
- 
+            customerID = customerIDNumber;
             clusterName = cName;
             clustListForm2 = clusterList;
             logListForm2 = logList;
@@ -53,20 +54,23 @@ namespace Comparison_Log_Files
                 {
                     mainLogNameLabel.Text = clusterName;
                     numberOfLinesLabel.Text = (item.MainLog.NumOfLines - 1).ToString();
-                    
-                    
-                    
+                    labelCustomerID.Text = customerID;
+                    labelVersion.Text = item.MainLog.Version;
+
+
                     foreach (LogFile log in item.MatchedLogs)
                     {
+                        
                         numberOfLinesLabel.Text = (log.NumOfLines - 1).ToString();
                         
                             tblClusterDetails.Rows.Add(
                                 log.ProblemID,
                                 log.NumOfLines -1,
                                 log.LDvalue,
-                                log.CustomerID
+                                log.CustomerID,
+                                log.Version
                                 );
-                        labelCustomerID.Text = log.CustomerID.ToString();
+                        
                     }
                     dgvClusterDetails.DataSource = tblClusterDetails;
                 }

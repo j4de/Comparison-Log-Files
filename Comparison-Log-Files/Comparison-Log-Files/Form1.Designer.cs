@@ -277,6 +277,7 @@
             this.comboBoxCustomerID.Name = "comboBoxCustomerID";
             this.comboBoxCustomerID.Size = new System.Drawing.Size(506, 21);
             this.comboBoxCustomerID.TabIndex = 45;
+            
             // 
             // label3
             // 
@@ -586,7 +587,7 @@
             this.btnViewResults.TabIndex = 3;
             this.btnViewResults.Text = "View Results";
             this.btnViewResults.UseVisualStyleBackColor = false;
-            this.btnViewResults.Click += new System.EventHandler(this.processButton_Click);
+            this.btnViewResults.Click += new System.EventHandler(this.ProcessButton_Click);
             // 
             // exitButton
             // 
@@ -625,7 +626,7 @@
             this.browseButton.TabIndex = 1;
             this.browseButton.Text = "Browse";
             this.browseButton.UseVisualStyleBackColor = true;
-            this.browseButton.Click += new System.EventHandler(this.browseButton_Click);
+            this.browseButton.Click += new System.EventHandler(this.BrowseButton_Click);
             // 
             // lableHeading
             // 

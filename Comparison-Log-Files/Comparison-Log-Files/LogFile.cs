@@ -15,6 +15,7 @@ namespace Comparison_Log_Files
         public string CustomerID { get; set; }
         public string Version { get; set; }
         public string Narrative { get; set; }
+        public string TillNumber { get; set; }
         public LogFile()
         {
 
