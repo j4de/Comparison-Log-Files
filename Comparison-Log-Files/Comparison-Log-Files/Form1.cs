@@ -708,5 +708,35 @@ namespace Comparison_Log_Files
 
             //};
         }
+
+        public void Automation()
+        {
+            var MyIni = new AutomationINI("automation.ini");
+
+            for (int i = 0; i < 10; i++)
+            {
+                if (MyIni.KeyExists("CustomerID, RUN" + i))
+                {
+                    var CustomerID = MyIni.Read("CustomerID, RUN" + i);
+                    var Narrative = MyIni.Read("Narrative, RUN" + i);
+                    var OutputFile = MyIni.Read("OutputFile, RUN" + i);
+                    var Maxlines = MyIni.Read("Maxlines, RUN" + i);
+                    var NumOfDays = MyIni.Read("NumOfDays, RUN" + i);
+                    var MaxLogs = MyIni.Read("MaxLogs, RUN" + i);
+                    var MinClusters = MyIni.Read("MinClusters, RUN" + i);
+                    var LDTolerance = MyIni.Read("LDTolerance, RUN" + i);
+                    var NumLines = MyIni.Read("NumLines, RUN" + i);
+                    var Results = MyIni.Read("Results, RUN" + i);
+                    var ResultsImage = MyIni.Read("ResultsImage, RUN" + i);
+
+                    CompareLogs();
+
+                }
+                else
+                {
+                    MessageBox.Show("RUN"+i+" could not be found");
+                }
+            }
+        }
     }
 }
